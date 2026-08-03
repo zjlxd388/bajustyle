@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO Meta Tags -->
+    <title>Shoes - Baju Style Malaysia & Singapore</title>
+    <meta name="description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
+    <meta name="keywords" content="shoes malaysia, singapore shoes, fashion footwear sg my">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Baju Style">
+    <meta name="copyright" content="Baju Style">
+
+    <!-- Google Language Tags -->
+    <link rel="alternate" hreflang="zh-CN" hreflang="zh-HK" hreflang="zh-TW" href="https://bajustyle.com/zh-CN/" />
+    <link rel="alternate" hreflang="en-US" hreflang="en-SG" hreflang="en-MY" href="https://bajustyle.com/en-US/" />
+    <link rel="alternate" hreflang="ms-MY" hreflang="ms-MY" href="https://ousand-baju-style.com/ms-MY/" />
+    <link rel="alternate" hreflang="vi-VN" hreflang="vi-VN" href="https://bajustyle.com/vi-VN/" />
+    <link rel="alternate" hreflang="x-default" href="https://abajustyle.com/" />
+
+    <!-- 地理位置标签 -->
+    <meta name="geo.region" content="MY-SG">
+    <meta name="geo.placename" content="Singapore Malaysia">
+    <meta name="geo.position" content="1.3521, 103.8198">
+    <meta name="ICBM" content="1.3521, 103.8198">
+    <meta name="target" content="Asia/Pacific">
+    <meta name="distribution" content="Global">
+
+    <!-- Open Graph Tags -->
+    <meta property="og:title" content="Shoes - Baju Style Malaysia & Singapore">
+    <meta property="og:description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://bajustyle.com/shoes">
+    <meta property="og:image" content="https://bajustyle.com/shoes.jpg">
+    <meta property="og:locale" content="en_US">
+
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shoes - Baju Style Malaysia & Singapore">
+    <meta name="twitter:description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
+
+    <!-- Styles -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+
+        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
+        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+
+        .language-switcher { position: fixed; top: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); padding: 10px 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 0 0 10px 10px; }
+        .language-switcher button { background: #667eea; color: white; border: none; padding: 5px 10px; margin: 0 2px; border-radius: 5px; cursor: pointer; transition: background 0.3s; font-size: 12px; }
+        .language-switcher button:hover { background: #764ba2; }
+        .language-switcher button.active { background: #764ba2; font-weight: bold; }
+
+        main { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200'); background-size: cover; background-position: center; color: white; text-align: center; padding: 60px 20px; border-radius: 10px; margin-bottom: 30px; }
+        .hero h2 { font-size: 2.5em; margin-bottom: 15px; }
+        .hero p { font-size: 1.2em; margin-bottom: 25px; }
+
+        .back-home { text-align: center; margin-bottom: 30px; }
+        .back-home a { display: inline-block; background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-size: 1.1em; transition: background 0.3s; }
+        .back-home a:hover { background: #764ba2; }
+
+        section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        section h3 { color: #667eea; font-size: 2em; margin-bottom: 20px; text-align: center; }
+
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+        .product-card { background: #f9f9f9; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .product-card img { width: 100%; height: 280px; object-fit: cover; }
+        .product-card h4 { padding: 12px; color: #333; }
+        .product-card p { padding: 0 12px 12px; color: #666; font-size: 0.9em; }
+
+        .contact-info { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-top: 30px; }
+        .contact-info h3 { text-align: center; margin-bottom: 20px; }
+        .contact-item { margin: 15px 0; display: flex; align-items: center; }
+        .contact-item svg { width: 20px; height: 20px; margin-right: 12px; fill: white; }
+        .contact-item span { font-size: 0.95em; }
+
+        footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.5em; }
+            .hero h2 { font-size: 2em; }
+            .hero p { font-size: 1em; }
+            .language-switcher { padding: 8px 10px; }
+            .language-switcher button { margin: 1px; font-size: 11px; padding: 4px 8px; }
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button onclick="switchLanguage('zh-CN')" class="lang-btn" data-lang="zh-CN">中文</button>
+        <button onclick="switchLanguage('en-US')" class="lang-btn active" data-lang="en-US">English</button>
+        <button onclick="switchLanguage('ms-MY')" class="lang-btn" data-lang="ms-MY">Bahasa Melayu</button>
+        <button onclick="switchLanguage('vi-VN')" class="lang-btn" data-lang="vi-VN">Tiếng Việt</button>
+    </div>
+
+    <header>
+        <h1 id="page-title">Shoes</h1>
+        <p id="page-tagline">Our Shoes Collection</p>
+    </header>
+
+    <main>
+        <div class="back-home">
+            <a href="index.html" id="back-btn">← Back to Home</a>
+        </div>
+
+        <section class="hero">
+            <h2 id="hero-title">Shop Shoes in Style</h2>
+            <p id="hero-description">Running shoes, heels, sandals, and more</p>
+        </section>
+
+        <section>
+            <h3 id="products-title">Latest Collections</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/shoe1.jpg" alt="Running Shoes" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop'">
+                    <h4 id="product-1-title">Running Shoes</h4>
+                    <p id="product-1-price">RM 150 - SGD 35</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe2.jpg" alt="High Heels" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
+                    <h4 id="product-2-title">High Heels</h4>
+                    <p id="product-2-price">RM 180 - SGD 42</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe3.jpg" alt="Flats" onerror="this.src='https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&h=400&fit=crop'">
+                    <h4 id="product-3-title">Flats</h4>
+                    <p id="product-3-price">RM 120 - SGD 28</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe4.jpg" alt="Sandals" onerror="this.src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop'">
+                    <h4 id="product-4-title">Sandals</h4>
+                    <p id="product-4-price">RM 95 - SGD 22</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe5.jpg" alt="Boots" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
+                    <h4 id="product-5-title">Boots</h4>
+                    <p id="product-5-price">RM 200 - SGD 47</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe6.jpg" alt="Sneakers" onerror="this.src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop'">
+                    <h4 id="product-6-title">Sneakers</h4>
+                    <p id="product-6-price">RM 130 - SGD 30</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe7.jpg" alt="Loafers" onerror="this.src='https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400&h=400&fit=crop'">
+                    <h4 id="product-7-title">Loafers</h4>
+                    <p id="product-7-price">RM 145 - SGD 34</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/shoe8.jpg" alt="Heeled Sandals" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
+                    <h4 id="product-8-title">Heeled Sandals</h4>
+                    <p id="product-8-price">RM 160 - SGD 38</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-info">
+            <h3 id="contact-title">Contact Us</h3>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                <span id="address-text">123 Fashion Street, Singapore 123456, Malaysia</span>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                <span id="email-text">hello@bajustyle.com</span>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                <span id="phone-text">+60 12 345 6789 (Malaysia)</span>
+            </div>
+            <div class="contact-item">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span id="wechat-text">微信：bajustyle（ID：bajustyle）</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Baju Style. All rights reserved.</p>
+        <p id="footer-text">Fashion Singapore Malaysia</p>
+    </footer>
+
+    <script>
+        const content = {
+            'zh-CN': {
+                pageTitle: '鞋子',
+                pageTagline: '我们的鞋子系列',
+                backBtn: '返回首页',
+                heroTitle: '用时尚的步伐自信前行',
+                heroDescription: '运动鞋、高跟鞋、凉鞋等等',
+                productsTitle: '最新系列',
+                contactTitle: '联系我们',
+                addressText: '123时尚街，新加坡123456，马来西亚',
+                emailText: 'hello@bajustyle.com',
+                phoneText: '+60 12 345 6789（马来西亚）',
+                wechatText: '微信：bajustyle（ID：bajustyle）',
+                footerText: '马来西亚新加坡时尚'
+            },
+            'en-US': {
+                pageTitle: 'Shoes',
+                pageTagline: 'Our Shoes Collection',
+                backBtn: 'Back to Home',
+                heroTitle: 'Shop Shoes in Style',
+                heroDescription: 'Running shoes, heels, sandals, and more',
+                productsTitle: 'Latest Collections',
+                contactTitle: 'Contact Us',
+                addressText: '123 Fashion Street, Singapore 123456, Malaysia',
+                emailText: 'hello@bajustyle.com',
+                phoneText: '+60 12 345 6789 (Malaysia)',
+                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
+                footerText: 'Fashion Singapore Malaysia'
+            },
+            'ms-MY': {
+                pageTitle: 'Kasut',
+                pageTagline: 'Koleksi Kasut Kami',
+                backBtn: 'Kembali ke Laman Utama',
+                heroTitle: 'Beli Kasut dengan Gaya',
+                heroDescription: 'Sneakers, heels, sandals, dan lagi',
+                productsTitle: 'Koleksi Terkini',
+                contactTitle: 'Hubungi Kami',
+                addressText: '123 Jalan Fesyen, Singapura 123456, Malaysia',
+                emailText: 'hello@bajustyle.com',
+                phoneText: '+60 12 345 6789 (Malaysia)',
+                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
+                footerText: 'Pakaian Malaysia Singapore'
+            },
+            'vi-VN': {
+                pageTitle: 'Giày',
+                pageTagline: 'Bộ Sưu Tập Giày',
+                backBtn: 'Quay lại Trang chủ',
+                heroTitle: 'Mua Giày với Phong Cách',
+                heroDescription: 'Giày chạy bộ, cao gót, dép, và nhiều hơn',
+                productsTitle: 'Bộ Sưu Tập Mới Nhất',
+                contactTitle: 'Liên Hệ Chúng Tôi',
+                addressText: '123 Đường Thời Trang, Singapore 123456, Malaysia',
+                emailText: 'hello@bajustyle.com',
+                phoneText: '+60 12 345 6789 (Malaysia)',
+                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
+                footerText: 'Thời Trang Malaysia Singapore'
+            }
+        };
+
+        function switchLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            document.documentElement.lang = lang;
+
+            for (const [key, value] of Object.entries(content[lang])) {
+                const element = document.getElementById(key);
+                if (element) element.textContent = value;
+            }
+
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferred-language') || 'en-US';
+            switchLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
