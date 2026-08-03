@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- SEO Meta Tags -->
-    <title>Baju Style - Fashion Shop in Malaysia & Singapore</title>
-    <meta name="description" content="Welcome to Baju Style. Discover fashion clothing, bags, and shoes in Malaysia and Singapore.">
-    <meta name="keywords" content="baju fashion, clothing malaysia, handbags singapore, shoes sg my">
+    <title>Baju Style - Fashion Singapore Malaysia</title>
+    <meta name="description" content="Fashion and Style in Singapore and Malaysia. Online clothing shop for men and women.">
+    <meta name="keywords" content="fashion singapore, style malaysia, baju fashion, dress online, online shop sg my">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Baju Style">
     <meta name="copyright" content="Baju Style">
@@ -28,8 +28,8 @@
     <meta name="distribution" content="Global">
 
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Baju Style - Fashion Shop in Malaysia & Singapore">
-    <meta property="og:description" content="Welcome to Baju Style. Discover fashion clothing, bags, and shoes in Malaysia and Singapore.">
+    <meta property="og:title" content="Baju Style - Fashion Singapore Malaysia">
+    <meta property="og:description" content="Fashion and Style in Singapore and Malaysia. Online clothing shop.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://bajustyle.com">
     <meta property="og:image" content="https://bajustyle.com/logo.png">
@@ -37,8 +37,8 @@
 
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Baju Style - Fashion Shop in Malaysia & Singapore">
-    <meta name="twitter:description" content="Welcome to Baju Style. Discover fashion clothing, bags, and shoes in Malaysia and Singapore.">
+    <meta name="twitter:title" content="Baju Style - Fashion Singapore Malaysia">
+    <meta name="twitter:description" content="Fashion and Style in Singapore and Malaysia.">
 
     <!-- Styles -->
     <style>
@@ -63,27 +63,14 @@
         .btn:hover { background: #764ba2; }
 
         section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
+        section h3 { color: #667eea; font-size: 2em; margin-bottom: 15px; text-align: center; }
 
-        .category-icons { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; padding: 40px 20px; }
-
-        .category-icon-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px 20px;
-            text-align: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .category-icon-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-        }
-
-        .category-icon-card .icon { font-size: 80px; margin-bottom: 20px; }
-        .category-icon-card h3 { color: #667eea; font-size: 2em; margin-bottom: 10px; }
-        .category-icon-card p { color: #666; font-size: 1.1em; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 15px; margin-top: 15px; }
+        .product-card { background: #f9f9f9; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+        .product-card img { width: 100%; height: 200px; object-fit: cover; }
+        .product-card h4 { padding: 12px; color: #333; }
+        .product-card p { padding: 0 12px 12px; color: #666; font-size: 0.9em; }
 
         .contact-info { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; }
         .contact-info h3 { text-align: center; margin-bottom: 20px; }
@@ -94,13 +81,12 @@
         footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.5em; }
+            header h2 { font-size: 1.5em; }
             .hero h2 { font-size: 2em; }
             .hero p { font-size: 1em; }
             .language-switcher { padding: 8px 10px; }
             .language-switcher button { margin: 1px; font-size: 11px; padding: 4px 8px; }
-            .category-icons { grid-template-columns: 1fr; }
-            .category-icon-card .icon { font-size: 60px; }
+            .products-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
         }
     </style>
 </head>
@@ -120,30 +106,37 @@
     <main>
         <section class="hero">
             <h2 id="hero-title">Welcome to Baju Style</h2>
-            <p id="hero-description">Discover the latest fashion trends in Malaysia and Singapore</p>
-            <a href="#categories" class="btn" id="explore-btn">Explore Categories</a>
+            <p id="hero-description">Your one-stop shop for fashion in Malaysia and Singapore</p>
+            <a href="#products" class="btn" id="explore-btn">Explore Our Collection</a>
         </section>
 
-        <section id="categories">
-            <h3 id="categories-title" style="color: #667eea; font-size: 2em; margin-bottom: 15px; text-align: center;">Browse by Category</h3>
+        <section>
+            <h3 id="about-title">About Us</h3>
+            <p id="about-description">We provide the latest fashion trends and styles for men and women in Singapore and Malaysia. Our online store offers a wide range of clothing, shoes, and accessories.</p>
+        </section>
 
-            <div class="category-icons">
-                <div class="category-icon-card" onclick="window.location.href='clothing.html'">
-                    <div class="icon">🛍️</div>
-                    <h3 id="category-clothing-name">服饰</h3>
-                    <p id="category-clothing-desc">Explore Our Clothing Collection</p>
+        <section>
+            <h3 id="products-title">Latest Collections</h3>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="images/product1.jpg" alt="Fashion Item 1" onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=400&h=400&fit=crop'">
+                    <h4 id="product-1-title">Modern Dress</h4>
+                    <p id="product-1-price">RM 150 - SGD 35</p>
                 </div>
-
-                <div class="category-icon-card" onclick="window.location.href='bags.html'">
-                    <div class="icon">👜</div>
-                    <h3 id="category-bags-name">包包</h3>
-                    <p id="category-bags-desc">Style Your Day with Bags</p>
+                <div class="product-card">
+                    <img src="images/product2.jpg" alt="Fashion Item 2" onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&h=400&fit=crop'">
+                    <h4 id="product-2-title">Casual T-Shirt</h4>
+                    <p id="product-2-price">RM 50 - SGD 12</p>
                 </div>
-
-                <div class="category-icon-card" onclick="window.location.href='shoes.html'">
-                    <div class="icon">👟</div>
-                    <h3 id="category-shoes-name">鞋子</h3>
-                    <p id="category-shoes-desc">Step in Style</p>
+                <div class="product-card">
+                    <img src="images/product3.jpg" alt="Fashion Item 3" onerror="this.src='https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=400&h=400&fit=crop'">
+                    <h4 id="product-3-title">Elegant Blouse</h4>
+                    <p id="product-3-price">RM 120 - SGD 28</p>
+                </div>
+                <div class="product-card">
+                    <img src="images/product4.jpg" alt="Fashion Item 4" onerror="this.src='https://images.unsplash.com/photo-1539008835657-9e8e9680c956?w=400&h=400&fit=crop'">
+                    <h4 id="product-4-title">Stylish Jeans</h4>
+                    <p id="product-4-price">RM 180 - SGD 42</p>
                 </div>
             </div>
         </section>
@@ -179,15 +172,20 @@
             'zh-CN': {
                 tagline: '马来西亚和新加坡的时尚风格',
                 heroTitle: '欢迎来到Baju Style',
-                heroDescription: '在马来西亚和新加坡发现最新时尚趋势',
-                exploreBtn: '探索分类',
-                categoriesTitle: '按类别浏览',
-                categoryName: '服饰',
-                categoryDesc: '探索我们的服装系列',
-                categoryName2: '包包',
-                categoryDesc2: '用包包点亮您的日常',
-                categoryName3: '鞋子',
-                categoryDesc3: '用时尚的步伐自信前行',
+                heroDescription: '马来西亚和新加坡时尚购物的一站式平台',
+                exploreBtn: '探索我们的系列',
+                aboutTitle: '关于我们',
+                aboutDescription: '我们提供最新的时尚趋势和风格。我们的在线商店提供各种服装、鞋类和配饰，价格具有竞争力。',
+                productsTitle: '最新系列',
+                productsSubtitle: '我们的热销商品',
+                'product-1-title': '现代连衣裙',
+                'product-1-price': 'RM 150 - SGD 35',
+                'product-2-title': '休闲T恤',
+                'product-2-price': 'RM 50 - SGD 12',
+                'product-3-title': '优雅衬衫',
+                'product-3-price': 'RM 120 - SGD 28',
+                'product-4-title': '时尚牛仔裤',
+                'product-4-price': 'RM 180 - SGD 42',
                 contactTitle: '联系我们',
                 addressText: '123时尚街，新加坡123456，马来西亚',
                 emailText: 'hello@bajustyle.com',
@@ -198,15 +196,20 @@
             'en-US': {
                 tagline: 'Fashion and Style in Singapore and Malaysia',
                 heroTitle: 'Welcome to Baju Style',
-                heroDescription: 'Discover the latest fashion trends in Malaysia and Singapore',
-                exploreBtn: 'Explore Categories',
-                categoriesTitle: 'Browse by Category',
-                categoryName: '服饰',
-                categoryDesc: 'Explore Our Clothing Collection',
-                categoryName2: '包包',
-                categoryDesc2: 'Style Your Day with Bags',
-                categoryName3: '鞋子',
-                categoryDesc3: 'Step in Style',
+                heroDescription: 'Your one-stop shop for fashion in Malaysia and Singapore',
+                exploreBtn: 'Explore Our Collection',
+                aboutTitle: 'About Us',
+                aboutDescription: 'We provide the latest fashion trends and styles. Our online store offers a wide range of clothing, shoes, and accessories.',
+                productsTitle: 'Latest Collections',
+                productsSubtitle: 'Our Popular Items',
+                'product-1-title': 'Modern Dress',
+                'product-1-price': 'RM 150 - SGD 35',
+                'product-2-title': 'Casual T-Shirt',
+                'product-2-price': 'RM 50 - SGD 12',
+                'product-3-title': 'Elegant Blouse',
+                'product-3-price': 'RM 120 - SGD 28',
+                'product-4-title': 'Stylish Jeans',
+                'product-4-price': 'RM 180 - SGD 42',
                 contactTitle: 'Contact Us',
                 addressText: '123 Fashion Street, Singapore 123456, Malaysia',
                 emailText: 'hello@bajustyle.com',
@@ -217,15 +220,20 @@
             'ms-MY': {
                 tagline: 'Pakaian dan Gaya di Malaysia dan Singapura',
                 heroTitle: 'Selamat Datang ke Baju Style',
-                heroDescription: 'Temui tren fesyen terkini di Malaysia dan Singapura',
-                exploreBtn: 'Teroka Kategori',
-                categoriesTitle: 'Lihat Mengikut Kategori',
-                categoryName: 'Pakaian',
-                categoryDesc: 'Teroka Koleksi Pakaian Kami',
-                categoryName2: 'Beg',
-                categoryDesc2: 'Gaya Hari Anda dengan Beg',
-                categoryName3: 'Kasut',
-                categoryDesc3: 'Berjalan dengan Gaya',
+                heroDescription: 'Pusat belanja fesyen anda di Malaysia dan Singapura',
+                exploreBtn: 'Teroka Koleksi Kami',
+                aboutTitle: 'Tentang Kami',
+                aboutDescription: 'Kami menyediakan terkini gaya dan tren fesyen. Pengadilan online kami menawarkan pelbagai pakaian, kasut, dan aksesori.',
+                productsTitle: 'Koleksi Terkini',
+                productsSubtitle: 'Barang Popular Kami',
+                'product-1-title': 'Baju Modern',
+                'product-1-price': 'RM 150 - SGD 35',
+                'product-2-title': 'Kasut Santai',
+                'product-2-price': 'RM 50 - SGD 12',
+                'product-3-title': 'Baju Elegan',
+                'product-3-price': 'RM 120 - SGD 28',
+                'product-4-title': 'Jeans Style',
+                'product-4-price': 'RM 180 - SGD 42',
                 contactTitle: 'Hubungi Kami',
                 addressText: '123 Jalan Fesyen, Singapura 123456, Malaysia',
                 emailText: 'hello@bajustyle.com',
@@ -236,15 +244,20 @@
             'vi-VN': {
                 tagline: 'Thời Trang và Phong Cách tại Malaysia và Singapore',
                 heroTitle: 'Chào mừng đến với Baju Style',
-                heroDescription: 'Khám phá xu hướng thời trang mới nhất tại Malaysia và Singapore',
-                exploreBtn: 'Khám Phá Danh Mục',
-                categoriesTitle: 'Duyệt Theo Danh Mục',
-                categoryName: 'Thời Trang',
-                categoryDesc: 'Khám Phá Bộ Sưu Tập Thời Trang',
-                categoryName2: 'Túi Xách',
-                categoryDesc2: 'Thổi Hồn Ngày Của Bạn Với Túi',
-                categoryName3: 'Giày',
-                categoryDesc3: 'Bước đi với phong cách',
+                heroDescription: 'Cửa hàng thời trang số một của bạn tại Malaysia và Singapore',
+                exploreBtn: 'Khám Phá Bộ Sưu Tập',
+                aboutTitle: 'Về Chúng Tôi',
+                aboutDescription: 'Chúng tôi cung cấp những xu hướng và phong cách thời trang mới nhất. Cửa hàng trực tuyến cung cấp đa dạng quần áo, giày và phụ kiện.',
+                productsTitle: 'Bộ Sưu Tập Mới Nhất',
+                productsSubtitle: 'Mặt Hàng Phổ Biến',
+                'product-1-title': 'Áo Dài Hiện Đại',
+                'product-1-price': 'RM 150 - SGD 35',
+                'product-2-title': 'Áo Thun Thường',
+                'product-2-price': 'RM 50 - SGD 12',
+                'product-3-title': 'Áo Cổ Lọ Sành',
+                'product-3-price': 'RM 120 - SGD 28',
+                'product-4-title': 'Jean Phong Cách',
+                'product-4-price': 'RM 180 - SGD 42',
                 contactTitle: 'Liên Hệ Chúng Tôi',
                 addressText: '123 Đường Thời Trang, Singapore 123456, Malaysia',
                 emailText: 'hello@bajustyle.com',
@@ -258,26 +271,24 @@
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
             document.documentElement.lang = lang;
-
             for (const [key, value] of Object.entries(content[lang])) {
                 const element = document.getElementById(key);
                 if (element) element.textContent = value;
             }
-
             localStorage.setItem('preferred-language', lang);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('preferred-language') || 'en-US';
             switchLanguage(savedLang);
+        });
 
-            // Smooth scroll to categories
-            const exploreBtn = document.getElementById('explore-btn');
-            if (exploreBtn) {
-                exploreBtn.onclick = () => {
-                    document.getElementById('categories').scrollIntoView({ behavior: 'smooth' });
-                };
-            }
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
+            });
         });
     </script>
 </body>
