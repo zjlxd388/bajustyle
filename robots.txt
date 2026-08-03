@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Block deployment scripts and temp files
+Disallow: /*.py
+Disallow: /*.md
+Disallow: /*.txt
+Disallow: /deploy.py
+Disallow: /cloudflare_deploy.py
+Disallow: /github_upload.py
+Disallow: /move_to_d.py
+Disallow: /DEPLOY_GUIDE.md
+Disallow: /DEPLOY_CHECKLIST.md
+Disallow: /QUICK_START.md
+Disallow: /README.md
+Disallow: /images_guide.txt
+
+Sitemap: https://bajustyle.com/sitemap.xml

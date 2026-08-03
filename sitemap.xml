@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://bajustyle.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bajustyle.com/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/?lang=ms"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bajustyle.com/"/>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Clothing -->
+  <url>
+    <loc>https://bajustyle.com/clothing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bajustyle.com/clothing.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/clothing.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/clothing.html?lang=ms"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/clothing.html?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bajustyle.com/clothing.html"/>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Shoes -->
+  <url>
+    <loc>https://bajustyle.com/shoes.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bajustyle.com/shoes.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/shoes.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/shoes.html?lang=ms"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/shoes.html?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bajustyle.com/shoes.html"/>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bags -->
+  <url>
+    <loc>https://bajustyle.com/bags.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bajustyle.com/bags.html?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/bags.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/bags.html?lang=ms"/>
+    <xhtml:link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/bags.html?lang=vi"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bajustyle.com/bags.html"/>
+    <lastmod>2026-08-04</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>

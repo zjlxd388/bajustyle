@@ -12,15 +12,18 @@
     <meta name="author" content="Baju Style">
     <meta name="copyright" content="Baju Style">
 
-    <!-- Google Language Tags -->
-    <link rel="alternate" hreflang="zh-CN" hreflang="zh-HK" hreflang="zh-TW" href="https://bajustyle.com/zh-CN/" />
-    <link rel="alternate" hreflang="en-US" hreflang="en-SG" hreflang="en-MY" href="https://bajustyle.com/en-US/" />
-    <link rel="alternate" hreflang="ms-MY" hreflang="ms-MY" href="https://ousand-baju-style.com/ms-MY/" />
-    <link rel="alternate" hreflang="vi-VN" hreflang="vi-VN" href="https://bajustyle.com/vi-VN/" />
-    <link rel="alternate" hreflang="x-default" href="https://abajustyle.com/" />
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://bajustyle.com/shoes.html" />
+
+    <!-- Hreflang Tags - Language Alternates -->
+    <link rel="alternate" hreflang="en" href="https://bajustyle.com/shoes.html?lang=en" />
+    <link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/shoes.html?lang=zh" />
+    <link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/shoes.html?lang=ms" />
+    <link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/shoes.html?lang=vi" />
+    <link rel="alternate" hreflang="x-default" href="https://bajustyle.com/shoes.html" />
 
     <!-- 地理位置标签 -->
-    <meta name="geo.region" content="MY-SG">
+    <meta name="geo.region" content="SG">
     <meta name="geo.placename" content="Singapore Malaysia">
     <meta name="geo.position" content="1.3521, 103.8198">
     <meta name="ICBM" content="1.3521, 103.8198">
@@ -246,22 +249,32 @@
             }
         };
 
+        const langMap = { 'en': 'en-US', 'zh': 'zh-CN', 'ms': 'ms-MY', 'vi': 'vi-VN' };
+        const langReverseMap = { 'en-US': 'en', 'zh-CN': 'zh', 'ms-MY': 'ms', 'vi-VN': 'vi' };
+
         function switchLanguage(lang) {
             document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+            const btn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
+            if (btn) btn.classList.add('active');
             document.documentElement.lang = lang;
 
-            for (const [key, value] of Object.entries(content[lang])) {
+            for (const [key, value] of Object.entries(content[lang] || content['en-US'])) {
                 const element = document.getElementById(key);
                 if (element) element.textContent = value;
             }
 
             localStorage.setItem('preferred-language', lang);
+            const url = new URL(window.location);
+            url.searchParams.set('lang', langReverseMap[lang] || 'en');
+            window.history.replaceState({}, '', url);
         }
 
         window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const urlLang = urlParams.get('lang');
             const savedLang = localStorage.getItem('preferred-language') || 'en-US';
-            switchLanguage(savedLang);
+            const lang = (urlLang && langMap[urlLang]) || savedLang;
+            switchLanguage(lang);
         });
     </script>
 </body>
