@@ -3,279 +3,287 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- SEO Meta Tags -->
-    <title>Shoes - Baju Style Malaysia & Singapore</title>
-    <meta name="description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
-    <meta name="keywords" content="shoes malaysia, singapore shoes, fashion footwear sg my">
-    <meta name="robots" content="index, follow">
-    <meta name="author" content="Baju Style">
-    <meta name="copyright" content="Baju Style">
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://bajustyle.com/shoes.html" />
-
-    <!-- Hreflang Tags - Language Alternates -->
-    <link rel="alternate" hreflang="en" href="https://bajustyle.com/shoes.html?lang=en" />
-    <link rel="alternate" hreflang="zh-CN" href="https://bajustyle.com/shoes.html?lang=zh" />
-    <link rel="alternate" hreflang="ms-MY" href="https://bajustyle.com/shoes.html?lang=ms" />
-    <link rel="alternate" hreflang="vi-VN" href="https://bajustyle.com/shoes.html?lang=vi" />
-    <link rel="alternate" hreflang="x-default" href="https://bajustyle.com/shoes.html" />
-
-    <!-- 地理位置标签 -->
+    <title>Women's Shoes — BajuStyle | Heels, Flats & Sandals Malaysia</title>
+    <meta name="description" content="Discover trendy women's shoes at BajuStyle. Shop heels, flats, sandals, sneakers and more. Quality footwear for women in Malaysia, Singapore & Vietnam. Contact us on WeChat.">
+    <meta name="keywords" content="women shoes Malaysia, heels, flats, sandals, sneakers, footwear boutique">
     <meta name="geo.region" content="SG">
-    <meta name="geo.placename" content="Singapore Malaysia">
-    <meta name="geo.position" content="1.3521, 103.8198">
-    <meta name="ICBM" content="1.3521, 103.8198">
-    <meta name="target" content="Asia/Pacific">
-    <meta name="distribution" content="Global">
-
-    <!-- Open Graph Tags -->
-    <meta property="og:title" content="Shoes - Baju Style Malaysia & Singapore">
-    <meta property="og:description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://bajustyle.com/shoes">
-    <meta property="og:image" content="https://bajustyle.com/shoes.jpg">
-    <meta property="og:locale" content="en_US">
-
-    <!-- Twitter Card Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shoes - Baju Style Malaysia & Singapore">
-    <meta name="twitter:description" content="Shop shoes in Malaysia and Singapore. Running shoes, heels, sandals, and more.">
-
-    <!-- Styles -->
+    <link rel="canonical" href="https://www.bajustyle.com/shoes.html">
+    <link rel="alternate" hreflang="en" href="https://www.bajustyle.com/shoes.html?lang=en">
+    <link rel="alternate" hreflang="zh" href="https://www.bajustyle.com/shoes.html?lang=zh">
+    <link rel="alternate" hreflang="ms" href="https://www.bajustyle.com/shoes.html?lang=ms">
+    <link rel="alternate" hreflang="vi" href="https://www.bajustyle.com/shoes.html?lang=vi">
+    <link rel="alternate" hreflang="x-default" href="https://www.bajustyle.com/shoes.html">
     <style>
+        :root {
+            --primary: #d4a0a0; --primary-dark: #b87d7d; --accent: #e8c4c4;
+            --bg: #ffffff; --bg-light: #faf7f7; --bg-footer: #2d2d2d;
+            --text: #333333; --text-light: #666666; --text-muted: #999999;
+            --border: #eeeeee; --wechat: #07c160; --max-width: 1200px;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; background: #f9f9f9; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; color: var(--text); background: var(--bg); line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        .top-bar { background: var(--bg-footer); color: #fff; font-size: 0.8rem; text-align: center; padding: 6px 16px; }
+        .header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid var(--border); }
+        .nav { max-width: var(--max-width); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a { font-size: 0.9rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; padding: 4px 0; transition: color 0.2s; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--primary); }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .lang-switch { display: flex; gap: 4px; }
+        .lang-btn { background: none; border: 1px solid var(--border); padding: 4px 8px; font-size: 0.75rem; cursor: pointer; border-radius: 3px; color: var(--text-light); transition: all 0.2s; }
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .wechat-icon { display: flex; align-items: center; gap: 6px; background: var(--wechat); color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.2s; border: none; }
+        .wechat-icon:hover { opacity: 0.9; transform: scale(1.03); }
+        .wechat-icon svg { width: 18px; height: 18px; fill: #fff; }
+        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 1.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
+        .mobile-close { position: absolute; top: 20px; right: 20px; font-size: 1.8rem; cursor: pointer; background: none; border: none; }
 
-        header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; text-align: center; }
-        header h1 { font-size: 2.5em; margin-bottom: 10px; }
+        .page-banner { background: linear-gradient(135deg, #f3e5f5, #e1bee7); padding: 60px 20px; text-align: center; }
+        .page-banner h1 { font-size: 2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
+        .page-banner p { color: var(--text-light); font-size: 1rem; }
+        .product-section { max-width: var(--max-width); margin: 40px auto; padding: 0 20px; }
+        .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .product-card { cursor: pointer; transition: transform 0.2s; }
+        .product-card:hover { transform: translateY(-3px); }
+        .product-card-img { width: 100%; aspect-ratio: 3/4; border-radius: 8px; background: #f5f0f0; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .product-card-info { padding: 10px 4px; text-align: center; }
+        .product-card-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+        .product-card-price { font-size: 0.85rem; color: var(--primary-dark); font-weight: 600; }
+        .product-card .view-btn { display: inline-block; margin-top: 8px; padding: 6px 20px; border: 1px solid var(--primary); color: var(--primary-dark); font-size: 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; background: transparent; cursor: pointer; }
+        .product-card .view-btn:hover { background: var(--primary); color: #fff; }
 
-        .language-switcher { position: fixed; top: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.95); padding: 10px 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-radius: 0 0 10px 10px; }
-        .language-switcher button { background: #667eea; color: white; border: none; padding: 5px 10px; margin: 0 2px; border-radius: 5px; cursor: pointer; transition: background 0.3s; font-size: 12px; }
-        .language-switcher button:hover { background: #764ba2; }
-        .language-switcher button.active { background: #764ba2; font-weight: bold; }
+        .wechat-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
+        .wechat-float-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--wechat); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(7,193,96,0.35); transition: transform 0.2s; border: none; }
+        .wechat-float-btn:hover { transform: scale(1.08); }
+        .wechat-float-btn svg { width: 28px; height: 28px; fill: #fff; }
+        .wechat-float-popup { display: none; background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); text-align: center; min-width: 200px; }
+        .wechat-float-popup.show { display: block; }
+        .wechat-float-popup .wx-id { font-size: 1rem; font-weight: 700; color: var(--wechat); margin-bottom: 4px; }
+        .wechat-float-popup .wx-hint { font-size: 0.78rem; color: var(--text-muted); }
 
-        main { max-width: 1200px; margin: 0 auto; padding: 20px; }
-
-        .hero { background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1549298916-b41d501d3772?w=1200'); background-size: cover; background-position: center; color: white; text-align: center; padding: 60px 20px; border-radius: 10px; margin-bottom: 30px; }
-        .hero h2 { font-size: 2.5em; margin-bottom: 15px; }
-        .hero p { font-size: 1.2em; margin-bottom: 25px; }
-
-        .back-home { text-align: center; margin-bottom: 30px; }
-        .back-home a { display: inline-block; background: #667eea; color: white; padding: 12px 30px; text-decoration: none; border-radius: 5px; font-size: 1.1em; transition: background 0.3s; }
-        .back-home a:hover { background: #764ba2; }
-
-        section { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 25px; }
-        section h3 { color: #667eea; font-size: 2em; margin-bottom: 20px; text-align: center; }
-
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
-        .product-card { background: #f9f9f9; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s; }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
-        .product-card img { width: 100%; height: 280px; object-fit: cover; }
-        .product-card h4 { padding: 12px; color: #333; }
-        .product-card p { padding: 0 12px 12px; color: #666; font-size: 0.9em; }
-
-        .contact-info { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 30px; border-radius: 10px; margin-top: 30px; }
-        .contact-info h3 { text-align: center; margin-bottom: 20px; }
-        .contact-item { margin: 15px 0; display: flex; align-items: center; }
-        .contact-item svg { width: 20px; height: 20px; margin-right: 12px; fill: white; }
-        .contact-item span { font-size: 0.95em; }
-
-        footer { background: #333; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+        .footer { background: var(--bg-footer); color: #ccc; padding: 50px 20px 0; margin-top: 60px; }
+        .footer-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; }
+        .footer h4 { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer p, .footer a { font-size: 0.85rem; color: #aaa; line-height: 2; }
+        .footer a:hover { color: var(--accent); }
+        .footer-bottom { border-top: 1px solid #444; padding: 20px 0; text-align: center; font-size: 0.8rem; color: #777; max-width: var(--max-width); margin: 0 auto; }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 1.5em; }
-            .hero h2 { font-size: 2em; }
-            .hero p { font-size: 1em; }
-            .language-switcher { padding: 8px 10px; }
-            .language-switcher button { margin: 1px; font-size: 11px; padding: 4px 8px; }
-            .products-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+            .nav-links, .nav-right .lang-switch { display: none; }
+            .hamburger { display: flex; }
+            .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
         }
     </style>
 </head>
 <body>
-    <div class="language-switcher">
-        <button onclick="switchLanguage('zh-CN')" class="lang-btn" data-lang="zh-CN">中文</button>
-        <button onclick="switchLanguage('en-US')" class="lang-btn active" data-lang="en-US">English</button>
-        <button onclick="switchLanguage('ms-MY')" class="lang-btn" data-lang="ms-MY">Bahasa Melayu</button>
-        <button onclick="switchLanguage('vi-VN')" class="lang-btn" data-lang="vi-VN">Tiếng Việt</button>
-    </div>
 
-    <header>
-        <h1 id="page-title">Shoes</h1>
-        <p id="page-tagline">Our Shoes Collection</p>
-    </header>
+<div class="top-bar" data-key="topBar">Free Delivery across Malaysia & Singapore — Order via WeChat below! ✨</div>
 
-    <main>
-        <div class="back-home">
-            <a href="index.html" id="back-btn">← Back to Home</a>
+<header class="header">
+    <nav class="nav">
+        <a href="index.html" class="logo">Baju<span>Style</span></a>
+        <div class="nav-links">
+            <a href="index.html" data-key="navHome">Home</a>
+            <a href="clothing.html" data-key="navClothing">Clothing</a>
+            <a href="shoes.html" class="active" data-key="navShoes">Shoes</a>
+            <a href="bags.html" data-key="navBags">Bags</a>
         </div>
-
-        <section class="hero">
-            <h2 id="hero-title">Shop Shoes in Style</h2>
-            <p id="hero-description">Running shoes, heels, sandals, and more</p>
-        </section>
-
-        <section>
-            <h3 id="products-title">Latest Collections</h3>
-            <div class="products-grid">
-                <div class="product-card">
-                    <img src="images/shoe1.jpg" alt="Running Shoes" onerror="this.src='https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop'">
-                    <h4 id="product-1-title">Running Shoes</h4>
-                    <p id="product-1-price">RM 150 - SGD 35</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe2.jpg" alt="High Heels" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
-                    <h4 id="product-2-title">High Heels</h4>
-                    <p id="product-2-price">RM 180 - SGD 42</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe3.jpg" alt="Flats" onerror="this.src='https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=400&h=400&fit=crop'">
-                    <h4 id="product-3-title">Flats</h4>
-                    <p id="product-3-price">RM 120 - SGD 28</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe4.jpg" alt="Sandals" onerror="this.src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop'">
-                    <h4 id="product-4-title">Sandals</h4>
-                    <p id="product-4-price">RM 95 - SGD 22</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe5.jpg" alt="Boots" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
-                    <h4 id="product-5-title">Boots</h4>
-                    <p id="product-5-price">RM 200 - SGD 47</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe6.jpg" alt="Sneakers" onerror="this.src='https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=400&h=400&fit=crop'">
-                    <h4 id="product-6-title">Sneakers</h4>
-                    <p id="product-6-price">RM 130 - SGD 30</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe7.jpg" alt="Loafers" onerror="this.src='https://images.unsplash.com/photo-1614252369475-531eba835eb1?w=400&h=400&fit=crop'">
-                    <h4 id="product-7-title">Loafers</h4>
-                    <p id="product-7-price">RM 145 - SGD 34</p>
-                </div>
-                <div class="product-card">
-                    <img src="images/shoe8.jpg" alt="Heeled Sandals" onerror="this.src='https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop'">
-                    <h4 id="product-8-title">Heeled Sandals</h4>
-                    <p id="product-8-price">RM 160 - SGD 38</p>
-                </div>
+        <div class="nav-right">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="ms">BM</button>
+                <button class="lang-btn" data-lang="vi">VI</button>
             </div>
-        </section>
+            <button class="wechat-icon" onclick="document.getElementById('wechatFloatBtn').click()">
+                <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                WeChat
+            </button>
+        </div>
+        <button class="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    </nav>
+</header>
 
-        <section class="contact-info">
-            <h3 id="contact-title">Contact Us</h3>
-            <div class="contact-item">
-                <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                <span id="address-text">123 Fashion Street, Singapore 123456, Malaysia</span>
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMobileMenu()">&times;</button>
+    <a href="index.html" data-key="navHome">Home</a>
+    <a href="clothing.html" data-key="navClothing">Clothing</a>
+    <a href="shoes.html" data-key="navShoes">Shoes</a>
+    <a href="bags.html" data-key="navBags">Bags</a>
+    <div class="lang-switch" style="display:flex;gap:6px;margin-top:12px;">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="ms">BM</button>
+        <button class="lang-btn" data-lang="vi">VI</button>
+    </div>
+</div>
+
+<div class="page-banner">
+    <h1 data-key="pageTitle">Women's Shoes</h1>
+    <p data-key="pageSubtitle">Heels, Flats, Sandals & Sneakers</p>
+</div>
+
+<section class="product-section">
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <h4>BajuStyle</h4>
+            <p data-key="footerDesc">Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.</p>
+            <div style="display:inline-flex;align-items:center;gap:8px;background:var(--wechat);color:#fff;padding:8px 18px;border-radius:20px;font-weight:600;margin-top:12px;">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                <span>WeChat: YOUR_WECHAT_ID</span>
             </div>
-            <div class="contact-item">
-                <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                <span id="email-text">hello@bajustyle.com</span>
-            </div>
-            <div class="contact-item">
-                <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                <span id="phone-text">+60 12 345 6789 (Malaysia)</span>
-            </div>
-            <div class="contact-item">
-                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-                <span id="wechat-text">微信：bajustyle（ID：bajustyle）</span>
-            </div>
-        </section>
-    </main>
+        </div>
+        <div>
+            <h4 data-key="footerShop">Shop</h4>
+            <a href="clothing.html" data-key="navClothing">Clothing</a><br>
+            <a href="shoes.html" data-key="navShoes">Shoes</a><br>
+            <a href="bags.html" data-key="navBags">Bags</a>
+        </div>
+        <div>
+            <h4 data-key="footerHelp">Help</h4>
+            <a href="#" data-key="footerFAQ">FAQ</a><br>
+            <a href="#" data-key="footerSize">Size Guide</a><br>
+            <a href="#" data-key="footerContact">Contact Us</a>
+        </div>
+        <div>
+            <h4 data-key="footerContactTitle">Contact Us</h4>
+            <p style="color:#fff;font-weight:600;font-size:1rem;">📱 WeChat</p>
+            <p style="color:var(--wechat);font-size:1.1rem;font-weight:700;">YOUR_WECHAT_ID</p>
+            <p style="margin-top:8px;color:#aaa;" data-key="footerContactHint">Add us on WeChat for orders & inquiries</p>
+        </div>
+    </div>
+    <div class="footer-bottom"><p>&copy; 2026 BajuStyle. All rights reserved.</p></div>
+</footer>
 
-    <footer>
-        <p>&copy; 2024 Baju Style. All rights reserved.</p>
-        <p id="footer-text">Fashion Singapore Malaysia</p>
-    </footer>
+<div class="wechat-float">
+    <div class="wechat-float-popup" id="wechatPopup">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">Scan or add WeChat</div>
+        <div class="wx-id" id="wxIdDisplay">YOUR_WECHAT_ID</div>
+        <div class="wx-hint">Click to copy ID</div>
+    </div>
+    <button class="wechat-float-btn" id="wechatFloatBtn" onclick="toggleWechatPopup()">
+        <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+    </button>
+</div>
 
-    <script>
-        const content = {
-            'zh-CN': {
-                pageTitle: '鞋子',
-                pageTagline: '我们的鞋子系列',
-                backBtn: '返回首页',
-                heroTitle: '用时尚的步伐自信前行',
-                heroDescription: '运动鞋、高跟鞋、凉鞋等等',
-                productsTitle: '最新系列',
-                contactTitle: '联系我们',
-                addressText: '123时尚街，新加坡123456，马来西亚',
-                emailText: 'hello@bajustyle.com',
-                phoneText: '+60 12 345 6789（马来西亚）',
-                wechatText: '微信：bajustyle（ID：bajustyle）',
-                footerText: '马来西亚新加坡时尚'
-            },
-            'en-US': {
-                pageTitle: 'Shoes',
-                pageTagline: 'Our Shoes Collection',
-                backBtn: 'Back to Home',
-                heroTitle: 'Shop Shoes in Style',
-                heroDescription: 'Running shoes, heels, sandals, and more',
-                productsTitle: 'Latest Collections',
-                contactTitle: 'Contact Us',
-                addressText: '123 Fashion Street, Singapore 123456, Malaysia',
-                emailText: 'hello@bajustyle.com',
-                phoneText: '+60 12 345 6789 (Malaysia)',
-                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
-                footerText: 'Fashion Singapore Malaysia'
-            },
-            'ms-MY': {
-                pageTitle: 'Kasut',
-                pageTagline: 'Koleksi Kasut Kami',
-                backBtn: 'Kembali ke Laman Utama',
-                heroTitle: 'Beli Kasut dengan Gaya',
-                heroDescription: 'Sneakers, heels, sandals, dan lagi',
-                productsTitle: 'Koleksi Terkini',
-                contactTitle: 'Hubungi Kami',
-                addressText: '123 Jalan Fesyen, Singapura 123456, Malaysia',
-                emailText: 'hello@bajustyle.com',
-                phoneText: '+60 12 345 6789 (Malaysia)',
-                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
-                footerText: 'Pakaian Malaysia Singapore'
-            },
-            'vi-VN': {
-                pageTitle: 'Giày',
-                pageTagline: 'Bộ Sưu Tập Giày',
-                backBtn: 'Quay lại Trang chủ',
-                heroTitle: 'Mua Giày với Phong Cách',
-                heroDescription: 'Giày chạy bộ, cao gót, dép, và nhiều hơn',
-                productsTitle: 'Bộ Sưu Tập Mới Nhất',
-                contactTitle: 'Liên Hệ Chúng Tôi',
-                addressText: '123 Đường Thời Trang, Singapore 123456, Malaysia',
-                emailText: 'hello@bajustyle.com',
-                phoneText: '+60 12 345 6789 (Malaysia)',
-                wechatText: 'WeChat: bajustyle (ID: bajustyle)',
-                footerText: 'Thời Trang Malaysia Singapore'
-            }
-        };
+<script>
+const products = [
+    { id: 's1', name: 'Classic Heels', nameZh: '经典高跟鞋', nameMs: 'Kasut Tumit Klasik', nameVi: 'Giày Cao Gót Cổ Điển', emoji: '👠' },
+    { id: 's2', name: 'Summer Sandals', nameZh: '夏日凉鞋', nameMs: 'Sandal Musim Panas', nameVi: 'Dép Mùa Hè', emoji: '👡' },
+    { id: 's3', name: 'Casual Sneakers', nameZh: '休闲运动鞋', nameMs: 'Sneakers Kasual', nameVi: 'Giày Thể Thao', emoji: '👟' },
+    { id: 's4', name: 'Elegant Flats', nameZh: '优雅平底鞋', nameMs: 'Flat Elegan', nameVi: 'Giày Búp Bê', emoji: '🥿' },
+    { id: 's5', name: 'Ankle Boots', nameZh: '短靴', nameMs: 'But Pergelangan', nameVi: 'Bốt Cổ Thấp', emoji: '👢' },
+    { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', emoji: '👡' },
+];
 
-        const langMap = { 'en': 'en-US', 'zh': 'zh-CN', 'ms': 'ms-MY', 'vi': 'vi-VN' };
-        const langReverseMap = { 'en-US': 'en', 'zh-CN': 'zh', 'ms-MY': 'ms', 'vi-VN': 'vi' };
+function renderProducts(lang) {
+    document.getElementById('productGrid').innerHTML = products.map(p => {
+        const name = lang === 'zh' ? p.nameZh : lang === 'ms' ? p.nameMs : lang === 'vi' ? p.nameVi : p.name;
+        return `
+            <div class="product-card" onclick="location.href='product-detail.html?id=${p.id}'">
+                <div class="product-card-img">${p.emoji}</div>
+                <div class="product-card-info">
+                    <div class="product-card-name">${name}</div>
+                    <div class="product-card-price" data-key="contactPrice">Contact for Price</div>
+                    <span class="view-btn" data-key="viewDetails">View Details</span>
+                </div>
+            </div>`;
+    }).join('');
+    const t = content[lang] || content.en;
+    document.querySelectorAll('.product-card-price').forEach(el => el.textContent = t.contactPrice);
+    document.querySelectorAll('.view-btn').forEach(el => el.textContent = t.viewDetails);
+}
 
-        function switchLanguage(lang) {
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            const btn = document.querySelector(`.lang-btn[data-lang="${lang}"]`);
-            if (btn) btn.classList.add('active');
-            document.documentElement.lang = lang;
+const content = {
+    en: {
+        navHome: 'Home', navClothing: 'Clothing', navShoes: 'Shoes', navBags: 'Bags',
+        pageTitle: "Women's Shoes", pageSubtitle: 'Heels, Flats, Sandals & Sneakers',
+        contactPrice: 'Contact for Price', viewDetails: 'View Details',
+        footerDesc: 'Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.',
+        footerShop: 'Shop', footerHelp: 'Help', footerFAQ: 'FAQ', footerSize: 'Size Guide',
+        footerContact: 'Contact Us', footerContactTitle: 'Contact Us',
+        footerContactHint: 'Add us on WeChat for orders & inquiries',
+        topBar: 'Free Delivery across Malaysia & Singapore — Order via WeChat below! ✨'
+    },
+    zh: {
+        navHome: '首页', navClothing: '衣服', navShoes: '鞋子', navBags: '包包',
+        pageTitle: '女鞋', pageSubtitle: '高跟鞋、平底鞋、凉鞋、运动鞋',
+        contactPrice: '微信询价', viewDetails: '查看详情',
+        footerDesc: '您的首选在线时尚精品店。为马来西亚、新加坡和越南女性提供时尚服装、鞋子和包包。',
+        footerShop: '购物', footerHelp: '帮助', footerFAQ: '常见问题', footerSize: '尺码指南',
+        footerContact: '联系我们', footerContactTitle: '联系我们',
+        footerContactHint: '添加微信咨询下单',
+        topBar: '马来西亚 & 新加坡全境包邮 — 微信下单！✨'
+    },
+    ms: {
+        navHome: 'Utama', navClothing: 'Pakaian', navShoes: 'Kasut', navBags: 'Beg',
+        pageTitle: 'Kasut Wanita', pageSubtitle: 'Tumit, Flat, Sandal & Sneakers',
+        contactPrice: 'Hubungi untuk Harga', viewDetails: 'Lihat Butiran',
+        footerDesc: 'Butik fesyen online pilihan anda. Pakaian, kasut dan beg trendy untuk wanita di Malaysia, Singapura & Vietnam.',
+        footerShop: 'Beli', footerHelp: 'Bantuan', footerFAQ: 'Soalan Lazim', footerSize: 'Panduan Saiz',
+        footerContact: 'Hubungi Kami', footerContactTitle: 'Hubungi Kami',
+        footerContactHint: 'Tambah kami di WeChat untuk pesanan & pertanyaan',
+        topBar: 'Penghantaran Percuma ke seluruh Malaysia & Singapura — Pesan melalui WeChat! ✨'
+    },
+    vi: {
+        navHome: 'Trang Chủ', navClothing: 'Quần Áo', navShoes: 'Giày', navBags: 'Túi Xách',
+        pageTitle: 'Giày Nữ', pageSubtitle: 'Cao Gót, Búp Bê, Dép & Giày Thể Thao',
+        contactPrice: 'Liên Hệ Để Biết Giá', viewDetails: 'Xem Chi Tiết',
+        footerDesc: 'Cửa hàng thời trang online của bạn. Quần áo, giày dép và túi xách thời trang cho phụ nữ Malaysia, Singapore & Việt Nam.',
+        footerShop: 'Mua Sắm', footerHelp: 'Trợ Giúp', footerFAQ: 'Câu Hỏi Thường Gặp', footerSize: 'Hướng Dẫn Size',
+        footerContact: 'Liên Hệ', footerContactTitle: 'Liên Hệ',
+        footerContactHint: 'Thêm WeChat để đặt hàng & tư vấn',
+        topBar: 'Giao Hàng Miễn Phí toàn Malaysia & Singapore — Đặt hàng qua WeChat! ✨'
+    }
+};
 
-            for (const [key, value] of Object.entries(content[lang] || content['en-US'])) {
-                const element = document.getElementById(key);
-                if (element) element.textContent = value;
-            }
+function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState({}, '', url);
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => btn.classList.add('active'));
+    const t = content[lang] || content.en;
+    document.querySelectorAll('[data-key]').forEach(el => { if (t[el.dataset.key]) el.textContent = t[el.dataset.key]; });
+    renderProducts(lang);
+    localStorage.setItem('preferred-language', lang);
+}
 
-            localStorage.setItem('preferred-language', lang);
-            const url = new URL(window.location);
-            url.searchParams.set('lang', langReverseMap[lang] || 'en');
-            window.history.replaceState({}, '', url);
-        }
+function toggleWechatPopup() {
+    const popup = document.getElementById('wechatPopup');
+    popup.classList.toggle('show');
+    if (popup.classList.contains('show')) setTimeout(() => popup.classList.remove('show'), 5000);
+}
+document.getElementById('wxIdDisplay').addEventListener('click', function() {
+    navigator.clipboard.writeText(this.textContent).then(() => {
+        this.textContent = 'Copied! ✓';
+        setTimeout(() => { this.textContent = 'YOUR_WECHAT_ID'; }, 2000);
+    });
+});
+function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const urlLang = urlParams.get('lang');
-            const savedLang = localStorage.getItem('preferred-language') || 'en-US';
-            const lang = (urlLang && langMap[urlLang]) || savedLang;
-            switchLanguage(lang);
-        });
-    </script>
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || localStorage.getItem('preferred-language') || 'en';
+    switchLanguage(lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => switchLanguage(btn.dataset.lang)));
+    document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', () => toggleMobileMenu()));
+});
+</script>
 </body>
 </html>

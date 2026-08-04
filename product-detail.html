@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details — BajuStyle</title>
+    <meta name="description" content="View product details at BajuStyle. Quality fashion clothing, shoes, and bags. Contact us on WeChat to order.">
+    <link rel="canonical" href="https://www.bajustyle.com/product-detail.html">
+    <link rel="alternate" hreflang="en" href="https://www.bajustyle.com/product-detail.html?lang=en">
+    <link rel="alternate" hreflang="zh" href="https://www.bajustyle.com/product-detail.html?lang=zh">
+    <link rel="alternate" hreflang="ms" href="https://www.bajustyle.com/product-detail.html?lang=ms">
+    <link rel="alternate" hreflang="vi" href="https://www.bajustyle.com/product-detail.html?lang=vi">
+    <link rel="alternate" hreflang="x-default" href="https://www.bajustyle.com/product-detail.html">
+    <style>
+        :root {
+            --primary: #d4a0a0;
+            --primary-dark: #b87d7d;
+            --accent: #e8c4c4;
+            --bg: #ffffff;
+            --bg-light: #faf7f7;
+            --bg-footer: #2d2d2d;
+            --text: #333333;
+            --text-light: #666666;
+            --text-muted: #999999;
+            --border: #eeeeee;
+            --wechat: #07c160;
+            --max-width: 1200px;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            color: var(--text); background: var(--bg); line-height: 1.6;
+        }
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+
+        .top-bar {
+            background: var(--bg-footer); color: #fff; font-size: 0.8rem;
+            text-align: center; padding: 6px 16px;
+        }
+        .header {
+            position: sticky; top: 0; z-index: 100; background: #fff;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav {
+            max-width: var(--max-width); margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 12px 20px;
+        }
+        .logo { font-size: 1.6rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+        .logo span { color: var(--primary); }
+        .nav-links { display: flex; gap: 28px; align-items: center; }
+        .nav-links a {
+            font-size: 0.9rem; font-weight: 500; text-transform: uppercase;
+            letter-spacing: 1px; padding: 4px 0; transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary); }
+        .nav-links a.active::after {
+            content: ''; position: absolute; bottom: -2px; left: 0;
+            width: 100%; height: 2px; background: var(--primary);
+        }
+        .nav-right { display: flex; align-items: center; gap: 16px; }
+        .lang-switch { display: flex; gap: 4px; }
+        .lang-btn {
+            background: none; border: 1px solid var(--border); padding: 4px 8px;
+            font-size: 0.75rem; cursor: pointer; border-radius: 3px; color: var(--text-light);
+            transition: all 0.2s;
+        }
+        .lang-btn.active, .lang-btn:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+        .wechat-icon {
+            display: flex; align-items: center; gap: 6px; background: var(--wechat);
+            color: #fff; padding: 6px 14px; border-radius: 20px; font-size: 0.85rem;
+            font-weight: 600; cursor: pointer; transition: all 0.2s; border: none;
+        }
+        .wechat-icon:hover { opacity: 0.9; transform: scale(1.03); }
+        .wechat-icon svg { width: 18px; height: 18px; fill: #fff; }
+
+        .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+        .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
+        .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a { font-size: 1.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
+        .mobile-close { position: absolute; top: 20px; right: 20px; font-size: 1.8rem; cursor: pointer; background: none; border: none; }
+
+        /* ========== PRODUCT DETAIL ========== */
+        .detail-container {
+            max-width: var(--max-width);
+            margin: 40px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+        .detail-gallery {
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f5f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            aspect-ratio: 3/4;
+            font-size: 8rem;
+        }
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .detail-breadcrumb {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+        .detail-breadcrumb a { color: var(--primary-dark); }
+        .detail-name {
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+        .detail-cat {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 3px 12px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .detail-desc {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 24px;
+        }
+        .detail-price {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+        .detail-wechat-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--wechat);
+            color: #fff;
+            padding: 14px 32px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+            letter-spacing: 1px;
+        }
+        .detail-wechat-btn:hover { opacity: 0.9; transform: scale(1.03); }
+        .detail-wechat-btn svg { width: 22px; height: 22px; fill: #fff; }
+        .detail-wechat-id {
+            margin-top: 12px;
+            font-size: 0.9rem;
+            color: var(--wechat);
+            font-weight: 600;
+        }
+
+        /* Related Products */
+        .related-section {
+            max-width: var(--max-width);
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+        .related-section h3 {
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 28px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border);
+        }
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+        .related-card {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .related-card:hover { transform: translateY(-3px); }
+        .related-card-img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            border-radius: 8px;
+            background: #f5f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .related-card-name {
+            text-align: center;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-top: 8px;
+        }
+
+        /* WeChat float */
+        .wechat-float {
+            position: fixed; bottom: 24px; right: 24px; z-index: 300;
+            display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+        }
+        .wechat-float-btn {
+            width: 56px; height: 56px; border-radius: 50%; background: var(--wechat);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; box-shadow: 0 4px 16px rgba(7,193,96,0.35);
+            transition: transform 0.2s; border: none;
+        }
+        .wechat-float-btn:hover { transform: scale(1.08); }
+        .wechat-float-btn svg { width: 28px; height: 28px; fill: #fff; }
+        .wechat-float-popup {
+            display: none; background: #fff; border-radius: 12px; padding: 16px 20px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.15); text-align: center; min-width: 200px;
+        }
+        .wechat-float-popup.show { display: block; }
+        .wechat-float-popup .wx-id { font-size: 1rem; font-weight: 700; color: var(--wechat); margin-bottom: 4px; }
+        .wechat-float-popup .wx-hint { font-size: 0.78rem; color: var(--text-muted); }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-footer); color: #ccc; padding: 40px 20px 0; margin-top: 60px;
+        }
+        .footer-grid {
+            max-width: var(--max-width); margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px;
+        }
+        .footer h4 { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer p, .footer a { font-size: 0.85rem; color: #aaa; line-height: 2; }
+        .footer a:hover { color: var(--accent); }
+        .footer-bottom {
+            border-top: 1px solid #444; padding: 20px 0; text-align: center;
+            font-size: 0.8rem; color: #777; max-width: var(--max-width); margin: 0 auto;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-right .lang-switch { display: none; }
+            .hamburger { display: flex; }
+            .detail-container { grid-template-columns: 1fr; gap: 24px; }
+            .related-grid { grid-template-columns: repeat(2, 1fr); }
+            .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="top-bar" data-key="topBar">Free Delivery across Malaysia & Singapore — Order via WeChat below! ✨</div>
+
+<header class="header">
+    <nav class="nav">
+        <a href="index.html" class="logo">Baju<span>Style</span></a>
+        <div class="nav-links">
+            <a href="index.html" data-key="navHome">Home</a>
+            <a href="clothing.html" data-key="navClothing">Clothing</a>
+            <a href="shoes.html" data-key="navShoes">Shoes</a>
+            <a href="bags.html" data-key="navBags">Bags</a>
+        </div>
+        <div class="nav-right">
+            <div class="lang-switch">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="zh">中文</button>
+                <button class="lang-btn" data-lang="ms">BM</button>
+                <button class="lang-btn" data-lang="vi">VI</button>
+            </div>
+            <button class="wechat-icon" onclick="document.getElementById('wechatFloatBtn').click()">
+                <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                WeChat
+            </button>
+        </div>
+        <button class="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+    </nav>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" onclick="toggleMobileMenu()">&times;</button>
+    <a href="index.html" data-key="navHome">Home</a>
+    <a href="clothing.html" data-key="navClothing">Clothing</a>
+    <a href="shoes.html" data-key="navShoes">Shoes</a>
+    <a href="bags.html" data-key="navBags">Bags</a>
+    <div class="lang-switch" style="display:flex;gap:6px;margin-top:12px;">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="ms">BM</button>
+        <button class="lang-btn" data-lang="vi">VI</button>
+    </div>
+</div>
+
+<!-- Product Detail -->
+<div class="detail-container">
+    <div class="detail-gallery" id="detailImage">👗</div>
+    <div class="detail-info">
+        <div class="detail-breadcrumb">
+            <a href="index.html" data-key="navHome">Home</a> / <a href="#" id="breadcrumbCat">Category</a> / <span id="breadcrumbName">Product</span>
+        </div>
+        <h1 class="detail-name" id="detailName">Product Name</h1>
+        <span class="detail-cat" id="detailCat">Category</span>
+        <p class="detail-desc" id="detailDesc" data-key="detailDescDefault">
+            High-quality fashion piece designed for the modern woman. Comfortable, stylish, and perfect for any occasion. Available in multiple sizes and colors.
+        </p>
+        <div class="detail-price" id="detailPrice" data-key="contactPrice">Contact for Price</div>
+        <button class="detail-wechat-btn" onclick="document.getElementById('wechatFloatBtn').click()">
+            <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+            <span data-key="inquireWechat">Inquire on WeChat</span>
+        </button>
+        <div class="detail-wechat-id">📱 WeChat: <span id="detailWechatId">YOUR_WECHAT_ID</span></div>
+    </div>
+</div>
+
+<!-- Related Products -->
+<section class="related-section">
+    <h3 data-key="youMayLike">You May Also Like</h3>
+    <div class="related-grid" id="relatedGrid"></div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="footer-grid">
+        <div>
+            <h4>BajuStyle</h4>
+            <p data-key="footerDesc">Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.</p>
+        </div>
+        <div>
+            <h4 data-key="footerShop">Shop</h4>
+            <a href="clothing.html" data-key="navClothing">Clothing</a><br>
+            <a href="shoes.html" data-key="navShoes">Shoes</a><br>
+            <a href="bags.html" data-key="navBags">Bags</a>
+        </div>
+        <div>
+            <h4 data-key="footerHelp">Help</h4>
+            <a href="#" data-key="footerFAQ">FAQ</a><br>
+            <a href="#" data-key="footerSize">Size Guide</a><br>
+            <a href="#" data-key="footerContact">Contact Us</a>
+        </div>
+        <div>
+            <h4 data-key="footerContactTitle">Contact Us</h4>
+            <p style="color:#fff;font-weight:600;font-size:1rem;">📱 WeChat</p>
+            <p style="color:var(--wechat);font-size:1.1rem;font-weight:700;">YOUR_WECHAT_ID</p>
+            <p style="margin-top:8px;color:#aaa;" data-key="footerContactHint">Add us on WeChat for orders & inquiries</p>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 BajuStyle. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- WeChat Float -->
+<div class="wechat-float">
+    <div class="wechat-float-popup" id="wechatPopup">
+        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">Scan or add WeChat</div>
+        <div class="wx-id" id="wxIdDisplay">YOUR_WECHAT_ID</div>
+        <div class="wx-hint">Click to copy ID</div>
+    </div>
+    <button class="wechat-float-btn" id="wechatFloatBtn" onclick="toggleWechatPopup()">
+        <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+    </button>
+</div>
+
+<script>
+// ====== PRODUCT DATA (shared) ======
+const products = {
+    clothing: [
+        { id: 'c1', name: 'Modern Dress', nameZh: '现代连衣裙', nameMs: 'Gaun Moden', nameVi: 'Đầm Hiện Đại', img: 'images/product1.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
+        { id: 'c2', name: 'Casual T-Shirt', nameZh: '休闲T恤', nameMs: 'T-Shirt Kasual', nameVi: 'Áo Thun Thường Ngày', img: 'images/product2.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👕' },
+        { id: 'c3', name: 'Elegant Blouse', nameZh: '优雅衬衫', nameMs: 'Blaus Elegan', nameVi: 'Áo Kiểu Thanh Lịch', img: 'images/product3.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👚' },
+        { id: 'c4', name: 'Stylish Jeans', nameZh: '时尚牛仔裤', nameMs: 'Jeans Bergaya', nameVi: 'Quần Jeans Thời Trang', img: 'images/product4.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👖' },
+        { id: 'c5', name: 'Floral Midi Dress', nameZh: '碎花中长裙', nameMs: 'Gaun Midi Bunga', nameVi: 'Đầm Midi Hoa', img: 'images/product5.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
+        { id: 'c6', name: 'Office Blazer', nameZh: '通勤西装', nameMs: 'Blazer Pejabat', nameVi: 'Áo Blazer Công Sở', img: 'images/product6.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '🧥' },
+        { id: 'c7', name: 'Knitted Cardigan', nameZh: '针织开衫', nameMs: 'Kardigan Rajut', nameVi: 'Áo Khoác Len', img: 'images/product7.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '🧶' },
+        { id: 'c8', name: 'Pleated Skirt', nameZh: '百褶裙', nameMs: 'Skirt Lipit', nameVi: 'Chân Váy Xếp Ly', img: 'images/product8.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
+    ],
+    shoes: [
+        { id: 's1', name: 'Classic Heels', nameZh: '经典高跟鞋', nameMs: 'Kasut Tumit Klasik', nameVi: 'Giày Cao Gót Cổ Điển', img: 'images/shoe1.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👠' },
+        { id: 's2', name: 'Summer Sandals', nameZh: '夏日凉鞋', nameMs: 'Sandal Musim Panas', nameVi: 'Dép Mùa Hè', img: 'images/shoe2.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👡' },
+        { id: 's3', name: 'Casual Sneakers', nameZh: '休闲运动鞋', nameMs: 'Sneakers Kasual', nameVi: 'Giày Thể Thao', img: 'images/shoe3.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👟' },
+        { id: 's4', name: 'Elegant Flats', nameZh: '优雅平底鞋', nameMs: 'Flat Elegan', nameVi: 'Giày Búp Bê', img: 'images/shoe4.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '🥿' },
+        { id: 's5', name: 'Ankle Boots', nameZh: '短靴', nameMs: 'But Pergelangan', nameVi: 'Bốt Cổ Thấp', img: 'images/shoe5.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👢' },
+        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', img: 'images/shoe6.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👡' },
+    ],
+    bags: [
+        { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', img: 'images/bag1.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
+        { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', img: 'images/bag2.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
+        { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', img: 'images/bag3.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👛' },
+        { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '🎒' },
+        { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
+        { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
+    ]
+};
+const allProducts = [...products.clothing, ...products.shoes, ...products.bags];
+
+// ====== WECHAT POPUP ======
+function toggleWechatPopup() {
+    const popup = document.getElementById('wechatPopup');
+    popup.classList.toggle('show');
+    if (popup.classList.contains('show')) {
+        setTimeout(() => popup.classList.remove('show'), 5000);
+    }
+}
+document.getElementById('wxIdDisplay').addEventListener('click', function() {
+    navigator.clipboard.writeText(this.textContent).then(() => {
+        this.textContent = 'Copied! ✓';
+        setTimeout(() => { this.textContent = 'YOUR_WECHAT_ID'; }, 2000);
+    });
+});
+
+// ====== LANGUAGE ======
+const content = {
+    en: {
+        navHome: 'Home', navClothing: 'Clothing', navShoes: 'Shoes', navBags: 'Bags',
+        contactPrice: 'Contact for Price', inquireWechat: 'Inquire on WeChat',
+        detailDescDefault: 'High-quality fashion piece designed for the modern woman. Comfortable, stylish, and perfect for any occasion. Available in multiple sizes and colors.',
+        youMayLike: 'You May Also Like',
+        footerDesc: 'Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.',
+        footerShop: 'Shop', footerHelp: 'Help', footerFAQ: 'FAQ', footerSize: 'Size Guide',
+        footerContact: 'Contact Us', footerContactTitle: 'Contact Us',
+        footerContactHint: 'Add us on WeChat for orders & inquiries',
+        topBar: 'Free Delivery across Malaysia & Singapore — Order via WeChat below! ✨'
+    },
+    zh: {
+        navHome: '首页', navClothing: '衣服', navShoes: '鞋子', navBags: '包包',
+        contactPrice: '微信询价', inquireWechat: '微信咨询',
+        detailDescDefault: '为现代女性设计的高品质时尚单品。舒适、时尚，适合任何场合。多种尺码和颜色可选。',
+        youMayLike: '猜你喜欢',
+        footerDesc: '您的首选在线时尚精品店。为马来西亚、新加坡和越南女性提供时尚服装、鞋子和包包。',
+        footerShop: '购物', footerHelp: '帮助', footerFAQ: '常见问题', footerSize: '尺码指南',
+        footerContact: '联系我们', footerContactTitle: '联系我们',
+        footerContactHint: '添加微信咨询下单',
+        topBar: '马来西亚 & 新加坡全境包邮 — 微信下单！✨'
+    },
+    ms: {
+        navHome: 'Utama', navClothing: 'Pakaian', navShoes: 'Kasut', navBags: 'Beg',
+        contactPrice: 'Hubungi untuk Harga', inquireWechat: 'Tanya di WeChat',
+        detailDescDefault: 'Pakaian berkualiti tinggi untuk wanita moden. Selesa, bergaya, dan sesuai untuk sebarang majlis. Tersedia dalam pelbagai saiz dan warna.',
+        youMayLike: 'Anda Mungkin Suka',
+        footerDesc: 'Butik fesyen online pilihan anda. Pakaian, kasut dan beg trendy untuk wanita di Malaysia, Singapura & Vietnam.',
+        footerShop: 'Beli', footerHelp: 'Bantuan', footerFAQ: 'Soalan Lazim', footerSize: 'Panduan Saiz',
+        footerContact: 'Hubungi Kami', footerContactTitle: 'Hubungi Kami',
+        footerContactHint: 'Tambah kami di WeChat untuk pesanan & pertanyaan',
+        topBar: 'Penghantaran Percuma ke seluruh Malaysia & Singapura — Pesan melalui WeChat! ✨'
+    },
+    vi: {
+        navHome: 'Trang Chủ', navClothing: 'Quần Áo', navShoes: 'Giày', navBags: 'Túi Xách',
+        contactPrice: 'Liên Hệ Để Biết Giá', inquireWechat: 'Hỏi qua WeChat',
+        detailDescDefault: 'Sản phẩm thời trang chất lượng cao dành cho phụ nữ hiện đại. Thoải mái, phong cách và phù hợp cho mọi dịp. Có nhiều kích cỡ và màu sắc.',
+        youMayLike: 'Có Thể Bạn Thích',
+        footerDesc: 'Cửa hàng thời trang online của bạn. Quần áo, giày dép và túi xách thời trang cho phụ nữ Malaysia, Singapore & Việt Nam.',
+        footerShop: 'Mua Sắm', footerHelp: 'Trợ Giúp', footerFAQ: 'Câu Hỏi Thường Gặp', footerSize: 'Hướng Dẫn Size',
+        footerContact: 'Liên Hệ', footerContactTitle: 'Liên Hệ',
+        footerContactHint: 'Thêm WeChat để đặt hàng & tư vấn',
+        topBar: 'Giao Hàng Miễn Phí toàn Malaysia & Singapore — Đặt hàng qua WeChat! ✨'
+    }
+};
+
+function switchLanguage(lang) {
+    document.documentElement.lang = lang;
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    window.history.replaceState({}, '', url);
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    document.querySelectorAll(`.lang-btn[data-lang="${lang}"]`).forEach(btn => btn.classList.add('active'));
+    const t = content[lang] || content.en;
+    document.querySelectorAll('[data-key]').forEach(el => {
+        if (t[el.dataset.key]) el.textContent = t[el.dataset.key];
+    });
+    loadProductDetail(lang);
+    localStorage.setItem('preferred-language', lang);
+}
+
+function toggleMobileMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ====== LOAD PRODUCT ======
+function loadProductDetail(lang) {
+    const params = new URLSearchParams(window.location.search);
+    const productId = params.get('id');
+    const product = allProducts.find(p => p.id === productId);
+
+    if (!product) {
+        document.getElementById('detailName').textContent = 'Product Not Found';
+        return;
+    }
+
+    const t = content[lang] || content.en;
+    const name = lang === 'zh' ? product.nameZh : lang === 'ms' ? product.nameMs : lang === 'vi' ? product.nameVi : product.name;
+    const catName = lang === 'zh' ? product.catNameZh : lang === 'ms' ? product.catNameMs : lang === 'vi' ? product.catNameVi : product.catName;
+
+    document.getElementById('detailImage').textContent = product.emoji;
+    document.getElementById('detailName').textContent = name;
+    document.getElementById('detailCat').textContent = catName;
+    document.getElementById('detailPrice').textContent = t.contactPrice;
+    document.getElementById('breadcrumbCat').textContent = catName;
+    document.getElementById('breadcrumbCat').href = product.cat + '.html';
+    document.getElementById('breadcrumbName').textContent = name;
+
+    document.title = name + ' — BajuStyle';
+
+    // Related products: same category, exclude current
+    const related = allProducts.filter(p => p.cat === product.cat && p.id !== product.id).slice(0, 4);
+    document.getElementById('relatedGrid').innerHTML = related.map(p => {
+        const rName = lang === 'zh' ? p.nameZh : lang === 'ms' ? p.nameMs : lang === 'vi' ? p.nameVi : p.name;
+        return `
+            <div class="related-card" onclick="location.href='product-detail.html?id=${p.id}'">
+                <div class="related-card-img">${p.emoji}</div>
+                <div class="related-card-name">${rName}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+// ====== INIT ======
+window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const lang = params.get('lang') || localStorage.getItem('preferred-language') || 'en';
+    switchLanguage(lang);
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => switchLanguage(btn.dataset.lang));
+    });
+    document.querySelectorAll('.mobile-menu a').forEach(link => {
+        link.addEventListener('click', () => toggleMobileMenu());
+    });
+});
+</script>
+
+</body>
+</html>
