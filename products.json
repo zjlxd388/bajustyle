@@ -272,26 +272,7 @@
                 ]
             }
         ],
-        "sb": [
-            {
-                "id": "s1",
-                "img": "",
-                "images": [],
-                "emoji": "📦",
-                "name": "New Product",
-                "nameZh": "新品",
-                "nameMs": "Produk Baru",
-                "nameVi": "Sản Phẩm Mới",
-                "price": "",
-                "desc": {
-                    "zh": "",
-                    "en": "",
-                    "ms": "",
-                    "vi": ""
-                },
-                "cat": "sb"
-            }
-        ]
+        "sb": []
     },
     "homepage_products": {
         "new_arrivals": [
