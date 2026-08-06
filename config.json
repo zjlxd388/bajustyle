@@ -1,0 +1,12 @@
+{
+    "zhipu": {
+        "api_key": "",
+        "api_url": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+        "model": "glm-4"
+    },
+    "deepseek": {
+        "api_key": "sk-d5cd52ef4f9043458cea2c46c8e563be",
+        "api_url": "https://api.deepseek.com/v1/chat/completions",
+        "model": "deepseek-chat"
+    }
+}

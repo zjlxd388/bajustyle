@@ -411,6 +411,13 @@
             background: #fff;
             border-radius: 8px;
             margin-bottom: 8px;
+            cursor: zoom-in;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .wechat-modal-qr-img.zoomed {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1);
+            width: 92vw; max-width: 560px; aspect-ratio: 1; z-index: 700; cursor: zoom-out;
+            border-radius: 12px; box-shadow: 0 0 0 9999px rgba(0,0,0,0.85); padding: 12px; background: #fff;
         }
         .wechat-modal-qr-label {
             font-size: 0.95rem;
@@ -552,6 +559,8 @@
         }
 
         /* ========== RESPONSIVE ========== */
+        .mobile-lang-hint { display: none; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; text-align: center; }
+
         @media (max-width: 768px) {
             .nav-links, .nav-right .lang-switch { display: none; }
             .hamburger { display: flex; }
@@ -562,6 +571,8 @@
             .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
             .footer-grid { grid-template-columns: 1fr; gap: 24px; }
             .wechat-modal-qr-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .mobile-lang-hint { display: block; }
+            .wechat-modal-qr-img.zoomed { width: 96vw; max-width: 96vw; padding: 8px; }
         }
         @media (max-width: 480px) {
             .hero { height: 300px; }
@@ -613,6 +624,7 @@
     <a href="clothing.html" data-key="navClothing">Clothing</a>
     <a href="shoes.html" data-key="navShoes">Shoes</a>
     <a href="bags.html" data-key="navBags">Bags</a>
+    <div class="mobile-lang-hint" data-key="langHint">🌐 切换语言 / Switch Language</div>
     <div class="lang-switch" style="display:flex;gap:6px;margin-top:12px;">
         <button class="lang-btn active" data-lang="en">EN</button>
         <button class="lang-btn" data-lang="zh">中文</button>
@@ -724,7 +736,7 @@
 </div>
 
 <!-- WeChat Modal -->
-<div class="wechat-modal-overlay" id="wechatModal" onclick="if(event.target===this)closeWechatModal()">
+<div class="wechat-modal-overlay" id="wechatModal" onclick="if(event.target===this){ if(document.querySelector('.wechat-modal-qr-img.zoomed')) resetQrZoom(); else closeWechatModal(); }">
     <div class="wechat-modal">
         <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
         <div class="wechat-modal-brand" data-key="modalBrand">DY Premium Fashion</div>
@@ -733,12 +745,12 @@
 
         <div class="wechat-modal-qr-row">
             <div class="wechat-modal-qr-card">
-                <img src="images/wechat-qr.jpg" alt="WeChat QR" class="wechat-modal-qr-img">
+                <img src="images/wechat-qr.jpg" alt="WeChat QR" class="wechat-modal-qr-img" onclick="toggleQrZoom(this)">
                 <div class="wechat-modal-qr-label" data-key="modalQr1Label">添加微信</div>
                 <div class="wechat-modal-qr-hint" data-key="modalQr1Hint">Scan to add me</div>
             </div>
             <div class="wechat-modal-qr-card">
-                <img src="images/catalog-qr.jpg" alt="Catalog QR" class="wechat-modal-qr-img">
+                <img src="images/catalog-qr.jpg" alt="Catalog QR" class="wechat-modal-qr-img" onclick="toggleQrZoom(this)">
                 <div class="wechat-modal-qr-label" data-key="modalQr2Label">款式更齐全</div>
                 <div class="wechat-modal-qr-hint" data-key="modalQr2Hint">Scan to view catalog</div>
             </div>
@@ -937,6 +949,7 @@ function openWechatModal() {
     document.body.style.overflow = 'hidden';
 }
 function closeWechatModal() {
+    resetQrZoom();
     document.getElementById('wechatModal').classList.remove('show');
     document.body.style.overflow = '';
 }
@@ -971,8 +984,24 @@ function showCopySuccess(el) {
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeWechatModal();
+    if (e.key === 'Escape') {
+        if (document.querySelector('.wechat-modal-qr-img.zoomed')) resetQrZoom();
+        else closeWechatModal();
+    }
 });
+
+// QR zoom
+function toggleQrZoom(img) {
+    if (img.classList.contains('zoomed')) {
+        img.classList.remove('zoomed');
+    } else {
+        document.querySelectorAll('.wechat-modal-qr-img.zoomed').forEach(el => el.classList.remove('zoomed'));
+        img.classList.add('zoomed');
+    }
+}
+function resetQrZoom() {
+    document.querySelectorAll('.wechat-modal-qr-img.zoomed').forEach(el => el.classList.remove('zoomed'));
+}
 
 function toggleMobileMenu() {
     document.getElementById('mobileMenu').classList.toggle('open');
