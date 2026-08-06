@@ -67,6 +67,22 @@
                 "vi": ""
             },
             "filename": "sb.html"
+        },
+        "sp": {
+            "id": "sp",
+            "name": {
+                "en": "Accessories",
+                "zh": "饰品",
+                "ms": "Aksesori",
+                "vi": "Phụ kiện"
+            },
+            "description": {
+                "en": "",
+                "zh": "",
+                "ms": "",
+                "vi": ""
+            },
+            "filename": "sp.html"
         }
     },
     "products": {
@@ -272,7 +288,8 @@
                 ]
             }
         ],
-        "sb": []
+        "sb": [],
+        "sp": []
     },
     "homepage_products": {
         "new_arrivals": [
