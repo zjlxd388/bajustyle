@@ -288,7 +288,28 @@
                 ]
             }
         ],
-        "sb": [],
+        "sb": [
+            {
+                "id": "s1",
+                "img": "images/微信图片_20260804004618_16_1_13105.jpg",
+                "images": [
+                    "images/微信图片_20260804004618_16_1_13105.jpg"
+                ],
+                "emoji": "📦",
+                "name": "New arrival",
+                "nameZh": "新品",
+                "nameMs": "Baru tiba",
+                "nameVi": "Hàng mới về",
+                "price": "CNY 100.00",
+                "desc": {
+                    "zh": "",
+                    "en": "",
+                    "ms": "",
+                    "vi": ""
+                },
+                "cat": "sb"
+            }
+        ],
         "sp": [
             {
                 "id": "s1",
