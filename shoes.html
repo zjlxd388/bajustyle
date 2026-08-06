@@ -249,15 +249,11 @@
 </div>
 
 <script>
+	<!-- @PRODUCTS_START -->
 const products = [
-    { id: 's1', name: 'Classic Heels', nameZh: '经典高跟鞋', nameMs: 'Kasut Tumit Klasik', nameVi: 'Giày Cao Gót Cổ Điển', emoji: '👠' },
-    { id: 's2', name: 'Summer Sandals', nameZh: '夏日凉鞋', nameMs: 'Sandal Musim Panas', nameVi: 'Dép Mùa Hè', emoji: '👡' },
-    { id: 's3', name: 'Casual Sneakers', nameZh: '休闲运动鞋', nameMs: 'Sneakers Kasual', nameVi: 'Giày Thể Thao', emoji: '👟' },
-    { id: 's4', name: 'Elegant Flats', nameZh: '优雅平底鞋', nameMs: 'Flat Elegan', nameVi: 'Giày Búp Bê', emoji: '🥿' },
-    { id: 's5', name: 'Ankle Boots', nameZh: '短靴', nameMs: 'But Pergelangan', nameVi: 'Bốt Cổ Thấp', emoji: '👢' },
-    { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', emoji: '👡' },
+        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', emoji: '👡', price: '', desc: '', img: 'images/shoe6.jpg' }
 ];
-
+<!-- @PRODUCTS_END -->
 function renderProducts(lang) {
     document.getElementById('productGrid').innerHTML = products.map(p => {
         const name = lang === 'zh' ? p.nameZh : lang === 'ms' ? p.nameMs : lang === 'vi' ? p.nameVi : p.name;

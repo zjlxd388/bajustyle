@@ -431,35 +431,25 @@
 
 <script>
 // ====== PRODUCT DATA (shared) ======
+	<!-- @PRODUCTS_START -->
 const products = {
     clothing: [
-        { id: 'c1', name: 'Modern Dress', nameZh: '现代连衣裙', nameMs: 'Gaun Moden', nameVi: 'Đầm Hiện Đại', img: 'images/product1.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
-        { id: 'c2', name: 'Casual T-Shirt', nameZh: '休闲T恤', nameMs: 'T-Shirt Kasual', nameVi: 'Áo Thun Thường Ngày', img: 'images/product2.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👕' },
-        { id: 'c3', name: 'Elegant Blouse', nameZh: '优雅衬衫', nameMs: 'Blaus Elegan', nameVi: 'Áo Kiểu Thanh Lịch', img: 'images/product3.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👚' },
-        { id: 'c4', name: 'Stylish Jeans', nameZh: '时尚牛仔裤', nameMs: 'Jeans Bergaya', nameVi: 'Quần Jeans Thời Trang', img: 'images/product4.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👖' },
-        { id: 'c5', name: 'Floral Midi Dress', nameZh: '碎花中长裙', nameMs: 'Gaun Midi Bunga', nameVi: 'Đầm Midi Hoa', img: 'images/product5.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
-        { id: 'c6', name: 'Office Blazer', nameZh: '通勤西装', nameMs: 'Blazer Pejabat', nameVi: 'Áo Blazer Công Sở', img: 'images/product6.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '🧥' },
-        { id: 'c7', name: 'Knitted Cardigan', nameZh: '针织开衫', nameMs: 'Kardigan Rajut', nameVi: 'Áo Khoác Len', img: 'images/product7.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '🧶' },
-        { id: 'c8', name: 'Pleated Skirt', nameZh: '百褶裙', nameMs: 'Skirt Lipit', nameVi: 'Chân Váy Xếp Ly', img: 'images/product8.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '👗' },
+        { id: 'c1', name: 'Solid color hooded textured velvet long-sleeve coat', nameZh: '纯色连帽点缀压纹丝绒长袖外套', nameMs: 'Kot lengan panjang velvet bertekstur dengan tudung warna solid', nameVi: 'Áo khoác dài tay nhung dập vân có mũ trùm màu trơn', img: 'images/微信图片_20260807015208_604_3_5669.jpg', cat: 'clothing', catName: 'Clothing', catNameZh: '衣服', catNameMs: 'Pakaian', catNameVi: 'Quần Áo', emoji: '', price: 'CNY￥625.00', desc: '●面料：锦纶面料\n●工艺：浮雕压花工艺\n●颜色：蓝色\n●版型：合身版型\n●克重：约765克\n●尺码：46-48-50-52-54\n●描述：这款浅蓝连帽户外夹克选用高密抗撕裂梭织面料，表层具备防风防泼水处理，面料触感厚实挺括，抗皱耐磨。衣身口袋位置采用立体压胶压花工艺，将品牌经典标识浮雕呈现，纹路清晰饱满不易消退，门襟采用纽扣搭配内层拉链双重闭合设计，挡风效果出众。一体式连帽搭配可调节抽绳，方便控制帽围松紧，胸前配置方形立体布标，两侧拉链口袋走线严密，袖口配有魔术贴搭扣，可调节袖口宽度。衣身多块裁片拼接，采用全包埋夹工艺，内里缝线平滑无毛刺，宽松落肩版型活动自如，成衣经过高温定型，整体版型立体利落，面料活性染色色泽柔和均匀，洗护建议冷水轻柔洗涤，避免高温熨烫，防止压花图案受损，适合日常出行与轻户外场景穿着。整体走线平直细腻，面料舒适柔软，颜色一致无色差 能与同款搭配营造时尚造型，驾驭各种场合，定制辅料，三标齐全！' }
     ],
     shoes: [
-        { id: 's1', name: 'Classic Heels', nameZh: '经典高跟鞋', nameMs: 'Kasut Tumit Klasik', nameVi: 'Giày Cao Gót Cổ Điển', img: 'images/shoe1.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👠' },
-        { id: 's2', name: 'Summer Sandals', nameZh: '夏日凉鞋', nameMs: 'Sandal Musim Panas', nameVi: 'Dép Mùa Hè', img: 'images/shoe2.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👡' },
-        { id: 's3', name: 'Casual Sneakers', nameZh: '休闲运动鞋', nameMs: 'Sneakers Kasual', nameVi: 'Giày Thể Thao', img: 'images/shoe3.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👟' },
-        { id: 's4', name: 'Elegant Flats', nameZh: '优雅平底鞋', nameMs: 'Flat Elegan', nameVi: 'Giày Búp Bê', img: 'images/shoe4.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '🥿' },
-        { id: 's5', name: 'Ankle Boots', nameZh: '短靴', nameMs: 'But Pergelangan', nameVi: 'Bốt Cổ Thấp', img: 'images/shoe5.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👢' },
-        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', img: 'images/shoe6.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👡' },
+        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', img: 'images/shoe6.jpg', cat: 'shoes', catName: 'Shoes', catNameZh: '鞋子', catNameMs: 'Kasut', catNameVi: 'Giày', emoji: '👡', price: '', desc: '' }
     ],
     bags: [
-        { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', img: 'images/bag1.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
-        { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', img: 'images/bag2.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
-        { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', img: 'images/bag3.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👛' },
-        { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '🎒' },
-        { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
-        { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜' },
+        { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', img: 'images/bag1.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', desc: '' },
+        { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', img: 'images/bag2.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', desc: '' },
+        { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', img: 'images/bag3.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👛', price: '', desc: '' },
+        { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '🎒', price: '', desc: '' },
+        { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', desc: '' },
+        { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', desc: '' }
     ]
 };
 const allProducts = [...products.clothing, ...products.shoes, ...products.bags];
+<!-- @PRODUCTS_END -->
 
 // ====== WECHAT MODAL ======
 function openWechatModal() {

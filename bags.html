@@ -249,15 +249,16 @@
 </div>
 
 <script>
+	<!-- @PRODUCTS_START -->
 const products = [
-    { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', emoji: '👜' },
-    { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', emoji: '👛' },
-    { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', emoji: '👝' },
-    { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', emoji: '🎒' },
-    { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', emoji: '👜' },
-    { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', emoji: '👛' },
+        { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', emoji: '👜', price: '', desc: '', img: 'images/bag1.jpg' },
+        { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', emoji: '👜', price: '', desc: '', img: 'images/bag2.jpg' },
+        { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', emoji: '👛', price: '', desc: '', img: 'images/bag3.jpg' },
+        { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', emoji: '🎒', price: '', desc: '', img: 'images/bag4.jpg' },
+        { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', emoji: '👜', price: '', desc: '', img: 'images/bag5.jpg' },
+        { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', emoji: '👜', price: '', desc: '', img: 'images/bag6.jpg' }
 ];
-
+<!-- @PRODUCTS_END -->
 function renderProducts(lang) {
     document.getElementById('productGrid').innerHTML = products.map(p => {
         const name = lang === 'zh' ? p.nameZh : lang === 'ms' ? p.nameMs : lang === 'vi' ? p.nameVi : p.name;
