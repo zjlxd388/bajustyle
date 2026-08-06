@@ -16,6 +16,11 @@
                 "vi": "Đầm, Áo & Quần"
             },
             "emoji": "👗",
+            "subcategories": [
+                {"id": "short", "name": {"en": "Short Sleeve", "zh": "短袖", "ms": "Lengan Pendek", "vi": "Tay Ngắn"}},
+                {"id": "long", "name": {"en": "Long Sleeve", "zh": "长袖", "ms": "Lengan Panjang", "vi": "Tay Dài"}}
+            ],
+            "hero": "images/微信图片_20260807015208_604_3_45480.jpg",
             "filename": "clothing.html"
         },
         "shoes": {
@@ -113,7 +118,7 @@
                     "ms": "●Kain: Kain nilon\n●Teknik: Teknik timbul timbul\n●Warna: Biru\n●Potongan: Potongan padan\n●Berat: Kira-kira 765g\n●Saiz: 46-48-50-52-54\n●Penerangan: Jaket luar berkembar biru muda ini diperbuat daripada kain tenun koyak berketumpatan tinggi, dengan permukaan yang kalis angin dan kalis air. Kainnya terasa tebal dan tegang, tahan kedut dan tahan haus. Kawasan poket pada badan menggunakan teknik timbul tekanan tiga dimensi, memaparkan logo klasik jenama dalam bentuk timbul, dengan corak yang jelas dan penuh serta tidak mudah pudar. Placket menggunakan butang digabungkan dengan zip dalaman untuk penutupan berganda, memberikan kesan kalis angin yang sangat baik. Tudung bersepadu dilengkapi dengan tali serut boleh laras untuk mengawal ketat tudung. Dada dilengkapi dengan label kain tiga dimensi berbentuk segi empat, dan poket berzip di kedua-dua belah mempunyai jahitan yang kemas. Manset dilengkapi dengan pengikat Velcro untuk melaraskan lebar manset. Badan diperbuat daripada beberapa panel yang dicantumkan, menggunakan teknik jahitan balut penuh, dengan jahitan dalaman yang licin dan tiada duri. Gaya bahu jatuh longgar membolehkan pergerakan bebas. Pakaian ini ditetapkan haba pada suhu tinggi, memberikan bentuk tiga dimensi dan kemas secara keseluruhan. Kain dicelup dengan pewarna reaktif, menghasilkan warna yang lembut dan seragam. Cadangan penjagaan: basuh perlahan dalam air sejuk, elakkan menyeterika suhu tinggi untuk mengelakkan kerosakan pada corak timbul. Sesuai untuk perjalanan harian dan pemandangan luar ringan. Jahitan keseluruhan lurus dan halus, kainnya selesa dan lembut, dan warnanya konsisten tanpa perbezaan warna. Ia boleh dipadankan dengan gaya yang sama untuk mencipta rupa fesyen, sesuai untuk pelbagai majlis. Aksesori tersuai, semua tiga label lengkap!",
                     "vi": "●Chất liệu: Vải nylon\n●Kỹ thuật: Kỹ thuật dập nổi\n●Màu sắc: Xanh dương\n●Kiểu dáng: Vừa vặn\n●Trọng lượng: Khoảng 765g\n●Kích thước: 46-48-50-52-54\n●Mô tả: Áo khoác ngoài trời có mũ màu xanh nhạt này được làm từ vải dệt chống rách mật độ cao, bề mặt được xử lý chống gió và chống thấm nước. Vải có cảm giác dày và cứng cáp, chống nhăn và chống mài mòn. Các khu vực túi trên thân áo sử dụng kỹ thuật dập nổi ép áp lực ba chiều, thể hiện logo cổ điển của thương hiệu dưới dạng nổi, với các họa tiết rõ ràng và đầy đặn, khó phai. Phần nẹp áo sử dụng nút kết hợp với khóa kéo bên trong để đóng hai lớp, mang lại hiệu quả chống gió tuyệt vời. Mũ liền được trang bị dây rút có thể điều chỉnh để kiểm soát độ chặt của mũ. Ngực được trang bị nhãn vải ba chiều hình vuông, và các túi khóa kéo ở hai bên có đường may chặt chẽ. Cổ tay áo được trang bị khóa Velcro để điều chỉnh độ rộng cổ tay. Thân áo được ghép từ nhiều mảnh vải, sử dụng kỹ thuật may bọc hoàn toàn, đường may bên trong mượt mà không có xơ. Kiểu dáng vai rơi rộng rãi cho phép cử động tự do. Áo được định hình nhiệt ở nhiệt độ cao, tạo nên kiểu dáng ba chiều và gọn gàng tổng thể. Vải được nhuộm bằng thuốc nhuộm hoạt tính, tạo màu sắc mềm mại và đồng đều. Lời khuyên chăm sóc: giặt nhẹ bằng nước lạnh, tránh ủi nhiệt độ cao để không làm hỏng họa tiết dập nổi. Phù hợp cho việc đi lại hàng ngày và các hoạt động ngoài trời nhẹ. Đường may tổng thể thẳng và tinh tế, vải thoải mái và mềm mại, màu sắc nhất quán không có sự khác biệt. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
                 },
-                "cat": "clothing"
+                "cat": "clothing", "subcat": "long"
             },
             {
                 "id": "c22",
@@ -141,7 +146,7 @@
                     "ms": "● Fabrik: Fabrik nilon\n● Kraft: Proses cetakan\n● Warna: Coklat\n● Potongan: Potongan padan\n● Berat: Kira-kira 410 gram\n● Saiz: S-M-L-XL\n● Penerangan: Jaket windbreaker LV bertudung dengan corak monogram ini diperbuat daripada fabrik tenunan nilon berketumpatan tinggi, dengan salutan kalis air dan kalis angin pada permukaan. Ia terasa ringan, nipis, dan tegap, tahan kedut dan mudah dijaga. Corak Monogram klasik pada seluruh badan menggunakan proses pemindahan haba digital, dengan corak yang jelas dan lengkap serta warna yang seragam, tahan retak dan pudar selepas pemakaian berulang. Bahagian depan dilengkapi dengan zip logam tersuai dengan tarikan tag jenama, lancar dibuka dan ditutup tanpa tersekat. Dua poket sisi simetri dipotong dengan paip warna sepadan, dan bukaan poket dimeterai dengan gam untuk mengelakkan angin masuk. Manset dan labuh mempunyai tali serut logam terbina dalam untuk pelarasan bebas. Keseluruhan pakaian menggunakan jahitan tersembunyi penuh, tanpa tepi kasar di dalam, dan jahitan yang kemas dan kukuh. Potongan longgar dengan bahu jatuh memberi ruang untuk pergerakan, dan pakaian siap ditetapkan haba untuk mengekalkan siluet yang kemas. Ketahanan warna fabrik memenuhi piawaian dan tidak mudah pudar. Cadangan penjagaan: cuci tangan dengan lembut dalam air sejuk, elakkan pengeringan suhu tinggi untuk melindungi salutan kalis air dan corak cetakan. Keseluruhan jahitan adalah lurus dan halus, fabrik selesa dan lembut, warna konsisten tanpa perbezaan warna, dan boleh dipadankan dengan gaya yang sama untuk mencipta rupa fesyen, sesuai untuk pelbagai majlis. Aksesori tersuai, lengkap dengan tiga label!",
                     "vi": "● Chất liệu: Vải nylon\n● Kỹ thuật: Kỹ thuật in\n● Màu sắc: Nâu\n● Kiểu dáng: Ôm sát\n● Trọng lượng: Khoảng 410 gram\n● Kích thước: S-M-L-XL\n● Mô tả: Áo khoác gió LV có mũ họa tiết monogram này được làm từ vải dệt nylon mật độ cao, bề mặt được phủ lớp chống thấm nước và chống gió, cảm giác mỏng nhẹ, cứng cáp, chống nhăn và dễ bảo quản. Toàn thân họa tiết Monogram cổ điển được in bằng kỹ thuật in chuyển nhiệt kỹ thuật số, họa tiết rõ ràng, hoàn chỉnh, màu sắc đồng đều, chống nứt và phai màu sau khi mặc nhiều lần. Mặt trước được trang bị khóa kéo kim loại tùy chỉnh với đầu kéo có tag thương hiệu, đóng mở trơn tru không bị kẹt. Hai túi hai bên đối xứng được viền bằng dây trang trí cùng màu, miệng túi được ép keo chống gió lọt vào. Cổ tay và gấu áo có khóa rút kim loại bên trong để điều chỉnh tự do. Toàn bộ áo sử dụng kỹ thuật may giấu chỉ hoàn toàn, bên trong không có đường may thô, đường may thẳng và chắc chắn. Kiểu dáng rộng vai xuôi tạo không gian cử động, thành phẩm được ép nhiệt độ cao để giữ form dáng gọn gàng. Độ bền màu vải đạt tiêu chuẩn, không dễ phai màu. Lời khuyên chăm sóc: giặt tay nhẹ nhàng bằng nước lạnh, tránh sấy ở nhiệt độ cao để bảo vệ lớp chống thấm và họa tiết in. Toàn bộ đường may thẳng và mịn, vải thoải mái và mềm mại, màu sắc đồng nhất không chênh lệch, có thể kết hợp với cùng kiểu để tạo phong cách thời trang, phù hợp với nhiều dịp. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
                 },
-                "cat": "clothing"
+                "cat": "clothing", "subcat": "long"
             }
         ],
         "shoes": [
@@ -314,20 +319,24 @@
     },
     "homepage_products": {
         "new_arrivals": [
-            "c1",
-            "c2",
-            "c3",
-            "c4"
-        ],
-        "best_sellers": [
-            "c3",
+            "c21",
+            "c22",
             "s1",
             "b1",
-            "c4",
-            "s3",
+            "b2",
             "b3",
-            "c1",
-            "b2"
+            "b4",
+            "b5"
+        ],
+        "best_sellers": [
+            "b6",
+            "s6",
+            "c21",
+            "c22",
+            "s1",
+            "b1",
+            "b2",
+            "b3"
         ]
     }
 }

@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
 BajuStyle 网站管理器 — 多图上传 + AI 一键翻译 + 一键部署
@@ -10,13 +9,20 @@ from tkinter import ttk, messagebox, filedialog
 import json
 import os
 import shutil
-from PIL import Image, ImageTk
+try:
+    from PIL import Image, ImageTk
+except Exception:
+    Image = None
+    ImageTk = None
 import subprocess
 import re
 import threading
 import traceback
 import time
-import requests
+try:
+    import requests
+except Exception:
+    requests = None
 from pathlib import Path
 
 # ============================================================
@@ -252,34 +258,83 @@ class HTMLGenerator:
 
     @staticmethod
     def _js_simple(p):
-        return (f"        {{ id: '{p['id']}', "
-                f"name: '{HTMLGenerator._esc(p['name'])}', nameZh: '{HTMLGenerator._esc(p['nameZh'])}', "
-                f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
-                f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "
-                f"{HTMLGenerator._desc_fields(p)}, "
-                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)} }}")
+        return ("        { id: '%s', "
+                "name: '%s', nameZh: '%s', nameMs: '%s', nameVi: '%s', "
+                "emoji: '%s', price: '%s', subcat: '%s', "
+                "%s, "
+                "img: '%s', images: %s }"
+                ) % (
+            p['id'],
+            HTMLGenerator._esc(p['name']), HTMLGenerator._esc(p['nameZh']),
+            HTMLGenerator._esc(p['nameMs']), HTMLGenerator._esc(p['nameVi']),
+            p['emoji'], HTMLGenerator._esc(p.get('price', '')),
+            HTMLGenerator._esc(p.get('subcat', '')),
+            HTMLGenerator._desc_fields(p),
+            HTMLGenerator._img(p), HTMLGenerator._imgs(p)
+        )
 
     @staticmethod
     def _js_full(p):
-        return (f"        {{ id: '{p['id']}', "
-                f"name: '{HTMLGenerator._esc(p['name'])}', nameZh: '{HTMLGenerator._esc(p['nameZh'])}', "
-                f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
-                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)}, cat: '{p.get('cat','')}', "
-                f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "
-                f"{HTMLGenerator._desc_fields(p)} }}")
+        return ("        { id: '%s', "
+                "name: '%s', nameZh: '%s', nameMs: '%s', nameVi: '%s', "
+                "img: '%s', images: %s, cat: '%s', subcat: '%s', "
+                "emoji: '%s', price: '%s', "
+                "%s }"
+                ) % (
+            p['id'],
+            HTMLGenerator._esc(p['name']), HTMLGenerator._esc(p['nameZh']),
+            HTMLGenerator._esc(p['nameMs']), HTMLGenerator._esc(p['nameVi']),
+            HTMLGenerator._img(p), HTMLGenerator._imgs(p),
+            p.get('cat', ''), HTMLGenerator._esc(p.get('subcat', '')),
+            p['emoji'], HTMLGenerator._esc(p.get('price', '')),
+            HTMLGenerator._desc_fields(p)
+        )
 
     @staticmethod
     def _js_extended(p, cat_data):
         cat_id = p.get('cat', '')
         cn = cat_data.get(cat_id, {}).get("name", {})
-        return (f"        {{ id: '{p['id']}', "
-                f"name: '{HTMLGenerator._esc(p['name'])}', nameZh: '{HTMLGenerator._esc(p['nameZh'])}', "
-                f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
-                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)}, cat: '{cat_id}', "
-                f"catName: '{cn.get('en','')}', catNameZh: '{cn.get('zh','')}', "
-                f"catNameMs: '{cn.get('ms','')}', catNameVi: '{cn.get('vi','')}', "
-                f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "
-                f"{HTMLGenerator._desc_fields(p)} }}")
+        return ("        { id: '%s', "
+                "name: '%s', nameZh: '%s', nameMs: '%s', nameVi: '%s', "
+                "img: '%s', images: %s, cat: '%s', subcat: '%s', "
+                "catName: '%s', catNameZh: '%s', catNameMs: '%s', catNameVi: '%s', "
+                "emoji: '%s', price: '%s', "
+                "%s }"
+                ) % (
+            p['id'],
+            HTMLGenerator._esc(p['name']), HTMLGenerator._esc(p['nameZh']),
+            HTMLGenerator._esc(p['nameMs']), HTMLGenerator._esc(p['nameVi']),
+            HTMLGenerator._img(p), HTMLGenerator._imgs(p),
+            cat_id, HTMLGenerator._esc(p.get('subcat', '')),
+            cn.get('en', ''), cn.get('zh', ''), cn.get('ms', ''), cn.get('vi', ''),
+            p['emoji'], HTMLGenerator._esc(p.get('price', '')),
+            HTMLGenerator._desc_fields(p)
+        )
+
+
+    @classmethod
+    def _site_categories_js(cls, data):
+        """生成全站分类数据（含子分类），供前端运行时翻译导航/卡片"""
+        cats = data.get("categories", {})
+        out = {}
+        for cid, ci in cats.items():
+            out[cid] = {
+                "name": ci.get("name", {}),
+                "subcategories": ci.get("subcategories", []) or [],
+            }
+        return "const siteCategories = " + json.dumps(out, ensure_ascii=False) + ";"
+
+    @classmethod
+    def _category_meta_js(cls, cat):
+        """生成当前分类页元数据（主图 + 子分类 + 名称），供前端渲染横幅与筛选"""
+        meta = {
+            "id": cat.get("id"),
+            "name": cat.get("name", {}),
+            "description": cat.get("description", {}),
+            "hero": cat.get("hero", "") or "",
+            "subcategories": cat.get("subcategories", []) or [],
+        }
+        return "const categoryMeta = " + json.dumps(meta, ensure_ascii=False) + ";"
 
     @classmethod
     def _replace(cls, filepath, new_content):
@@ -319,8 +374,8 @@ class HTMLGenerator:
             if not src.exists():
                 return
             shutil.copyfile(src, fpath)
-            if not is_known:
-                cls._update_page_meta(fpath, cat)
+            # 复制自模板后一律重写页面元信息（标题/描述/横幅），避免沿用模板的 Clothing 文案
+            cls._update_page_meta(fpath, cat)
         products = data.get("products", {}).get(cat_id, [])
         items = ",\n".join(cls._js_simple(p) for p in products)
         content = f"const products = [\n{items}\n];"
@@ -368,7 +423,38 @@ class HTMLGenerator:
             fname = ci.get("filename", cid + ".html")
             active = ' class="active"' if current_page == fname else ''
             name = ci.get("name", {}).get("en", cid)
-            lines.append('            <a href="%s"%s>%s</a>' % (fname, active, name))
+            subs = ci.get("subcategories", []) or []
+            if subs:
+                lines.append('            <div class="nav-item">')
+                lines.append('                <a href="%s"%s data-cat="%s">%s</a>' % (fname, active, cid, name))
+                lines.append('                <div class="nav-dropdown">')
+                for s in subs:
+                    sid = s.get("id", "")
+                    sname = s.get("name", {}).get("en", sid)
+                    lines.append('                    <a href="%s?sub=%s" data-subcat="%s:%s">%s</a>'
+                                 % (fname, sid, cid, sid, sname))
+                lines.append('                </div>')
+                lines.append('            </div>')
+            else:
+                lines.append('            <a href="%s"%s data-cat="%s">%s</a>' % (fname, active, cid, name))
+        return "\n".join(lines)
+
+    @classmethod
+    def _mobile_nav_html(cls, current_page, data):
+        cats = data.get("categories", {})
+        lines = []
+        home_cls = ' class="active"' if current_page == 'index' else ''
+        lines.append('            <a href="index.html"%s data-key="navHome">Home</a>' % home_cls)
+        for cid, ci in cats.items():
+            fname = ci.get("filename", cid + ".html")
+            active = ' class="active"' if current_page == fname else ''
+            name = ci.get("name", {}).get("en", cid)
+            lines.append('            <a href="%s"%s data-cat="%s">%s</a>' % (fname, active, cid, name))
+            for s in (ci.get("subcategories", []) or []):
+                sid = s.get("id", "")
+                sname = s.get("name", {}).get("en", sid)
+                lines.append('            <a href="%s?sub=%s" class="sub-link" data-subcat="%s:%s">— %s</a>'
+                             % (fname, sid, cid, sid, sname))
         return "\n".join(lines)
 
     @classmethod
@@ -391,14 +477,23 @@ class HTMLGenerator:
             en = name.get("en", cid)
             zh = name.get("zh", "")
             grad = cls.GRADS[i % len(cls.GRADS)]
+            hero = ci.get("hero", "") or ""
+            if hero:
+                img_div = ('            <div class="cat-card-img" style="background-image:url(\'%s\')"></div>'
+                           % hero)
+            else:
+                img_div = ('            <div class="cat-card-img" data-cat="%s" style="background:%s;'
+                           'display:flex;align-items:center;justify-content:center;'
+                           'font-size:2.4rem;font-weight:700;color:#888;">%s</div>'
+                           % (cid, grad, en))
             lines.append(
                 '        <div class="cat-card" onclick="location.href=\'%s\'">\n'
-                '            <div class="cat-card-img" style="background:%s;display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">%s</div>\n'
+                '%s\n'
                 '            <div class="cat-card-overlay">\n'
-                '                <h3>%s</h3>\n'
+                '                <h3 data-cat="%s">%s</h3>\n'
                 '                <p>%s</p>\n'
                 '            </div>\n'
-                '        </div>' % (fname, grad, en, en, zh)
+                '        </div>' % (fname, img_div, cid, en, zh)
             )
         return "\n".join(lines)
 
@@ -413,9 +508,9 @@ class HTMLGenerator:
         text = re.sub(r"<title>.*?</title>", "<title>%s — BajuStyle</title>" % en, text, count=1, flags=re.S)
         # 使用精确标记替换页面标题，避免 <p[^>]*> 正则将 SVG <path> 误识别为 <p>
         text = cls._replace_block(text, "<!-- @PAGE_TITLE_START -->", "<!-- @PAGE_TITLE_END -->",
-                                  "<h1>%s</h1>" % en)
+                                  en)
         text = cls._replace_block(text, "<!-- @PAGE_SUBTITLE_START -->", "<!-- @PAGE_SUBTITLE_END -->",
-                                  "<p>%s · %s · %s</p>" % (zh, ms, vi))
+                                  "%s · %s · %s" % (zh, ms, vi))
         text = re.sub(r'<meta name="description" content="[^"]*">',
                       '<meta name="description" content="Shop %s at BajuStyle. Premium fashion shipped worldwide from China to Malaysia, Singapore & Vietnam.">' % en,
                       text, count=1)
@@ -425,10 +520,16 @@ class HTMLGenerator:
     def _update_nav_in_file(cls, fpath, current_page, data):
         text = fpath.read_text(encoding="utf-8")
         text = cls._replace_block(text, "<!-- @NAV_START -->", "<!-- @NAV_END -->", cls._nav_links_html(current_page, data))
-        text = cls._replace_block(text, "<!-- @MOBILE_NAV_START -->", "<!-- @MOBILE_NAV_END -->", cls._nav_links_html(current_page, data))
+        text = cls._replace_block(text, "<!-- @MOBILE_NAV_START -->", "<!-- @MOBILE_NAV_END -->", cls._mobile_nav_html(current_page, data))
         text = cls._replace_block(text, "<!-- @FOOTER_SHOP_START -->", "<!-- @FOOTER_SHOP_END -->", cls._footer_shop_html(data))
         if fpath.name == "index.html":
             text = cls._replace_block(text, "<!-- @CATGRID_START -->", "<!-- @CATGRID_END -->", cls._cat_cards_html(data))
+        text = cls._replace_block(text, "<!-- @SITECATS_START -->", "<!-- @SITECATS_END -->", cls._site_categories_js(data))
+        # 分类页写入 categoryMeta（index / product-detail 无）
+        base = current_page[:-5] if current_page.endswith(".html") else current_page
+        cat = data.get("categories", {}).get(base)
+        if cat and current_page != "index":
+            text = cls._replace_block(text, "<!-- @CATMETA_START -->", "<!-- @CATMETA_END -->", cls._category_meta_js(cat))
         fpath.write_text(text, encoding="utf-8")
 
     @classmethod
