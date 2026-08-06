@@ -411,9 +411,12 @@ class HTMLGenerator:
         ms = name.get("ms", "")
         vi = name.get("vi", "")
         text = re.sub(r"<title>.*?</title>", "<title>%s — BajuStyle</title>" % en, text, count=1, flags=re.S)
-        text = re.sub(r"<h1[^>]*>.*?</h1>", "<h1>%s</h1>" % en, text, count=1, flags=re.S)
-        text = re.sub(r"<p[^>]*>.*?</p>", "<p>%s · %s · %s</p>" % (zh, ms, vi), text, count=1, flags=re.S)
-        text = re.sub(r'<meta name="description" content="[^"]*"',
+        # 使用精确标记替换页面标题，避免 <p[^>]*> 正则将 SVG <path> 误识别为 <p>
+        text = cls._replace_block(text, "<!-- @PAGE_TITLE_START -->", "<!-- @PAGE_TITLE_END -->",
+                                  "<h1>%s</h1>" % en)
+        text = cls._replace_block(text, "<!-- @PAGE_SUBTITLE_START -->", "<!-- @PAGE_SUBTITLE_END -->",
+                                  "<p>%s · %s · %s</p>" % (zh, ms, vi))
+        text = re.sub(r'<meta name="description" content="[^"]*">',
                       '<meta name="description" content="Shop %s at BajuStyle. Premium fashion shipped worldwide from China to Malaysia, Singapore & Vietnam.">' % en,
                       text, count=1)
         fpath.write_text(text, encoding="utf-8")
