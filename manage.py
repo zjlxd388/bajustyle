@@ -1064,7 +1064,7 @@ class App:
     # ==================== 分类 ====================
     def _add_category(self):
         dlg = tk.Toplevel(self.root)
-        dlg.title("新建分类"); dlg.geometry("380x380")
+        dlg.title("新建分类"); dlg.geometry("380x430")
         dlg.transient(self.root); dlg.grab_set()
 
         ttk.Label(dlg, text="分类 ID（英文简写）:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(10, 2))
@@ -1076,6 +1076,33 @@ class App:
             ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
             v = tk.StringVar(); nvars[key] = v
             ttk.Entry(dlg, textvariable=v, width=28).pack(padx=15)
+
+        def _translate_cat():
+            zh = nvars['zh'].get().strip()
+            if not zh:
+                tip.set("⚠️ 请先在「中文名」填写名称再翻译")
+                return
+            btn.config(state='disabled', text="🌐 翻译中...")
+            tip.set("🌐 正在翻译（中→英/马来/越）...")
+            def run():
+                result, error = self.translator.translate(zh, ['en', 'ms', 'vi'])
+                self.root.after(0, lambda: _apply_cat_translation(result, error))
+            threading.Thread(target=run, daemon=True).start()
+
+        def _apply_cat_translation(result, error):
+            btn.config(state='normal', text="🌐 一键翻译（中→英/马来/越）")
+            if error:
+                tip.set("❌ " + error)
+                return
+            if result.get('en'): nvars['en'].set(result['en'])
+            if result.get('ms'): nvars['ms'].set(result['ms'])
+            if result.get('vi'): nvars['vi'].set(result['vi'])
+            tip.set("✅ 已翻译填充，请核对后点「确认添加」")
+
+        btn = ttk.Button(dlg, text="🌐 一键翻译（中→英/马来/越）", command=_translate_cat)
+        btn.pack(pady=(6, 0))
+        tip = tk.StringVar()
+        ttk.Label(dlg, textvariable=tip, font=('Microsoft YaHei', 9), foreground='#555').pack(padx=15, pady=(2, 0))
 
         def do_add():
             cid = id_var.get().strip().lower()
