@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Women's Bags — BajuStyle | Handbags & Accessories Malaysia</title>
-    <meta name="description" content="Discover trendy women's bags at BajuStyle. Shop handbags, crossbody bags, totes, clutches and more. Quality bags for women in Malaysia, Singapore & Vietnam. Contact us on WeChat.">
-    <meta name="keywords" content="women bags Malaysia, handbags, tote bag, crossbody bag, clutch, bag boutique">
+    <meta name="description" content="Discover trendy women's bags at BajuStyle. Shop handbags, crossbody bags, totes, backpacks, and more. Quality fashion for women in Malaysia, Singapore & Vietnam. Contact us on WeChat.">
+    <meta name="keywords" content="women bags Malaysia, handbags, crossbody, tote, backpack, fashion boutique">
     <meta name="geo.region" content="SG">
     <link rel="canonical" href="https://www.bajustyle.com/bags.html">
     <link rel="alternate" hreflang="en" href="https://www.bajustyle.com/bags.html?lang=en">
@@ -47,7 +47,7 @@
         .mobile-menu a { font-size: 1.2rem; font-weight: 500; text-transform: uppercase; letter-spacing: 2px; }
         .mobile-close { position: absolute; top: 20px; right: 20px; font-size: 1.8rem; cursor: pointer; background: none; border: none; }
 
-        .page-banner { background: linear-gradient(135deg, #fff3e0, #ffe0b2); padding: 60px 20px; text-align: center; }
+        .page-banner { background: linear-gradient(135deg, #fce4ec, #f8bbd0); padding: 60px 20px; text-align: center; }
         .page-banner h1 { font-size: 2rem; font-weight: 300; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 8px; }
         .page-banner p { color: var(--text-light); font-size: 1rem; }
         .product-section { max-width: var(--max-width); margin: 40px auto; padding: 0 20px; }
@@ -61,20 +61,49 @@
         .product-card .view-btn { display: inline-block; margin-top: 8px; padding: 6px 20px; border: 1px solid var(--primary); color: var(--primary-dark); font-size: 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; background: transparent; cursor: pointer; }
         .product-card .view-btn:hover { background: var(--primary); color: #fff; }
 
-        .wechat-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-        .wechat-float-btn { width: 56px; height: 56px; border-radius: 50%; background: var(--wechat); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 16px rgba(7,193,96,0.35); transition: transform 0.2s; border: none; }
-        .wechat-float-btn:hover { transform: scale(1.08); }
-        .wechat-float-btn svg { width: 28px; height: 28px; fill: #fff; }
-        .wechat-float-popup { display: none; background: #fff; border-radius: 12px; padding: 16px 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.15); text-align: center; min-width: 200px; }
-        .wechat-float-popup.show { display: block; }
-        .wechat-float-popup .wx-id { font-size: 1rem; font-weight: 700; color: var(--wechat); margin-bottom: 4px; }
-        .wechat-float-popup .wx-hint { font-size: 0.78rem; color: var(--text-muted); }
+        .wechat-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; }
+        .wechat-float-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--wechat); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(7,193,96,0.45); transition: transform 0.2s; border: none; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100% { box-shadow: 0 4px 20px rgba(7,193,96,0.45);} 50% { box-shadow: 0 4px 28px rgba(7,193,96,0.7);} }
+        .wechat-float-btn:hover { transform: scale(1.1); }
+        .wechat-float-btn svg { width: 30px; height: 30px; fill: #fff; }
+
+        /* ========== WECHAT MODAL ========== */
+        .wechat-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(2px); }
+        .wechat-modal-overlay.show { display: flex; animation: fadeIn 0.25s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .wechat-modal { background: #fff; border-radius: 18px; padding: 28px 24px 24px; max-width: 520px; width: 100%; text-align: center; position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.25); animation: modalIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        @keyframes modalIn { from { transform: scale(0.85) translateY(10px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+        .wechat-modal-close { position: absolute; top: 12px; right: 14px; font-size: 1.5rem; background: none; border: none; cursor: pointer; color: #999; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .wechat-modal-close:hover { background: #f0f0f0; color: #333; }
+        .wechat-modal-brand { font-size: 1.05rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+        .wechat-modal-title { font-size: 1.45rem; font-weight: 700; color: var(--text); margin-bottom: 4px; letter-spacing: 1px; }
+        .wechat-modal-title .dy-brand { color: var(--primary-dark); }
+        .wechat-modal-sub { font-size: 0.85rem; color: var(--text-light); margin-bottom: 20px; }
+        .wechat-modal-qr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 18px; }
+        .wechat-modal-qr-card { background: var(--bg-light); border-radius: 12px; padding: 14px 10px; border: 1px solid var(--border); }
+        .wechat-modal-qr-img { width: 100%; aspect-ratio: 1; object-fit: contain; background: #fff; border-radius: 8px; margin-bottom: 8px; }
+        .wechat-modal-qr-label { font-size: 0.95rem; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+        .wechat-modal-qr-hint { font-size: 0.72rem; color: var(--text-muted); }
+        .wechat-modal-id-box { background: linear-gradient(135deg, #f0fdf4, #dcfce7); border: 1px solid var(--wechat); border-radius: 30px; padding: 10px 18px; display: inline-flex; align-items: center; gap: 10px; font-size: 0.95rem; color: var(--text); cursor: pointer; transition: all 0.2s; }
+        .wechat-modal-id-box:hover { background: linear-gradient(135deg, #dcfce7, #bbf7d0); }
+        .wechat-modal-id-box .id-label { font-weight: 600; color: var(--wechat); font-size: 0.8rem; letter-spacing: 1px; }
+        .wechat-modal-id-box .id-value { font-weight: 700; color: var(--text); font-size: 1rem; letter-spacing: 1px; }
+        .wechat-modal-id-box .copy-icon { background: var(--wechat); color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 0.72rem; font-weight: 600; }
+        .wechat-modal-foot { margin-top: 16px; font-size: 0.78rem; color: var(--text-muted); }
 
         .footer { background: var(--bg-footer); color: #ccc; padding: 50px 20px 0; margin-top: 60px; }
-        .footer-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; }
+        .footer-grid { max-width: var(--max-width); margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 2fr; gap: 40px; padding-bottom: 40px; }
         .footer h4 { color: #fff; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
         .footer p, .footer a { font-size: 0.85rem; color: #aaa; line-height: 2; }
         .footer a:hover { color: var(--accent); }
+        .footer-qr-box { background: #fff; border-radius: 12px; padding: 16px; text-align: center; margin-top: 4px; }
+        .footer-qr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+        .footer-qr-item img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 6px; border: 1px solid #eee; }
+        .footer-qr-item .lbl { font-size: 0.78rem; color: var(--text); margin-top: 6px; font-weight: 600; }
+        .footer-qr-id { display: inline-block; background: var(--wechat); color: #fff; padding: 4px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; margin-top: 4px; cursor: pointer; }
+        .footer-wechat-btn { background: var(--wechat); color: #fff; padding: 10px 20px; border-radius: 22px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; margin-top: 12px; }
+        .footer-wechat-btn:hover { opacity: 0.92; }
+        .footer-wechat-btn svg { width: 18px; height: 18px; fill: #fff; }
         .footer-bottom { border-top: 1px solid #444; padding: 20px 0; text-align: center; font-size: 0.8rem; color: #777; max-width: var(--max-width); margin: 0 auto; }
 
         @media (max-width: 768px) {
@@ -94,9 +123,9 @@
         <a href="index.html" class="logo">Baju<span>Style</span></a>
         <div class="nav-links">
             <a href="index.html" data-key="navHome">Home</a>
-            <a href="clothing.html" data-key="navClothing">Clothing</a>
-            <a href="shoes.html" data-key="navShoes">Shoes</a>
             <a href="bags.html" class="active" data-key="navBags">Bags</a>
+            <a href="shoes.html" data-key="navShoes">Shoes</a>
+            <a href="bags.html" data-key="navBags">Bags</a>
         </div>
         <div class="nav-right">
             <div class="lang-switch">
@@ -105,7 +134,7 @@
                 <button class="lang-btn" data-lang="ms">BM</button>
                 <button class="lang-btn" data-lang="vi">VI</button>
             </div>
-            <button class="wechat-icon" onclick="document.getElementById('wechatFloatBtn').click()">
+            <button class="wechat-icon" onclick="openWechatModal()">
                 <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
                 WeChat
             </button>
@@ -130,7 +159,7 @@
 
 <div class="page-banner">
     <h1 data-key="pageTitle">Women's Bags</h1>
-    <p data-key="pageSubtitle">Handbags, Totes, Crossbody & Clutches</p>
+    <p data-key="pageSubtitle">Handbags, Totes, Crossbody & More</p>
 </div>
 
 <section class="product-section">
@@ -140,12 +169,8 @@
 <footer class="footer">
     <div class="footer-grid">
         <div>
-            <h4>BajuStyle</h4>
-            <p data-key="footerDesc">Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.</p>
-            <div style="display:inline-flex;align-items:center;gap:8px;background:var(--wechat);color:#fff;padding:8px 18px;border-radius:20px;font-weight:600;margin-top:12px;">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
-                <span>WeChat: YOUR_WECHAT_ID</span>
-            </div>
+            <h4 data-key="footerBrand">DY · Premium Fashion</h4>
+            <p data-key="footerDesc">DY (高端服饰) — Premium women's fashion boutique. Trendy clothing, shoes, and bags shipped worldwide from China to Malaysia, Singapore, Vietnam & beyond.</p>
         </div>
         <div>
             <h4 data-key="footerShop">Shop</h4>
@@ -157,37 +182,74 @@
             <h4 data-key="footerHelp">Help</h4>
             <a href="#" data-key="footerFAQ">FAQ</a><br>
             <a href="#" data-key="footerSize">Size Guide</a><br>
-            <a href="#" data-key="footerContact">Contact Us</a>
+            <a href="#" onclick="event.preventDefault();openWechatModal();" data-key="footerContact">Contact Us</a>
         </div>
         <div>
-            <h4 data-key="footerContactTitle">Contact Us</h4>
-            <p style="color:#fff;font-weight:600;font-size:1rem;">📱 WeChat</p>
-            <p style="color:var(--wechat);font-size:1.1rem;font-weight:700;">YOUR_WECHAT_ID</p>
-            <p style="margin-top:8px;color:#aaa;" data-key="footerContactHint">Add us on WeChat for orders & inquiries</p>
+            <h4 data-key="footerContactTitle">Contact via WeChat</h4>
+            <div class="footer-qr-box">
+                <div class="footer-qr-row">
+                    <div class="footer-qr-item">
+                        <img src="images/wechat-qr.jpg" alt="WeChat QR">
+                        <div class="lbl" data-key="footerQrAdd">Add WeChat</div>
+                    </div>
+                    <div class="footer-qr-item">
+                        <img src="images/catalog-qr.jpg" alt="Catalog QR">
+                        <div class="lbl" data-key="footerQrCatalog">More Styles</div>
+                    </div>
+                </div>
+                <div class="footer-qr-id" onclick="copyWechatId(this)" data-id="GDFK17888">WeChat: GDFK17888</div>
+            </div>
+            <button class="footer-wechat-btn" onclick="openWechatModal()">
+                <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
+                <span data-key="footerWechatBtn">Chat Now</span>
+            </button>
         </div>
     </div>
-    <div class="footer-bottom"><p>&copy; 2026 BajuStyle. All rights reserved.</p></div>
+    <div class="footer-bottom"><p>&copy; 2026 BajuStyle · DY Premium Fashion. All rights reserved. | Worldwide Shipping 🌍</p></div>
 </footer>
 
 <div class="wechat-float">
-    <div class="wechat-float-popup" id="wechatPopup">
-        <div style="font-size:0.85rem;color:var(--text-muted);margin-bottom:4px;">Scan or add WeChat</div>
-        <div class="wx-id" id="wxIdDisplay">YOUR_WECHAT_ID</div>
-        <div class="wx-hint">Click to copy ID</div>
-    </div>
-    <button class="wechat-float-btn" id="wechatFloatBtn" onclick="toggleWechatPopup()">
+    <button class="wechat-float-btn" onclick="openWechatModal()" title="Contact via WeChat">
         <svg viewBox="0 0 24 24"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 0 1 .213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 0 0 .167-.054l1.903-1.114a.864.864 0 0 1 .717-.098 10.16 10.16 0 0 0 2.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178A1.17 1.17 0 0 1 4.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 0 1-1.162 1.178 1.17 1.17 0 0 1-1.162-1.178c0-.651.52-1.18 1.162-1.18zm5.34 2.867c-1.797-.052-3.746.512-5.28 1.786-1.72 1.428-2.687 3.72-1.78 6.22.942 2.453 3.666 4.229 6.884 4.229.826 0 1.622-.12 2.361-.336a.722.722 0 0 1 .598.082l1.584.926a.272.272 0 0 0 .14.045c.134 0 .24-.11.24-.245 0-.06-.024-.12-.04-.178l-.325-1.233a.49.49 0 0 1 .177-.554C23.028 18.48 24 16.82 24 14.98c0-3.21-2.931-5.952-7.062-6.122zm-2.18 2.769c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982zm4.844 0c.535 0 .969.44.969.982a.976.976 0 0 1-.969.983.976.976 0 0 1-.969-.983c0-.542.434-.982.97-.982z"/></svg>
     </button>
+</div>
+
+<!-- WeChat Modal -->
+<div class="wechat-modal-overlay" id="wechatModal" onclick="if(event.target===this)closeWechatModal()">
+    <div class="wechat-modal">
+        <button class="wechat-modal-close" onclick="closeWechatModal()">&times;</button>
+        <div class="wechat-modal-brand" data-key="modalBrand">DY Premium Fashion</div>
+        <div class="wechat-modal-title"><span class="dy-brand">DY</span> · <span data-key="modalTitle">高端服饰</span></div>
+        <div class="wechat-modal-sub" data-key="modalSub">Add WeChat to browse full catalog & place orders</div>
+        <div class="wechat-modal-qr-row">
+            <div class="wechat-modal-qr-card">
+                <img src="images/wechat-qr.jpg" alt="WeChat QR" class="wechat-modal-qr-img">
+                <div class="wechat-modal-qr-label" data-key="modalQr1Label">添加微信</div>
+                <div class="wechat-modal-qr-hint" data-key="modalQr1Hint">Scan to add me</div>
+            </div>
+            <div class="wechat-modal-qr-card">
+                <img src="images/catalog-qr.jpg" alt="Catalog QR" class="wechat-modal-qr-img">
+                <div class="wechat-modal-qr-label" data-key="modalQr2Label">款式更齐全</div>
+                <div class="wechat-modal-qr-hint" data-key="modalQr2Hint">Scan to view catalog</div>
+            </div>
+        </div>
+        <div class="wechat-modal-id-box" onclick="copyWechatId(this)" data-id="GDFK17888">
+            <span class="id-label">WeChat ID</span>
+            <span class="id-value">GDFK17888</span>
+            <span class="copy-icon" data-key="modalCopy">Copy</span>
+        </div>
+        <div class="wechat-modal-foot" data-key="modalFoot">Worldwide Shipping · Ships from China 🌍</div>
+    </div>
 </div>
 
 <script>
 const products = [
     { id: 'b1', name: 'Tote Bag', nameZh: '托特包', nameMs: 'Beg Tote', nameVi: 'Túi Tote', emoji: '👜' },
-    { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', emoji: '👜' },
-    { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', emoji: '👛' },
+    { id: 'b2', name: 'Crossbody Bag', nameZh: '斜挎包', nameMs: 'Beg Silang', nameVi: 'Túi Đeo Chéo', emoji: '👛' },
+    { id: 'b3', name: 'Clutch Purse', nameZh: '手拿包', nameMs: 'Beg Clutch', nameVi: 'Ví Cầm Tay', emoji: '👝' },
     { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', emoji: '🎒' },
     { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', emoji: '👜' },
-    { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', emoji: '👜' },
+    { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', emoji: '👛' },
 ];
 
 function renderProducts(lang) {
@@ -203,6 +265,7 @@ function renderProducts(lang) {
                 </div>
             </div>`;
     }).join('');
+    // Update translated elements
     const t = content[lang] || content.en;
     document.querySelectorAll('.product-card-price').forEach(el => el.textContent = t.contactPrice);
     document.querySelectorAll('.view-btn').forEach(el => el.textContent = t.viewDetails);
@@ -211,43 +274,75 @@ function renderProducts(lang) {
 const content = {
     en: {
         navHome: 'Home', navClothing: 'Clothing', navShoes: 'Shoes', navBags: 'Bags',
-        pageTitle: "Women's Bags", pageSubtitle: 'Handbags, Totes, Crossbody & Clutches',
+        pageTitle: "Women's Bags", pageSubtitle: 'Handbags, Totes, Crossbody & More',
         contactPrice: 'Contact for Price', viewDetails: 'View Details',
-        footerDesc: 'Your go-to online fashion boutique. Trendy clothing, shoes, and bags for women in Malaysia, Singapore & Vietnam.',
+        footerBrand: 'DY · Premium Fashion',
+        footerDesc: 'DY (高端服饰) — Premium women\'s fashion boutique. Trendy clothing, shoes, and bags shipped worldwide from China to Malaysia, Singapore, Vietnam & beyond.',
         footerShop: 'Shop', footerHelp: 'Help', footerFAQ: 'FAQ', footerSize: 'Size Guide',
-        footerContact: 'Contact Us', footerContactTitle: 'Contact Us',
-        footerContactHint: 'Add us on WeChat for orders & inquiries',
-        topBar: 'Free Delivery across Malaysia & Singapore — Order via WeChat below! ✨'
+        footerContact: 'Contact Us', footerContactTitle: 'Contact via WeChat',
+        footerQrAdd: 'Add WeChat', footerQrCatalog: 'More Styles',
+        footerWechatBtn: 'Chat Now',
+        modalBrand: 'DY Premium Fashion', modalTitle: 'High-End Fashion',
+        modalSub: 'Add WeChat to browse full catalog & place orders',
+        modalQr1Label: 'Add WeChat', modalQr1Hint: 'Scan to add me',
+        modalQr2Label: 'More Styles', modalQr2Hint: 'Scan to view catalog',
+        modalCopy: 'Copy',
+        modalFoot: 'Worldwide Shipping · Ships from China 🌍',
+        topBar: 'Free Delivery across Malaysia & Singapore — Shipped Worldwide from China 🌍'
     },
     zh: {
         navHome: '首页', navClothing: '衣服', navShoes: '鞋子', navBags: '包包',
-        pageTitle: '女包', pageSubtitle: '手提包、托特包、斜挎包、手拿包',
+        pageTitle: '女包', pageSubtitle: '手提包、托特包、斜挎包等',
         contactPrice: '微信询价', viewDetails: '查看详情',
-        footerDesc: '您的首选在线时尚精品店。为马来西亚、新加坡和越南女性提供时尚服装、鞋子和包包。',
+        footerBrand: 'DY · 高端服饰',
+        footerDesc: 'DY（高端服饰）— 优质女装精品店。从中国发货至马来西亚、新加坡、越南及全球，主营时尚服装、鞋子和包包。',
         footerShop: '购物', footerHelp: '帮助', footerFAQ: '常见问题', footerSize: '尺码指南',
-        footerContact: '联系我们', footerContactTitle: '联系我们',
-        footerContactHint: '添加微信咨询下单',
-        topBar: '马来西亚 & 新加坡全境包邮 — 微信下单！✨'
+        footerContact: '联系我们', footerContactTitle: '微信联系',
+        footerQrAdd: '加微信', footerQrCatalog: '款式更全',
+        footerWechatBtn: '立即聊天',
+        modalBrand: 'DY 高端服饰', modalTitle: '高端服饰（可发全球）',
+        modalSub: '添加微信，浏览全部款式并下单',
+        modalQr1Label: '添加微信', modalQr1Hint: '扫一扫加我',
+        modalQr2Label: '款式更齐全', modalQr2Hint: '扫一扫看相册',
+        modalCopy: '复制',
+        modalFoot: '全球发货 · 中国直邮 🌍',
+        topBar: '马来西亚 & 新加坡全境包邮 — 中国直邮全球 🌍'
     },
     ms: {
         navHome: 'Utama', navClothing: 'Pakaian', navShoes: 'Kasut', navBags: 'Beg',
-        pageTitle: 'Beg Wanita', pageSubtitle: 'Beg Tangan, Tote, Silang & Clutch',
+        pageTitle: 'Beg Wanita', pageSubtitle: 'Beg Tangan, Tote, Silang & Banyak Lagi',
         contactPrice: 'Hubungi untuk Harga', viewDetails: 'Lihat Butiran',
-        footerDesc: 'Butik fesyen online pilihan anda. Pakaian, kasut dan beg trendy untuk wanita di Malaysia, Singapura & Vietnam.',
+        footerBrand: 'DY · Fesyen Premium',
+        footerDesc: 'DY (Fesyen Premium) — Butik fesyen wanita premium. Pakaian, kasut dan beg trendy dihantar dari China ke Malaysia, Singapura, Vietnam & seluruh dunia.',
         footerShop: 'Beli', footerHelp: 'Bantuan', footerFAQ: 'Soalan Lazim', footerSize: 'Panduan Saiz',
-        footerContact: 'Hubungi Kami', footerContactTitle: 'Hubungi Kami',
-        footerContactHint: 'Tambah kami di WeChat untuk pesanan & pertanyaan',
-        topBar: 'Penghantaran Percuma ke seluruh Malaysia & Singapura — Pesan melalui WeChat! ✨'
+        footerContact: 'Hubungi Kami', footerContactTitle: 'Hubungi via WeChat',
+        footerQrAdd: 'Tambah WeChat', footerQrCatalog: 'Lebih Gaya',
+        footerWechatBtn: 'Sembang Sekarang',
+        modalBrand: 'DY Fesyen Premium', modalTitle: 'Fesyen Premium',
+        modalSub: 'Tambah WeChat untuk lihat katalog penuh & buat pesanan',
+        modalQr1Label: 'Tambah WeChat', modalQr1Hint: 'Imbas untuk tambah saya',
+        modalQr2Label: 'Lebih Gaya', modalQr2Hint: 'Imbas untuk lihat katalog',
+        modalCopy: 'Salin',
+        modalFoot: 'Dihantar ke Seluruh Dunia · Dari China 🌍',
+        topBar: 'Penghantaran Percuma ke seluruh Malaysia & Singapura — Dihantar ke seluruh dunia dari China 🌍'
     },
     vi: {
         navHome: 'Trang Chủ', navClothing: 'Quần Áo', navShoes: 'Giày', navBags: 'Túi Xách',
-        pageTitle: 'Túi Xách Nữ', pageSubtitle: 'Túi Xách, Tote, Đeo Chéo & Ví Cầm Tay',
+        pageTitle: 'Túi Xách Nữ', pageSubtitle: 'Túi Xách, Tote, Đeo Chéo & Nhiều Hơn',
         contactPrice: 'Liên Hệ Để Biết Giá', viewDetails: 'Xem Chi Tiết',
-        footerDesc: 'Cửa hàng thời trang online của bạn. Quần áo, giày dép và túi xách thời trang cho phụ nữ Malaysia, Singapore & Việt Nam.',
+        footerBrand: 'DY · Thời Trang Cao Cấp',
+        footerDesc: 'DY (Thời trang cao cấp) — Boutique thời trang nữ cao cấp. Quần áo, giày dép và túi xách thời trang giao từ Trung Quốc đến Malaysia, Singapore, Việt Nam & toàn cầu.',
         footerShop: 'Mua Sắm', footerHelp: 'Trợ Giúp', footerFAQ: 'Câu Hỏi Thường Gặp', footerSize: 'Hướng Dẫn Size',
-        footerContact: 'Liên Hệ', footerContactTitle: 'Liên Hệ',
-        footerContactHint: 'Thêm WeChat để đặt hàng & tư vấn',
-        topBar: 'Giao Hàng Miễn Phí toàn Malaysia & Singapore — Đặt hàng qua WeChat! ✨'
+        footerContact: 'Liên Hệ', footerContactTitle: 'Liên Hệ qua WeChat',
+        footerQrAdd: 'Thêm WeChat', footerQrCatalog: 'Thêm Mẫu',
+        footerWechatBtn: 'Chat Ngay',
+        modalBrand: 'DY Thời Trang Cao Cấp', modalTitle: 'Thời Trang Cao Cấp',
+        modalSub: 'Thêm WeChat để xem toàn bộ catalog & đặt hàng',
+        modalQr1Label: 'Thêm WeChat', modalQr1Hint: 'Quét để thêm tôi',
+        modalQr2Label: 'Thêm Mẫu', modalQr2Hint: 'Quét để xem catalog',
+        modalCopy: 'Sao chép',
+        modalFoot: 'Giao Hàng Toàn Cầu · Từ Trung Quốc 🌍',
+        topBar: 'Giao Hàng Miễn Phí toàn Malaysia & Singapore — Giao hàng toàn cầu từ Trung Quốc 🌍'
     }
 };
 
@@ -264,17 +359,38 @@ function switchLanguage(lang) {
     localStorage.setItem('preferred-language', lang);
 }
 
-function toggleWechatPopup() {
-    const popup = document.getElementById('wechatPopup');
-    popup.classList.toggle('show');
-    if (popup.classList.contains('show')) setTimeout(() => popup.classList.remove('show'), 5000);
+// ====== WECHAT MODAL ======
+function openWechatModal() {
+    document.getElementById('wechatModal').classList.add('show');
+    document.body.style.overflow = 'hidden';
 }
-document.getElementById('wxIdDisplay').addEventListener('click', function() {
-    navigator.clipboard.writeText(this.textContent).then(() => {
-        this.textContent = 'Copied! ✓';
-        setTimeout(() => { this.textContent = 'YOUR_WECHAT_ID'; }, 2000);
-    });
-});
+function closeWechatModal() {
+    document.getElementById('wechatModal').classList.remove('show');
+    document.body.style.overflow = '';
+}
+function copyWechatId(el) {
+    const id = el.dataset.id || 'GDFK17888';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(id).then(() => showCopySuccess(el)).catch(() => fallbackCopy(id, el));
+    } else { fallbackCopy(id, el); }
+}
+function fallbackCopy(text, el) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed'; ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    try { document.execCommand('copy'); showCopySuccess(el); } catch (e) {}
+    document.body.removeChild(ta);
+}
+function showCopySuccess(el) {
+    const orig = el.textContent;
+    el.textContent = 'Copied ✓';
+    el.style.color = 'var(--wechat)';
+    setTimeout(() => { el.textContent = orig; el.style.color = ''; }, 1500);
+}
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeWechatModal(); });
+
 function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
 
 window.addEventListener('DOMContentLoaded', () => {
