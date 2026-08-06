@@ -1,10 +1,10 @@
 @echo off
 chcp 65001 >nul
+cd /d "D:\BajuStyle"
 echo ========================================
-echo   AI模型切换器
+echo   BajuStyle Manager
+echo   DY Website Manager
 echo ========================================
 echo.
-echo 正在启动程序...
-echo.
-python model_switcher.py
+python manage.py
 pause
