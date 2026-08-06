@@ -51,6 +51,22 @@
             },
             "emoji": "👜",
             "filename": "bags.html"
+        },
+        "sb": {
+            "id": "sb",
+            "name": {
+                "en": "Watch",
+                "zh": "手表",
+                "ms": "Jam tangan",
+                "vi": "Đồng hồ"
+            },
+            "description": {
+                "en": "",
+                "zh": "",
+                "ms": "",
+                "vi": ""
+            },
+            "filename": "sb.html"
         }
     },
     "products": {
@@ -254,6 +270,26 @@
                 "images": [
                     "images/bag6.jpg"
                 ]
+            }
+        ],
+        "sb": [
+            {
+                "id": "s1",
+                "img": "",
+                "images": [],
+                "emoji": "📦",
+                "name": "New Product",
+                "nameZh": "新品",
+                "nameMs": "Produk Baru",
+                "nameVi": "Sản Phẩm Mới",
+                "price": "",
+                "desc": {
+                    "zh": "",
+                    "en": "",
+                    "ms": "",
+                    "vi": ""
+                },
+                "cat": "sb"
             }
         ]
     },
