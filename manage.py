@@ -229,6 +229,15 @@ class HTMLGenerator:
         return imgs[0] if imgs else p.get("img", "")
 
     @staticmethod
+    def _imgs(p):
+        """获取全部图片（输出为 JS 数组字面量）"""
+        imgs = p.get("images", [])
+        if not imgs:
+            single = p.get("img", "")
+            imgs = [single] if single else []
+        return json.dumps(imgs, ensure_ascii=False)
+
+    @staticmethod
     def _desc_fields(p):
         """生成四语描述 JS 字段"""
         desc = p.get('desc', '')
@@ -248,14 +257,14 @@ class HTMLGenerator:
                 f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
                 f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "
                 f"{HTMLGenerator._desc_fields(p)}, "
-                f"img: '{HTMLGenerator._img(p)}' }}")
+                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)} }}")
 
     @staticmethod
     def _js_full(p):
         return (f"        {{ id: '{p['id']}', "
                 f"name: '{HTMLGenerator._esc(p['name'])}', nameZh: '{HTMLGenerator._esc(p['nameZh'])}', "
                 f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
-                f"img: '{HTMLGenerator._img(p)}', cat: '{p.get('cat','')}', "
+                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)}, cat: '{p.get('cat','')}', "
                 f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "
                 f"{HTMLGenerator._desc_fields(p)} }}")
 
@@ -266,7 +275,7 @@ class HTMLGenerator:
         return (f"        {{ id: '{p['id']}', "
                 f"name: '{HTMLGenerator._esc(p['name'])}', nameZh: '{HTMLGenerator._esc(p['nameZh'])}', "
                 f"nameMs: '{HTMLGenerator._esc(p['nameMs'])}', nameVi: '{HTMLGenerator._esc(p['nameVi'])}', "
-                f"img: '{HTMLGenerator._img(p)}', cat: '{cat_id}', "
+                f"img: '{HTMLGenerator._img(p)}', images: {HTMLGenerator._imgs(p)}, cat: '{cat_id}', "
                 f"catName: '{cn.get('en','')}', catNameZh: '{cn.get('zh','')}', "
                 f"catNameMs: '{cn.get('ms','')}', catNameVi: '{cn.get('vi','')}', "
                 f"emoji: '{p['emoji']}', price: '{HTMLGenerator._esc(p.get('price',''))}', "

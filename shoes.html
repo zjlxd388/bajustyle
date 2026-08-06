@@ -54,7 +54,7 @@
         .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
         .product-card { cursor: pointer; transition: transform 0.2s; }
         .product-card:hover { transform: translateY(-3px); }
-        .product-card-img { width: 100%; aspect-ratio: 3/4; border-radius: 8px; background: #f5f0f0; display: flex; align-items: center; justify-content: center; font-size: 4rem; }
+        .product-card-img { width: 100%; aspect-ratio: 3/4; border-radius: 8px; background: #f5f0f0; position: relative; overflow: hidden; }.product-card-img .fallback-emoji { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 4rem; }.product-card-img img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
         .product-card-info { padding: 10px 4px; text-align: center; }
         .product-card-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
         .product-card-price { font-size: 0.85rem; color: var(--primary-dark); font-weight: 600; }
@@ -251,25 +251,30 @@
 <script>
 	<!-- @PRODUCTS_START -->
 const products = [
-        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', emoji: '👡', price: '', descZh: '', descEn: '', descMs: '', descVi: '', img: 'images/shoe6.jpg' }
+        { id: 's6', name: 'Wedge Sandals', nameZh: '坡跟凉鞋', nameMs: 'Sandal Wedge', nameVi: 'Dép Đế Xuồng', img: 'images/shoe6.jpg', images: ["images/shoe6.jpg"], cat: 'shoes', emoji: '👡', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
 ];
 <!-- @PRODUCTS_END -->
 function renderProducts(lang) {
+    const t = content[lang] || content.en;
     document.getElementById('productGrid').innerHTML = products.map(p => {
         const name = lang === 'zh' ? p.nameZh : lang === 'ms' ? p.nameMs : lang === 'vi' ? p.nameVi : p.name;
+        const priceHtml = p.price
+            ? `<div class="product-card-price">${p.price}</div>`
+            : `<div class="product-card-price" data-key="contactPrice">Contact for Price</div>`;
+        const mediaHtml = p.img
+            ? `<span class="fallback-emoji">${p.emoji}</span><img src="${p.img}" alt="${name}" loading="lazy" onerror="this.remove()">`
+            : `<span class="fallback-emoji">${p.emoji}</span>`;
         return `
             <div class="product-card" onclick="location.href='product-detail.html?id=${p.id}'">
-                <div class="product-card-img">${p.emoji}</div>
+                <div class="product-card-img">${mediaHtml}</div>
                 <div class="product-card-info">
                     <div class="product-card-name">${name}</div>
-                    <div class="product-card-price" data-key="contactPrice">Contact for Price</div>
+                    ${priceHtml}
                     <span class="view-btn" data-key="viewDetails">View Details</span>
                 </div>
             </div>`;
     }).join('');
     // Update translated elements
-    const t = content[lang] || content.en;
-    document.querySelectorAll('.product-card-price').forEach(el => el.textContent = t.contactPrice);
     document.querySelectorAll('.view-btn').forEach(el => el.textContent = t.viewDetails);
 }
 
