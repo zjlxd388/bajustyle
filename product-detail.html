@@ -325,10 +325,13 @@
     <nav class="nav">
         <a href="index.html" class="logo">Baju<span>Style</span></a>
         <div class="nav-links">
+            <!-- @NAV_START -->
             <a href="index.html" data-key="navHome">Home</a>
-            <a href="clothing.html" data-key="navClothing">Clothing</a>
-            <a href="shoes.html" data-key="navShoes">Shoes</a>
-            <a href="bags.html" data-key="navBags">Bags</a>
+            <a href="clothing.html">Clothing</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="bags.html">Bags</a>
+            <a href="sb.html">Watch</a>
+<!-- @NAV_END -->
         </div>
         <div class="nav-right">
             <div class="lang-switch">
@@ -348,10 +351,13 @@
 
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="toggleMobileMenu()">&times;</button>
-    <a href="index.html" data-key="navHome">Home</a>
-    <a href="clothing.html" data-key="navClothing">Clothing</a>
-    <a href="shoes.html" data-key="navShoes">Shoes</a>
-    <a href="bags.html" data-key="navBags">Bags</a>
+    <!-- @MOBILE_NAV_START -->
+            <a href="index.html" data-key="navHome">Home</a>
+            <a href="clothing.html">Clothing</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="bags.html">Bags</a>
+            <a href="sb.html">Watch</a>
+<!-- @MOBILE_NAV_END -->
     <div class="mobile-lang-hint" data-key="langHint">🌐 切换语言 / Switch Language</div>
     <div class="lang-switch" style="display:flex;gap:6px;margin-top:12px;">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -402,9 +408,12 @@
         </div>
         <div>
             <h4 data-key="footerShop">Shop</h4>
-            <a href="clothing.html" data-key="navClothing">Clothing</a><br>
-            <a href="shoes.html" data-key="navShoes">Shoes</a><br>
-            <a href="bags.html" data-key="navBags">Bags</a>
+            <!-- @FOOTER_SHOP_START -->
+            <a href="clothing.html">Clothing</a><br>
+            <a href="shoes.html">Shoes</a><br>
+            <a href="bags.html">Bags</a><br>
+            <a href="sb.html">Watch</a><br>
+<!-- @FOOTER_SHOP_END -->
         </div>
         <div>
             <h4 data-key="footerHelp">Help</h4>
@@ -489,9 +498,12 @@ const products = {
         { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', images: ["images/bag4.jpg"], cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '🎒', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', images: ["images/bag5.jpg"], cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', images: ["images/bag6.jpg"], cat: 'bags', catName: 'Bags', catNameZh: '包包', catNameMs: 'Beg', catNameVi: 'Túi Xách', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
+    ],
+    sb: [
+        { id: 's1', name: 'New Product', nameZh: '新品', nameMs: 'Produk Baru', nameVi: 'Sản Phẩm Mới', img: '', images: [], cat: 'sb', catName: 'Watch', catNameZh: '手表', catNameMs: 'Jam tangan', catNameVi: 'Đồng hồ', emoji: '📦', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
     ]
 };
-const allProducts = [...products.clothing, ...products.shoes, ...products.bags];
+const allProducts = [...products.clothing, ...products.shoes, ...products.bags, ...products.sb];
 <!-- @PRODUCTS_END -->
 
 // ====== WECHAT MODAL ======

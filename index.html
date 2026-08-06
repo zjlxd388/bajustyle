@@ -604,10 +604,13 @@
     <nav class="nav">
         <a href="index.html" class="logo">Baju<span>Style</span></a>
         <div class="nav-links" id="navLinks">
+            <!-- @NAV_START -->
             <a href="index.html" class="active" data-key="navHome">Home</a>
-            <a href="clothing.html" data-key="navClothing">Clothing</a>
-            <a href="shoes.html" data-key="navShoes">Shoes</a>
-            <a href="bags.html" data-key="navBags">Bags</a>
+            <a href="clothing.html">Clothing</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="bags.html">Bags</a>
+            <a href="sb.html">Watch</a>
+<!-- @NAV_END -->
         </div>
         <div class="nav-right">
             <div class="lang-switch">
@@ -630,10 +633,13 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="toggleMobileMenu()">&times;</button>
-    <a href="index.html" data-key="navHome">Home</a>
-    <a href="clothing.html" data-key="navClothing">Clothing</a>
-    <a href="shoes.html" data-key="navShoes">Shoes</a>
-    <a href="bags.html" data-key="navBags">Bags</a>
+    <!-- @MOBILE_NAV_START -->
+            <a href="index.html" class="active" data-key="navHome">Home</a>
+            <a href="clothing.html">Clothing</a>
+            <a href="shoes.html">Shoes</a>
+            <a href="bags.html">Bags</a>
+            <a href="sb.html">Watch</a>
+<!-- @MOBILE_NAV_END -->
     <div class="mobile-lang-hint" data-key="langHint">🌐 切换语言 / Switch Language</div>
     <div class="lang-switch" style="display:flex;gap:6px;margin-top:12px;">
         <button class="lang-btn active" data-lang="en">EN</button>
@@ -656,28 +662,36 @@
 <section class="categories">
     <h2 class="section-title" data-key="shopByCat">Shop by <span>Category</span></h2>
     <div class="cat-grid">
+        <!-- @CATGRID_START -->
         <div class="cat-card" onclick="location.href='clothing.html'">
-            <div class="cat-card-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);display:flex;align-items:center;justify-content:center;font-size:4rem;">👗</div>
+            <div class="cat-card-img" style="background:linear-gradient(135deg,#fce4ec,#f8bbd0);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Clothing</div>
             <div class="cat-card-overlay">
-                <h3 data-key="catClothing">Clothing</h3>
-                <p data-key="catClothingDesc">Dresses, Tops & Bottoms</p>
+                <h3>Clothing</h3>
+                <p>衣服</p>
             </div>
         </div>
         <div class="cat-card" onclick="location.href='shoes.html'">
-            <div class="cat-card-img" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);display:flex;align-items:center;justify-content:center;font-size:4rem;">👠</div>
+            <div class="cat-card-img" style="background:linear-gradient(135deg,#f3e5f5,#e1bee7);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Shoes</div>
             <div class="cat-card-overlay">
-                <h3 data-key="catShoes">Shoes</h3>
-                <p data-key="catShoesDesc">Heels, Flats & Sandals</p>
+                <h3>Shoes</h3>
+                <p>鞋子</p>
             </div>
         </div>
         <div class="cat-card" onclick="location.href='bags.html'">
-            <div class="cat-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);display:flex;align-items:center;justify-content:center;font-size:4rem;">👜</div>
+            <div class="cat-card-img" style="background:linear-gradient(135deg,#fff3e0,#ffe0b2);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Bags</div>
             <div class="cat-card-overlay">
-                <h3 data-key="catBags">Bags</h3>
-                <p data-key="catBagsDesc">Handbags & Accessories</p>
+                <h3>Bags</h3>
+                <p>包包</p>
             </div>
         </div>
-    </div>
+        <div class="cat-card" onclick="location.href='sb.html'">
+            <div class="cat-card-img" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Watch</div>
+            <div class="cat-card-overlay">
+                <h3>Watch</h3>
+                <p>手表</p>
+            </div>
+        </div>
+<!-- @CATGRID_END -->
 </section>
 
 <!-- New Arrivals -->
@@ -701,9 +715,12 @@
         </div>
         <div>
             <h4 data-key="footerShop">Shop</h4>
-            <a href="clothing.html" data-key="navClothing">Clothing</a><br>
-            <a href="shoes.html" data-key="navShoes">Shoes</a><br>
-            <a href="bags.html" data-key="navBags">Bags</a>
+            <!-- @FOOTER_SHOP_START -->
+            <a href="clothing.html">Clothing</a><br>
+            <a href="shoes.html">Shoes</a><br>
+            <a href="bags.html">Bags</a><br>
+            <a href="sb.html">Watch</a><br>
+<!-- @FOOTER_SHOP_END -->
         </div>
         <div>
             <h4 data-key="footerHelp">Help</h4>
@@ -795,6 +812,9 @@ const products = {
         { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', images: ["images/bag4.jpg"], cat: 'bags', emoji: '🎒', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', images: ["images/bag5.jpg"], cat: 'bags', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', images: ["images/bag6.jpg"], cat: 'bags', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
+    ],
+    sb: [
+        { id: 's1', name: 'New Product', nameZh: '新品', nameMs: 'Produk Baru', nameVi: 'Sản Phẩm Mới', img: '', images: [], cat: 'sb', emoji: '📦', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
     ]
 };
 <!-- @PRODUCTS_END -->

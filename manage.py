@@ -295,8 +295,9 @@ class HTMLGenerator:
     @classmethod
     def generate_index(cls, data):
         products = data.get("products", {})
+        cats = data.get("categories", {})
         parts = []
-        for cat_id in ["clothing", "shoes", "bags"]:
+        for cat_id in cats.keys():
             prods = products.get(cat_id, [])
             items = ",\n".join(cls._js_full(p) for p in prods)
             parts.append(f"    {cat_id}: [\n{items}\n    ]")
@@ -305,33 +306,157 @@ class HTMLGenerator:
 
     @classmethod
     def generate_category_page(cls, data, cat_id):
-        products = data.get("products", {}).get(cat_id, [])
         cats = data.get("categories", {})
-        fname = cats.get(cat_id, {}).get("filename", f"{cat_id}.html")
+        if cat_id not in cats:
+            return
+        cat = cats[cat_id]
+        fname = cat.get("filename", f"{cat_id}.html")
+        fpath = BASE_DIR / fname
+        is_known = fname in {"clothing.html", "shoes.html", "bags.html"}
+        if not fpath.exists():
+            # 新建分类：以 clothing.html 为模板复制，再替换标题/导航
+            src = BASE_DIR / "clothing.html"
+            if not src.exists():
+                return
+            shutil.copyfile(src, fpath)
+            if not is_known:
+                cls._update_page_meta(fpath, cat)
+        products = data.get("products", {}).get(cat_id, [])
         items = ",\n".join(cls._js_simple(p) for p in products)
         content = f"const products = [\n{items}\n];"
-        cls._replace(BASE_DIR / fname, content)
+        cls._replace(fpath, content)
+        cls._update_nav_in_file(fpath, fname, data)
 
     @classmethod
     def generate_product_detail(cls, data):
         products = data.get("products", {})
         cat_data = data.get("categories", {})
         parts = []
-        for cat_id in ["clothing", "shoes", "bags"]:
+        for cat_id in cat_data.keys():
             prods = products.get(cat_id, [])
             items = ",\n".join(cls._js_extended(p, cat_data) for p in prods)
             parts.append(f"    {cat_id}: [\n{items}\n    ]")
         obj = "const products = {\n" + ",\n".join(parts) + "\n};"
-        allp = "const allProducts = [...products.clothing, ...products.shoes, ...products.bags];"
+        allcats = list(cat_data.keys())
+        allp = "const allProducts = [" + ", ".join(f"...products.{c}" for c in allcats) + "];"
         cls._replace(BASE_DIR / "product-detail.html", f"{obj}\n{allp}")
+
+    # ========== 导航 / 分类卡片 动态生成 ==========
+    GRADS = [
+        "linear-gradient(135deg,#fce4ec,#f8bbd0)",
+        "linear-gradient(135deg,#f3e5f5,#e1bee7)",
+        "linear-gradient(135deg,#fff3e0,#ffe0b2)",
+        "linear-gradient(135deg,#e3f2fd,#bbdefb)",
+        "linear-gradient(135deg,#e8f5e9,#c8e6c9)",
+    ]
+
+    @classmethod
+    def _replace_block(cls, text, start, end, new):
+        if start not in text or end not in text:
+            return text
+        before = text.split(start)[0]
+        after = text.split(end)[1]
+        return f"{before}{start}\n{new}\n{end}{after}"
+
+    @classmethod
+    def _nav_links_html(cls, current_page, data):
+        cats = data.get("categories", {})
+        lines = []
+        home_cls = ' class="active"' if current_page == 'index' else ''
+        lines.append('            <a href="index.html"%s data-key="navHome">Home</a>' % home_cls)
+        for cid, ci in cats.items():
+            fname = ci.get("filename", cid + ".html")
+            active = ' class="active"' if current_page == fname else ''
+            name = ci.get("name", {}).get("en", cid)
+            lines.append('            <a href="%s"%s>%s</a>' % (fname, active, name))
+        return "\n".join(lines)
+
+    @classmethod
+    def _footer_shop_html(cls, data):
+        cats = data.get("categories", {})
+        lines = []
+        for cid, ci in cats.items():
+            fname = ci.get("filename", cid + ".html")
+            name = ci.get("name", {}).get("en", cid)
+            lines.append('            <a href="%s">%s</a><br>' % (fname, name))
+        return "\n".join(lines)
+
+    @classmethod
+    def _cat_cards_html(cls, data):
+        cats = data.get("categories", {})
+        lines = []
+        for i, (cid, ci) in enumerate(cats.items()):
+            fname = ci.get("filename", cid + ".html")
+            name = ci.get("name", {})
+            en = name.get("en", cid)
+            zh = name.get("zh", "")
+            grad = cls.GRADS[i % len(cls.GRADS)]
+            lines.append(
+                '        <div class="cat-card" onclick="location.href=\'%s\'">\n'
+                '            <div class="cat-card-img" style="background:%s;display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">%s</div>\n'
+                '            <div class="cat-card-overlay">\n'
+                '                <h3>%s</h3>\n'
+                '                <p>%s</p>\n'
+                '            </div>\n'
+                '        </div>' % (fname, grad, en, en, zh)
+            )
+        return "\n".join(lines)
+
+    @classmethod
+    def _update_page_meta(cls, fpath, cat):
+        text = fpath.read_text(encoding="utf-8")
+        name = cat.get("name", {})
+        en = name.get("en", fpath.stem)
+        zh = name.get("zh", "")
+        ms = name.get("ms", "")
+        vi = name.get("vi", "")
+        text = re.sub(r"<title>.*?</title>", "<title>%s — BajuStyle</title>" % en, text, count=1, flags=re.S)
+        text = re.sub(r"<h1[^>]*>.*?</h1>", "<h1>%s</h1>" % en, text, count=1, flags=re.S)
+        text = re.sub(r"<p[^>]*>.*?</p>", "<p>%s · %s · %s</p>" % (zh, ms, vi), text, count=1, flags=re.S)
+        text = re.sub(r'<meta name="description" content="[^"]*"',
+                      '<meta name="description" content="Shop %s at BajuStyle. Premium fashion shipped worldwide from China to Malaysia, Singapore & Vietnam.">' % en,
+                      text, count=1)
+        fpath.write_text(text, encoding="utf-8")
+
+    @classmethod
+    def _update_nav_in_file(cls, fpath, current_page, data):
+        text = fpath.read_text(encoding="utf-8")
+        text = cls._replace_block(text, "<!-- @NAV_START -->", "<!-- @NAV_END -->", cls._nav_links_html(current_page, data))
+        text = cls._replace_block(text, "<!-- @MOBILE_NAV_START -->", "<!-- @MOBILE_NAV_END -->", cls._nav_links_html(current_page, data))
+        text = cls._replace_block(text, "<!-- @FOOTER_SHOP_START -->", "<!-- @FOOTER_SHOP_END -->", cls._footer_shop_html(data))
+        if fpath.name == "index.html":
+            text = cls._replace_block(text, "<!-- @CATGRID_START -->", "<!-- @CATGRID_END -->", cls._cat_cards_html(data))
+        fpath.write_text(text, encoding="utf-8")
+
+    @classmethod
+    def update_nav_all(cls, data):
+        known = {
+            "index.html": "index",
+            "clothing.html": "clothing.html",
+            "shoes.html": "shoes.html",
+            "bags.html": "bags.html",
+            "product-detail.html": "product-detail.html",
+        }
+        for fname, cur in known.items():
+            fp = BASE_DIR / fname
+            if fp.exists():
+                cls._update_nav_in_file(fp, cur, data)
+        known_fnames = set(known.keys())
+        for cid, ci in data.get("categories", {}).items():
+            f = ci.get("filename", cid + ".html")
+            if f in known_fnames:
+                continue
+            fp = BASE_DIR / f
+            if fp.exists():
+                cls._update_nav_in_file(fp, f, data)
 
     @classmethod
     def regenerate_all(cls, data):
         cls.generate_index(data)
-        cls.generate_category_page(data, "clothing")
-        cls.generate_category_page(data, "shoes")
-        cls.generate_category_page(data, "bags")
+        for cat_id in data.get("categories", {}).keys():
+            cls.generate_category_page(data, cat_id)
         cls.generate_product_detail(data)
+        cls.update_nav_all(data)
 
 
 # ============================================================
@@ -1119,11 +1244,19 @@ class App:
             }
             self.data["products"][cid] = []
             self.dm.save()
+            try:
+                self.gen.generate_category_page(self.data, cid)
+                self.gen.update_nav_all(self.data)
+                self.gen.generate_index(self.data)
+                self.gen.generate_product_detail(self.data)
+            except Exception as e:
+                self.status_text.set(f"⚠️ 分类「{cid}」已保存，但生成页面失败: {e}")
+                return
             self._refresh_cats()
             self.current_cat.set(cid)
             self.refresh_list()
             dlg.destroy()
-            self.status_text.set(f"✅ 已添加分类: {cid}（需手动创建 {cid}.html 页面）")
+            self.status_text.set(f"✅ 已添加分类 {cid} 并生成 {cid}.html，请点「部署」上线")
 
         ttk.Button(dlg, text="✅ 确认添加", command=do_add).pack(pady=12)
 
