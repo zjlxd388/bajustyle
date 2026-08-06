@@ -1064,20 +1064,16 @@ class App:
     # ==================== 分类 ====================
     def _add_category(self):
         dlg = tk.Toplevel(self.root)
-        dlg.title("新建分类"); dlg.geometry("380x300")
+        dlg.title("新建分类"); dlg.geometry("380x380")
         dlg.transient(self.root); dlg.grab_set()
 
-        ttk.Label(dlg, text="分类 ID（英文简写）:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(12, 2))
+        ttk.Label(dlg, text="分类 ID（英文简写）:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(10, 2))
         id_var = tk.StringVar()
         ttk.Entry(dlg, textvariable=id_var, width=28).pack(padx=15)
 
-        ttk.Label(dlg, text="图标 Emoji:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
-        em_var = tk.StringVar(value="📦")
-        ttk.Entry(dlg, textvariable=em_var, width=8, font=('Segoe UI Emoji', 14)).pack(anchor='w', padx=15)
-
         nvars = {}
         for lbl, key in [("中文名:", "zh"), ("英文名:", "en"), ("马来文:", "ms"), ("越南文:", "vi")]:
-            ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(6, 2))
+            ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
             v = tk.StringVar(); nvars[key] = v
             ttk.Entry(dlg, textvariable=v, width=28).pack(padx=15)
 
@@ -1092,7 +1088,7 @@ class App:
                 "id": cid, "name": {"en": en, "zh": nvars['zh'].get() or en,
                                      "ms": nvars['ms'].get() or en, "vi": nvars['vi'].get() or en},
                 "description": {"en": "", "zh": "", "ms": "", "vi": ""},
-                "emoji": em_var.get() or "📦", "filename": f"{cid}.html"
+                "filename": f"{cid}.html"
             }
             self.data["products"][cid] = []
             self.dm.save()
