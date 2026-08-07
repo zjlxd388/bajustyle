@@ -43,6 +43,15 @@
                         "ms": "Seluar Pendek",
                         "vi": "Quần Ngắn"
                     }
+                },
+                {
+                    "id": "a",
+                    "name": {
+                        "en": "Trousers",
+                        "zh": "长裤",
+                        "ms": "Seluar panjang",
+                        "vi": "Quần dài"
+                    }
                 }
             ],
             "hero": "images/微信图片_20260807015208_604_3_45480.jpg",
