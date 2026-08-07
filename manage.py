@@ -1102,8 +1102,12 @@ class App:
         self._refresh_subcat_combo()
 
     def _refresh_subcat_combo(self):
-        """根据当前分类刷新「子分类」下拉框（显示中文名，存 id）。"""
-        cid = self.current_cat.get()
+        """根据商品表单当前选中的分类刷新「子分类」下拉框（显示中文名，存 id）。"""
+        ev = getattr(self, 'edit_cat_var', None)
+        if ev is not None and ev.get():
+            cid = self._cat_name_to_id.get(ev.get(), self.current_cat.get())
+        else:
+            cid = self.current_cat.get()
         subs = self.data.get("categories", {}).get(cid, {}).get("subcategories", []) or []
         self._subcat_ids = [''] + [s.get("id", "") for s in subs]
         disp = ['无（默认）'] + [s.get("name", {}).get("zh", s.get("id", "")) for s in subs]
