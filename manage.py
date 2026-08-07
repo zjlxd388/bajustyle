@@ -633,6 +633,9 @@ class App:
         self.current_cat = tk.StringVar(value="clothing")
         self._cat_id_to_name = {}  # "clothing" → "衣服"
         self._cat_name_to_id = {}  # "衣服" → "clothing"
+        self._subcat_ids = ['']     # 当前分类的子分类 id 列表（首个为空=默认）
+        self._subcat_disp = ['无（默认）']  # 对应显示名
+        self.subcat_var = tk.StringVar(value="无（默认）")
         self._build_cat_maps()
         self.github_token = tk.StringVar()
         self.github_user = tk.StringVar(value="zjlxd388")
@@ -691,7 +694,8 @@ class App:
         cat_frame.pack(fill='x', pady=(0, 5))
         self.cat_btn_frame = ttk.Frame(cat_frame)
         self.cat_btn_frame.pack(fill='x')
-        ttk.Button(cat_frame, text="➕ 新建分类", command=self._add_category).pack(anchor='w', pady=(4, 0))
+        ttk.Button(cat_frame, text="➕ 新建分类", command=self._category_dialog).pack(anchor='w', pady=(4, 0))
+        ttk.Button(cat_frame, text="✏️ 编辑分类", command=lambda: self._category_dialog(self.current_cat.get())).pack(anchor='w', pady=(2, 0))
 
         list_frame = ttk.LabelFrame(left, text="📦 商品列表", padding=5)
         list_frame.pack(fill='both', expand=True)
@@ -781,6 +785,11 @@ class App:
         self.cat_combo = ttk.Combobox(cat_act_frame, textvariable=self.edit_cat_var,
                                        state='readonly', width=12, font=('Microsoft YaHei', 10))
         self.cat_combo.pack(side='left', padx=4)
+        self.cat_combo.bind('<<ComboboxSelected>>', lambda e: self._refresh_subcat_combo())
+        ttk.Label(cat_act_frame, text="子分类:", font=('Microsoft YaHei', 9)).pack(side='left', padx=(8, 0))
+        self.subcat_combo = ttk.Combobox(cat_act_frame, textvariable=self.subcat_var,
+                                         state='readonly', width=12, font=('Microsoft YaHei', 9))
+        self.subcat_combo.pack(side='left', padx=2)
         ttk.Button(cat_act_frame, text="🗑 删除",
                    command=self._delete_product).pack(side='right', padx=2)
         ttk.Button(cat_act_frame, text="💾 保存",
@@ -1090,6 +1099,19 @@ class App:
         self.cat_combo['values'] = zh_names
         if zh_names:
             self.cat_combo.set(zh_names[0])
+        self._refresh_subcat_combo()
+
+    def _refresh_subcat_combo(self):
+        """根据当前分类刷新「子分类」下拉框（显示中文名，存 id）。"""
+        cid = self.current_cat.get()
+        subs = self.data.get("categories", {}).get(cid, {}).get("subcategories", []) or []
+        self._subcat_ids = [''] + [s.get("id", "") for s in subs]
+        disp = ['无（默认）'] + [s.get("name", {}).get("zh", s.get("id", "")) for s in subs]
+        self._subcat_disp = disp
+        if getattr(self, "subcat_combo", None) is not None:
+            self.subcat_combo["values"] = disp
+            if self.subcat_var.get() not in disp:
+                self.subcat_var.set("无（默认）")
 
     # ==================== 商品列表 ====================
     def refresh_list(self):
@@ -1152,6 +1174,14 @@ class App:
         cat_zh = self._cat_id_to_name.get(cat_id, cat_id)
         self.edit_cat_var.set(cat_zh)
 
+        # 子分类回填
+        self._refresh_subcat_combo()
+        p_sub = p.get('subcat', '')
+        if p_sub and p_sub in self._subcat_ids:
+            self.subcat_var.set(self._subcat_disp[self._subcat_ids.index(p_sub)])
+        else:
+            self.subcat_var.set('无（默认）')
+
         # 加载描述（兼容旧格式 string → 新格式 dict）
         desc = p.get('desc', '')
         if isinstance(desc, str):
@@ -1195,7 +1225,9 @@ class App:
             "nameVi": self.name_vars['nameVi'].get(),
             "price": self._price_for_storage(),
             "desc": desc_dict,
-            "cat": self._cat_name_to_id.get(self.edit_cat_var.get(), self.current_cat.get())
+            "cat": self._cat_name_to_id.get(self.edit_cat_var.get(), self.current_cat.get()),
+            "subcat": self._subcat_ids[self._subcat_disp.index(self.subcat_var.get())]
+                      if self.subcat_var.get() in self._subcat_disp else ""
         }
 
     def _add_product(self):
@@ -1217,7 +1249,8 @@ class App:
             "nameVi": "Sản Phẩm Mới",
             "price": "",
             "desc": {"zh": "", "en": "", "ms": "", "vi": ""},
-            "cat": cat
+            "cat": cat,
+            "subcat": ""
         }
         self.data["products"][cat].append(np)
         self.dm.save()
@@ -1291,78 +1324,170 @@ class App:
             self.tree.focus(str(ni))
 
     # ==================== 分类 ====================
-    def _add_category(self):
+    def _category_dialog(self, cid=None):
+        """新建或编辑分类。cid=None 新建；cid 给定则编辑现有分类（保留 filename 与已有商品）。"""
+        edit_mode = cid is not None and cid in self.data.get("categories", {})
+        if edit_mode:
+            cat = self.data["categories"][cid]
+            cur_names = cat.get("name", {})
+            cur_hero = cat.get("hero", "") or ""
+            cur_subs = [dict(s) for s in (cat.get("subcategories", []) or [])]
+            new_cid = cid
+        else:
+            cat = None
+            cur_names = {}
+            cur_hero = ""
+            cur_subs = []
+            new_cid = None
+        id_var = tk.StringVar()
+
         dlg = tk.Toplevel(self.root)
-        dlg.title("新建分类"); dlg.geometry("380x430")
+        dlg.title("编辑分类" if edit_mode else "新建分类")
+        dlg.geometry("460x620")
         dlg.transient(self.root); dlg.grab_set()
 
-        ttk.Label(dlg, text="分类 ID（英文简写）:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(10, 2))
-        id_var = tk.StringVar()
-        ttk.Entry(dlg, textvariable=id_var, width=28).pack(padx=15)
+        # ---- 分类 ID ----
+        if edit_mode:
+            ttk.Label(dlg, text=f"分类 ID：{cid}（不可修改）", font=('Microsoft YaHei', 10, 'bold')).pack(anchor='w', padx=15, pady=(10, 2))
+        else:
+            ttk.Label(dlg, text="分类 ID（英文简写，如 clothing/shoes）：", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(10, 2))
+            ttk.Entry(dlg, textvariable=id_var, width=30).pack(padx=15)
 
+        # ---- 四语名称 ----
         nvars = {}
         for lbl, key in [("中文名:", "zh"), ("英文名:", "en"), ("马来文:", "ms"), ("越南文:", "vi")]:
             ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
-            v = tk.StringVar(); nvars[key] = v
-            ttk.Entry(dlg, textvariable=v, width=28).pack(padx=15)
+            v = tk.StringVar(value=cur_names.get(key, "")); nvars[key] = v
+            ttk.Entry(dlg, textvariable=v, width=34).pack(padx=15)
 
+        # ---- 主图 ----
+        ttk.Label(dlg, text="🖼 分类页主图（图片路径，如 images/xxx.jpg，留空=纯色背景）：", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
+        hero_frame = ttk.Frame(dlg); hero_frame.pack(fill='x', padx=15)
+        hero_var = tk.StringVar(value=cur_hero)
+        ttk.Entry(hero_frame, textvariable=hero_var, width=28).pack(side='left', fill='x', expand=True)
+        def _browse_hero():
+            p = filedialog.askopenfilename(title="选择分类主图", filetypes=[("图片", "*.jpg *.jpeg *.png *.webp"), ("所有", "*.*")])
+            if p:
+                rel = Path(p)
+                dst = IMAGES_DIR / rel.name
+                if not dst.exists():
+                    shutil.copy2(p, dst)
+                hero_var.set("images/" + rel.name)
+        ttk.Button(hero_frame, text="📁 浏览", command=_browse_hero).pack(side='left', padx=4)
+
+        # ---- 子分类 ----
+        ttk.Label(dlg, text="🏷 子分类（如 短袖/长袖/长裤/短裤，可选）：", font=('Microsoft YaHei', 10, 'bold')).pack(anchor='w', padx=15, pady=(10, 2))
+        sub_form = ttk.Frame(dlg); sub_form.pack(fill='x', padx=15)
+        sub_id_var = tk.StringVar()
+        ttk.Label(sub_form, text="ID").grid(row=0, column=0, padx=(0, 2))
+        ttk.Entry(sub_form, textvariable=sub_id_var, width=8).grid(row=0, column=1, padx=2)
+        sub_nvars = {}
+        c = 2
+        for lbl, key in [("中", "zh"), ("英", "en"), ("马", "ms"), ("越", "vi")]:
+            ttk.Label(sub_form, text=lbl).grid(row=0, column=c, padx=1); c += 1
+            v = tk.StringVar(); sub_nvars[key] = v
+            ttk.Entry(sub_form, textvariable=v, width=7).grid(row=0, column=c, padx=1); c += 1
+
+        dlg.subs = list(cur_subs)
+        subs_listbox = tk.Listbox(dlg, height=4, font=('Microsoft YaHei', 9), exportselection=False)
+        subs_listbox.pack(fill='x', padx=15, pady=(4, 0))
+        def _render_subs():
+            subs_listbox.delete(0, 'end')
+            for s in dlg.subs:
+                nm = s.get('name', {}).get('zh', '') or s.get('id', '')
+                subs_listbox.insert('end', f"{s.get('id', '')} : {nm}")
+        _render_subs()
+        def _add_sub():
+            sid = sub_id_var.get().strip().lower().replace(' ', '_')
+            if not sid:
+                messagebox.showerror("错误", "请输入子分类 ID"); return
+            if any(s.get('id') == sid for s in dlg.subs):
+                messagebox.showerror("错误", f"子分类 ID「{sid}」已存在"); return
+            zh = sub_nvars['zh'].get().strip() or sid
+            dlg.subs.append({"id": sid, "name": {
+                "en": sub_nvars['en'].get().strip() or zh,
+                "zh": zh,
+                "ms": sub_nvars['ms'].get().strip() or zh,
+                "vi": sub_nvars['vi'].get().strip() or zh,
+            }})
+            sub_id_var.set('')
+            for k in sub_nvars: sub_nvars[k].set('')
+            _render_subs()
+        def _del_sub():
+            sel = subs_listbox.curselection()
+            if not sel: return
+            dlg.subs.pop(sel[0]); _render_subs()
+        ttk.Button(dlg, text="➕ 添加子分类", command=_add_sub).pack(anchor='w', padx=15, pady=(2, 0))
+        ttk.Button(dlg, text="🗑 删除选中子分类", command=_del_sub).pack(anchor='w', padx=15, pady=(2, 4))
+
+        # ---- 一键翻译 ----
+        tip = tk.StringVar()
         def _translate_cat():
             zh = nvars['zh'].get().strip()
             if not zh:
-                tip.set("⚠️ 请先在「中文名」填写名称再翻译")
-                return
+                tip.set("⚠️ 请先在「中文名」填写名称再翻译"); return
             btn.config(state='disabled', text="🌐 翻译中...")
             tip.set("🌐 正在翻译（中→英/马来/越）...")
             def run():
                 result, error = self.translator.translate(zh, ['en', 'ms', 'vi'])
                 self.root.after(0, lambda: _apply_cat_translation(result, error))
             threading.Thread(target=run, daemon=True).start()
-
         def _apply_cat_translation(result, error):
             btn.config(state='normal', text="🌐 一键翻译（中→英/马来/越）")
             if error:
-                tip.set("❌ " + error)
-                return
+                tip.set("❌ " + error); return
             if result.get('en'): nvars['en'].set(result['en'])
             if result.get('ms'): nvars['ms'].set(result['ms'])
             if result.get('vi'): nvars['vi'].set(result['vi'])
-            tip.set("✅ 已翻译填充，请核对后点「确认添加」")
-
+            tip.set("✅ 已翻译填充，请核对后点「确认」")
         btn = ttk.Button(dlg, text="🌐 一键翻译（中→英/马来/越）", command=_translate_cat)
-        btn.pack(pady=(6, 0))
-        tip = tk.StringVar()
+        btn.pack(pady=(4, 0))
         ttk.Label(dlg, textvariable=tip, font=('Microsoft YaHei', 9), foreground='#555').pack(padx=15, pady=(2, 0))
 
-        def do_add():
-            cid = id_var.get().strip().lower()
-            if not cid:
-                messagebox.showerror("错误", "请输入分类 ID"); return
-            if cid in self.data.get("categories", {}):
-                messagebox.showerror("错误", "该分类已存在"); return
-            en = nvars['en'].get() or cid
-            self.data["categories"][cid] = {
-                "id": cid, "name": {"en": en, "zh": nvars['zh'].get() or en,
-                                     "ms": nvars['ms'].get() or en, "vi": nvars['vi'].get() or en},
-                "description": {"en": "", "zh": "", "ms": "", "vi": ""},
-                "filename": f"{cid}.html"
-            }
-            self.data["products"][cid] = []
-            self.dm.save()
+        # ---- 确认 ----
+        def _confirm():
+            if not edit_mode:
+                nc = id_var.get().strip().lower()
+                if not nc:
+                    messagebox.showerror("错误", "请输入分类 ID"); return
+                if nc in self.data.get("categories", {}):
+                    messagebox.showerror("错误", "该分类已存在"); return
+                new_cid = nc
+            en = nvars['en'].get() or (cid if edit_mode else new_cid)
+            name = {"en": en, "zh": nvars['zh'].get() or en,
+                    "ms": nvars['ms'].get() or en, "vi": nvars['vi'].get() or en}
+            hero = hero_var.get().strip()
+            subs = [dict(s) for s in dlg.subs]
             try:
-                self.gen.generate_category_page(self.data, cid)
+                if edit_mode:
+                    cat["name"] = name
+                    cat["hero"] = hero
+                    cat["subcategories"] = subs
+                    target_cid = cid
+                else:
+                    target_cid = new_cid
+                    self.data["categories"][new_cid] = {
+                        "id": new_cid, "name": name,
+                        "description": {"en": "", "zh": "", "ms": "", "vi": ""},
+                        "hero": hero, "subcategories": subs, "filename": f"{new_cid}.html"}
+                    self.data["products"][new_cid] = []
+                self.dm.save()
+                self.gen.generate_category_page(self.data, target_cid)
                 self.gen.update_nav_all(self.data)
                 self.gen.generate_index(self.data)
                 self.gen.generate_product_detail(self.data)
             except Exception as e:
-                self.status_text.set(f"⚠️ 分类「{cid}」已保存，但生成页面失败: {e}")
+                self.status_text.set(f"⚠️ 分类已保存，但生成页面失败: {e}")
+                messagebox.showerror("生成失败", str(e))
                 return
             self._refresh_cats()
-            self.current_cat.set(cid)
+            if not edit_mode:
+                self.current_cat.set(target_cid)
             self.refresh_list()
             dlg.destroy()
-            self.status_text.set(f"✅ 已添加分类 {cid} 并生成 {cid}.html，请点「部署」上线")
+            self.status_text.set(f"✅ 已保存分类「{target_cid}」（子分类 {len(subs)} 个），请点「部署」上线")
 
-        ttk.Button(dlg, text="✅ 确认添加", command=do_add).pack(pady=12)
+        ttk.Button(dlg, text="✅ 确认保存", command=_confirm).pack(pady=12)
 
     # ==================== 保存 ====================
     def _save(self):

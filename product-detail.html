@@ -521,7 +521,7 @@ const products = {
 
     ]
 };
-const allProducts = Object.values(products).flat();
+const allProducts = [...products.clothing, ...products.shoes, ...products.bags, ...products.sb, ...products.sp];
 <!-- @PRODUCTS_END -->
 
 // ====== WECHAT MODAL ======
