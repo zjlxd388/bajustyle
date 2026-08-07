@@ -619,8 +619,8 @@ class App:
     def __init__(self, root):
         self.root = root
         self.root.title("BajuStyle 网站管理器 — DY·高端服饰")
-        self.root.geometry("1200x780")
-        self.root.minsize(1000, 600)
+        self.root.geometry("1366x880")
+        self.root.minsize(1100, 680)
 
         self.dm = DataManager()
         self.data = self.dm.load()
@@ -735,7 +735,7 @@ class App:
         edit_scrollbar = ttk.Scrollbar(right, orient='vertical', command=edit_canvas.yview)
         edit_inner = ttk.Frame(edit_canvas)
         edit_inner.bind("<Configure>", lambda e: edit_canvas.configure(scrollregion=edit_canvas.bbox("all")))
-        edit_canvas.create_window((0, 0), window=edit_inner, anchor='nw', width=480)
+        edit_canvas.create_window((0, 0), window=edit_inner, anchor='nw', width=620)
         edit_canvas.configure(yscrollcommand=edit_scrollbar.set)
         edit_canvas.pack(side='left', fill='both', expand=True)
         edit_scrollbar.pack(side='right', fill='y')
@@ -1396,8 +1396,10 @@ class App:
 
         dlg = tk.Toplevel(self.root)
         dlg.title("编辑分类" if edit_mode else "新建分类")
-        dlg.geometry("460x620")
+        _sw = self.root.winfo_screenwidth(); _sh = self.root.winfo_screenheight()
+        dlg.geometry(f"{min(720, max(620, _sw - 200))}x{min(940, max(780, _sh - 80))}")
         dlg.transient(self.root); dlg.grab_set()
+        dlg.resizable(True, True)
 
         # ---- 分类 ID ----
         if edit_mode:
@@ -1593,7 +1595,10 @@ class App:
             dlg.destroy()
             self.status_text.set(f"✅ 已保存分类「{target_cid}」（子分类 {len(subs)} 个），请点「部署」上线")
 
-        ttk.Button(dlg, text="✅ 确认保存", command=_confirm).pack(pady=12)
+        btn_bar = ttk.Frame(dlg)
+        btn_bar.pack(side='bottom', fill='x', pady=(8, 14))
+        ttk.Button(btn_bar, text="❌ 取消", command=dlg.destroy).pack(side='right', padx=6)
+        ttk.Button(btn_bar, text="✅ 确认保存", command=_confirm).pack(side='right', padx=6)
 
     # ==================== 保存 ====================
     def _save(self):
