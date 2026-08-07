@@ -790,6 +790,8 @@ class App:
         self.subcat_combo = ttk.Combobox(cat_act_frame, textvariable=self.subcat_var,
                                          state='readonly', width=12, font=('Microsoft YaHei', 9))
         self.subcat_combo.pack(side='left', padx=2)
+        ttk.Button(cat_act_frame, text="➕ 款式",
+                   command=self._quick_add_subcat).pack(side='left', padx=2)
         ttk.Button(cat_act_frame, text="🗑 删除",
                    command=self._delete_product).pack(side='right', padx=2)
         ttk.Button(cat_act_frame, text="💾 保存",
@@ -1116,6 +1118,53 @@ class App:
             self.subcat_combo["values"] = disp
             if self.subcat_var.get() not in disp:
                 self.subcat_var.set("无（默认）")
+
+    def _quick_add_subcat(self):
+        """在商品表单里直接给当前所属分类新增一个款式（子分类），无需进编辑分类弹窗。"""
+        cid = self._cat_name_to_id.get(self.edit_cat_var.get(), self.current_cat.get())
+        if not cid:
+            messagebox.showerror("错误", "请先选择商品所属分类"); return
+        dlg = tk.Toplevel(self.root)
+        dlg.title(f"添加款式 → {self.edit_cat_var.get()}")
+        dlg.geometry("340x300"); dlg.transient(self.root); dlg.grab_set()
+        ttk.Label(dlg, text="款式 ID（英文简写，如 pants-long）:", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=14, pady=(10, 2))
+        id_var = tk.StringVar(); ttk.Entry(dlg, textvariable=id_var, width=26).pack(padx=14)
+        nvars = {}
+        for lbl, key in [("中文名:", "zh"), ("英文名:", "en"), ("马来文:", "ms"), ("越南文:", "vi")]:
+            ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=14, pady=(6, 2))
+            v = tk.StringVar(); nvars[key] = v
+            ttk.Entry(dlg, textvariable=v, width=26).pack(padx=14)
+        def do_add():
+            sid = id_var.get().strip().lower().replace(' ', '_')
+            if not sid:
+                messagebox.showerror("错误", "请输入款式 ID"); return
+            cat = self.data["categories"].get(cid)
+            if cat is None:
+                messagebox.showerror("错误", "分类不存在"); return
+            subs = cat.setdefault("subcategories", [])
+            if any(s.get("id") == sid for s in subs):
+                messagebox.showerror("错误", f"款式「{sid}」已存在"); return
+            zh = nvars['zh'].get().strip() or sid
+            subs.append({"id": sid, "name": {
+                "en": nvars['en'].get().strip() or zh,
+                "ms": nvars['ms'].get().strip() or zh,
+                "vi": nvars['vi'].get().strip() or zh,
+                "zh": zh}})
+            try:
+                self.dm.save()
+                self.gen.update_nav_all(self.data)
+                self.gen.generate_index(self.data)
+                self.gen.generate_category_page(self.data, cid)
+                self.gen.generate_product_detail(self.data)
+            except Exception as e:
+                messagebox.showerror("生成失败", str(e)); return
+            self._refresh_cats()
+            self.edit_cat_var.set(self._cat_id_to_name.get(cid, cid))
+            self._refresh_subcat_combo()
+            self.subcat_var.set(zh)
+            dlg.destroy()
+            self.status_text.set(f"✅ 已添加款式「{zh}」到 {cid}，记得点「🚀 部署上线」")
+        ttk.Button(dlg, text="✅ 确认添加", command=do_add).pack(pady=14)
 
     # ==================== 商品列表 ====================
     def refresh_list(self):
