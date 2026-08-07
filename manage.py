@@ -1417,8 +1417,61 @@ class App:
             sel = subs_listbox.curselection()
             if not sel: return
             dlg.subs.pop(sel[0]); _render_subs()
-        ttk.Button(dlg, text="➕ 添加子分类", command=_add_sub).pack(anchor='w', padx=15, pady=(2, 0))
+        sub_btn_frame = ttk.Frame(dlg)
+        sub_btn_frame.pack(anchor='w', padx=15, pady=(2, 0))
+        ttk.Button(sub_btn_frame, text="➕ 添加子分类", command=_add_sub).pack(side='left', padx=(0, 4))
+        sub_trans_btn = ttk.Button(sub_btn_frame, text="🌐 翻译子分类", command=lambda: _translate_sub())
+        sub_trans_btn.pack(side='left', padx=4)
+        sub_all_btn = ttk.Button(sub_btn_frame, text="🌐全部翻译", command=lambda: _translate_all_subs())
+        sub_all_btn.pack(side='left', padx=4)
         ttk.Button(dlg, text="🗑 删除选中子分类", command=_del_sub).pack(anchor='w', padx=15, pady=(2, 4))
+
+        sub_tip = tk.StringVar()
+        ttk.Label(dlg, textvariable=sub_tip, font=('Microsoft YaHei', 9), foreground='#1a7f37').pack(anchor='w', padx=15)
+
+        def _translate_sub():
+            zh = sub_nvars['zh'].get().strip()
+            if not zh:
+                sub_tip.set("⚠️ 请先在「中」栏填写子分类中文名再翻译"); return
+            sub_trans_btn.config(state='disabled', text="🌐 翻译中...")
+            sub_tip.set("🌐 正在翻译（中→英/马来/越）...")
+            def run():
+                result, error = self.translator.translate(zh, ['en', 'ms', 'vi'])
+                self.root.after(0, lambda: _apply_sub_translation(result, error))
+            threading.Thread(target=run, daemon=True).start()
+        def _apply_sub_translation(result, error):
+            sub_trans_btn.config(state='normal', text="🌐 翻译子分类")
+            if error:
+                sub_tip.set("❌ " + error); return
+            if result.get('en'): sub_nvars['en'].set(result['en'])
+            if result.get('ms'): sub_nvars['ms'].set(result['ms'])
+            if result.get('vi'): sub_nvars['vi'].set(result['vi'])
+            sub_tip.set("✅ 已翻译填充，可点「添加子分类」")
+        def _translate_all_subs():
+            if not dlg.subs:
+                sub_tip.set("⚠️ 还没有已添加的子分类"); return
+            sub_all_btn.config(state='disabled', text="🌐 翻译中...")
+            sub_tip.set("🌐 正在翻译全部已添加子分类...")
+            def run():
+                updated = []
+                for s in dlg.subs:
+                    zh = s.get('name', {}).get('zh', '') or s.get('id', '')
+                    result, error = self.translator.translate(zh, ['en', 'ms', 'vi'])
+                    nm = dict(s.get('name', {}))
+                    if not error and result:
+                        nm['en'] = result.get('en') or nm.get('en') or zh
+                        nm['ms'] = result.get('ms') or nm.get('ms') or zh
+                        nm['vi'] = result.get('vi') or nm.get('vi') or zh
+                    else:
+                        nm.setdefault('en', zh); nm.setdefault('ms', zh); nm.setdefault('vi', zh)
+                    updated.append({"id": s.get('id'), "name": nm})
+                self.root.after(0, lambda: _apply_all_subs(updated))
+            threading.Thread(target=run, daemon=True).start()
+        def _apply_all_subs(updated):
+            dlg.subs = updated
+            _render_subs()
+            sub_all_btn.config(state='normal', text="🌐全部翻译")
+            sub_tip.set(f"✅ 已翻译 {len(updated)} 个子分类")
 
         # ---- 一键翻译 ----
         tip = tk.StringVar()
