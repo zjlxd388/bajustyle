@@ -1383,12 +1383,14 @@ class App:
         if edit_mode:
             cat = self.data["categories"][cid]
             cur_names = cat.get("name", {})
+            cur_desc = cat.get("description", {})
             cur_hero = cat.get("hero", "") or ""
             cur_subs = [dict(s) for s in (cat.get("subcategories", []) or [])]
             new_cid = cid
         else:
             cat = None
             cur_names = {}
+            cur_desc = {}
             cur_hero = ""
             cur_subs = []
             new_cid = None
@@ -1397,7 +1399,7 @@ class App:
         dlg = tk.Toplevel(self.root)
         dlg.title("编辑分类" if edit_mode else "新建分类")
         _sw = self.root.winfo_screenwidth(); _sh = self.root.winfo_screenheight()
-        dlg.geometry(f"{min(720, max(620, _sw - 200))}x{min(940, max(780, _sh - 80))}")
+        dlg.geometry(f"{min(720, max(620, _sw - 200))}x{min(1020, max(840, _sh - 80))}")
         dlg.transient(self.root); dlg.grab_set()
         dlg.resizable(True, True)
 
@@ -1414,6 +1416,36 @@ class App:
             ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
             v = tk.StringVar(value=cur_names.get(key, "")); nvars[key] = v
             ttk.Entry(dlg, textvariable=v, width=34).pack(padx=15)
+
+        # ---- 分类页副标题（四语描述）----
+        ttk.Label(dlg, text="📝 分类页副标题（四种语言，如 连衣裙、上衣、裤子）：", font=('Microsoft YaHei', 10, 'bold')).pack(anchor='w', padx=15, pady=(10, 2))
+        dvars = {}
+        for lbl, key in [("中文:", "zh"), ("英文:", "en"), ("马来:", "ms"), ("越南:", "vi")]:
+            ttk.Label(dlg, text=lbl, font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(6, 1))
+            v = tk.StringVar(value=cur_desc.get(key, "")); dvars[key] = v
+            ttk.Entry(dlg, textvariable=v, width=34).pack(padx=15)
+        desc_tip = tk.StringVar()
+        def _translate_desc():
+            zh = dvars['zh'].get().strip()
+            if not zh:
+                desc_tip.set("⚠️ 请先在「中文」填写副标题再翻译"); return
+            desc_btn.config(state='disabled', text="🌐 翻译中...")
+            desc_tip.set("🌐 正在翻译（中→英/马来/越）...")
+            def run():
+                result, error = self.translator.translate(zh, ['en', 'ms', 'vi'])
+                self.root.after(0, lambda: _apply_desc_translation(result, error))
+            threading.Thread(target=run, daemon=True).start()
+        def _apply_desc_translation(result, error):
+            desc_btn.config(state='normal', text="🌐 一键翻译副标题")
+            if error:
+                desc_tip.set("❌ " + error); return
+            if result.get('en'): dvars['en'].set(result['en'])
+            if result.get('ms'): dvars['ms'].set(result['ms'])
+            if result.get('vi'): dvars['vi'].set(result['vi'])
+            desc_tip.set("✅ 已翻译填充，请核对后保存")
+        desc_btn = ttk.Button(dlg, text="🌐 一键翻译副标题", command=_translate_desc)
+        desc_btn.pack(pady=(4, 0))
+        ttk.Label(dlg, textvariable=desc_tip, font=('Microsoft YaHei', 9), foreground='#555').pack(padx=15, pady=(2, 0))
 
         # ---- 主图 ----
         ttk.Label(dlg, text="🖼 分类页主图（图片路径，如 images/xxx.jpg，留空=纯色背景）：", font=('Microsoft YaHei', 10)).pack(anchor='w', padx=15, pady=(8, 2))
@@ -1564,11 +1596,16 @@ class App:
             en = nvars['en'].get() or (cid if edit_mode else new_cid)
             name = {"en": en, "zh": nvars['zh'].get() or en,
                     "ms": nvars['ms'].get() or en, "vi": nvars['vi'].get() or en}
+            desc = {"en": dvars['en'].get().strip() or name['en'],
+                    "zh": dvars['zh'].get().strip() or name['zh'],
+                    "ms": dvars['ms'].get().strip() or name['ms'],
+                    "vi": dvars['vi'].get().strip() or name['vi']}
             hero = hero_var.get().strip()
             subs = [dict(s) for s in dlg.subs]
             try:
                 if edit_mode:
                     cat["name"] = name
+                    cat["description"] = desc
                     cat["hero"] = hero
                     cat["subcategories"] = subs
                     target_cid = cid
@@ -1576,7 +1613,7 @@ class App:
                     target_cid = new_cid
                     self.data["categories"][new_cid] = {
                         "id": new_cid, "name": name,
-                        "description": {"en": "", "zh": "", "ms": "", "vi": ""},
+                        "description": desc,
                         "hero": hero, "subcategories": subs, "filename": f"{new_cid}.html"}
                     self.data["products"][new_cid] = []
                 self.dm.save()
