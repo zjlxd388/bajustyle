@@ -1,0 +1,339 @@
+================================================================
+BajuStyle 网站文案修改模板
+================================================================
+
+【使用方法】
+1. 只填你想改的项，没填的保持原样（=不改）
+2. 在每一项的「改成 EN / ZH / MS / VI」后面写新文字
+3. 填好后把本文件发给我（或复制内容发我），我直接改到代码并部署上线
+4. 四种语言代号：EN=英文  ZH=中文  MS=马来文  VI=越南文
+
+【重要说明】
+- ★ 首页大标题（Discover Your Style）是写死英文，全语言共用，只在 index.html 改一处（见区块 0）
+- 其余所有文案都在 site.js，分四种语言（见区块 1~6）
+- 分类名称 / 副标题请用管理器「✏️ 编辑分类」修改（也可在区块 7 填写）
+- 顶部免费配送条、微信按钮等也在 site.js，已列入对应区块
+
+================================================================
+区块 0 ｜首页大标题（写死，全语言共用，只此一处）
+================================================================
+[heroTitle] 首页最大标题
+  当前 : Discover Your Style
+  改成 : ________________________________________
+
+================================================================
+区块 1 ｜首页 Banner 副标题 & 按钮
+================================================================
+[heroSubtitle] 首页副标题（大标题下方小字）
+  EN : DY Premium Fashion — Ships Worldwide
+  ZH : DY 高端服饰 — 全球发货
+  MS : DY Fesyen Premium — Dihantar ke Seluruh Dunia
+  VI : DY Thời Trang Cao Cấp — Giao Hàng Toàn Cầu
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[heroBtn] 首页按钮文字
+  EN : Explore Collection
+  ZH : 探索系列
+  MS : Terokai Koleksi
+  VI : Khám Phá Bộ Sưu Tập
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+================================================================
+区块 2 ｜顶部条 & 导航 & 语言切换
+================================================================
+[topBar] 网站最顶部免费配送提示条
+  EN : Free Delivery across Malaysia & Singapore — Shipped Worldwide from China 🌍
+  ZH : 马来西亚 & 新加坡全境包邮 — 中国直邮全球 🌍
+  MS : Penghantaran Percuma ke seluruh Malaysia & Singapura — Dihantar ke seluruh dunia dari China 🌍
+  VI : Giao Hàng Miễn Phí toàn Malaysia & Singapore — Giao hàng toàn cầu từ Trung Quốc 🌍
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[navHome] 导航「首页」
+  EN : Home      ZH : 首页      MS : Utama      VI : Trang Chủ
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[navClothing] 导航「衣服」
+  EN : Clothing  ZH : 衣服      MS : Pakaian    VI : Quần Áo
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[navShoes] 导航「鞋子」
+  EN : Shoes     ZH : 鞋子      MS : Kasut      VI : Giày
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[navBags] 导航「包包」
+  EN : Bags      ZH : 包包      MS : Beg        VI : Túi Xách
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[wechatBtn] 微信按钮文字
+  EN : WeChat    ZH : 微信      MS : WeChat     VI : WeChat
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[langHint] 移动端语言切换提示
+  EN : 🌐 Switch Language / 切换语言
+  ZH : 🌐 切换语言 / Switch Language
+  MS : 🌐 Tukar Bahasa / Switch Language
+  VI : 🌐 Chuyển Ngôn Ngữ / Switch Language
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+================================================================
+区块 3 ｜首页「按分类」区块 & 分类卡片
+================================================================
+[shopByCat] 「按分类选购」标题前半
+  EN : Shop by  ZH : 按分类    MS : Beli Mengikut  VI : Mua Theo
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[catClothing] 分类卡「衣服」
+  EN : Clothing  ZH : 衣服      MS : Pakaian    VI : Quần Áo
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[catClothingDesc] 分类卡「衣服」描述
+  EN : Dresses, Tops & Bottoms
+  ZH : 连衣裙、上衣、裤子
+  MS : Gaun, Atasan & Bawahan
+  VI : Đầm, Áo & Quần
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[catShoes] 分类卡「鞋子」
+  EN : Shoes     ZH : 鞋子      MS : Kasut      VI : Giày
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[catShoesDesc] 分类卡「鞋子」描述
+  EN : Heels, Flats & Sandals
+  ZH : 高跟鞋、平底鞋、凉鞋
+  MS : Tumit, Flat & Sandal
+  VI : Cao Gót, Búp Bê & Dép
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[catBags] 分类卡「包包」
+  EN : Bags      ZH : 包包      MS : Beg        VI : Túi Xách
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[catBagsDesc] 分类卡「包包」描述
+  EN : Handbags & Accessories
+  ZH : 手提包及配饰
+  MS : Beg Tangan & Aksesori
+  VI : Túi Xách & Phụ Kiện
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+================================================================
+区块 4 ｜首页「新品 / 畅销」区块标题 & 商品
+================================================================
+[newArrivals] 「新品」区块标题
+  EN : New       ZH : 新品      MS : Baru       VI : Mới
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[bestSellers] 「畅销」区块标题
+  EN : Best      ZH : 畅销      MS : Terlaris   VI : Bán Chạy
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[allProducts] 「全部商品」筛选标签
+  EN : All Products   ZH : 全部商品   MS : Semua Produk   VI : Tất Cả Sản Phẩm
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[contactPrice] 商品「微信询价」按钮
+  EN : Contact for Price   ZH : 微信询价   MS : Hubungi untuk Harga   VI : Liên Hệ Để Biết Giá
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[viewDetails] 商品「查看详情」
+  EN : View Details   ZH : 查看详情   MS : Lihat Butiran   VI : Xem Chi Tiết
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[filterAll] 筛选「全部」
+  EN : All       ZH : 全部      MS : Semua      VI : Tất cả
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[emptyHint] 无商品时提示
+  EN : No products yet. Contact us on WeChat to see more styles.
+  ZH : 暂无商品，微信联系我们查看更多款式。
+  MS : Tiada produk buat masa ini. Hubungi kami di WeChat untuk lebih banyak gaya.
+  VI : Chưa có sản phẩm. Liên hệ WeChat để xem thêm mẫu.
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[youMayLike] 详情页「猜你喜欢」
+  EN : You May Also Like   ZH : 猜你喜欢   MS : Anda Mungkin Suka   VI : Có Thể Bạn Thích
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[inquireWechat] 详情页「微信咨询」按钮
+  EN : Inquire on WeChat   ZH : 微信咨询   MS : Tanya di WeChat   VI : Hỏi qua WeChat
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[detailDescDefault] 商品默认描述
+  EN : High-quality fashion piece designed for the modern woman.
+  ZH : 为现代女性设计的高品质时尚单品。
+  MS : Pakaian berkualiti tinggi untuk wanita moden.
+  VI : Sản phẩm thời trang chất lượng cao dành cho phụ nữ hiện đại.
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+================================================================
+区块 5 ｜页脚 Footer
+================================================================
+[footerBrand] 页脚品牌名
+  EN : DY · Premium Fashion   ZH : DY · 高端服饰   MS : DY · Fesyen Premium   VI : DY · Thời Trang Cao Cấp
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerDesc] 页脚品牌介绍
+  EN : DY (高端服饰) — Premium women's fashion boutique. Trendy clothing, shoes, and bags shipped worldwide from China to Malaysia, Singapore, Vietnam & beyond.
+  ZH : DY（高端服饰）— 优质女装精品店。从中国发货至马来西亚、新加坡、越南及全球，主营时尚服装、鞋子和包包。
+  MS : DY (Fesyen Premium) — Butik fesyen wanita premium. Pakaian, kasut dan beg trendy dihantar dari China ke Malaysia, Singapura, Vietnam & seluruh dunia.
+  VI : DY (Thời trang cao cấp) — Boutique thời trang nữ cao cấp. Quần áo, giày dép và túi xách thời trang giao từ Trung Quốc đến Malaysia, Singapore, Việt Nam & toàn cầu.
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[footerShop] 页脚「购物」栏标题
+  EN : Shop      ZH : 购物      MS : Beli       VI : Mua Sắm
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerHelp] 页脚「帮助」栏标题
+  EN : Help      ZH : 帮助      MS : Bantuan    VI : Trợ Giúp
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerFAQ] 页脚「常见问题」
+  EN : FAQ       ZH : 常见问题   MS : Soalan Lazim   VI : Câu Hỏi Thường Gặp
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerSize] 页脚「尺码指南」
+  EN : Size Guide   ZH : 尺码指南   MS : Panduan Saiz   VI : Hướng Dẫn Size
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerShipping] 页脚「配送信息」
+  EN : Shipping Info   ZH : 配送信息   MS : Maklumat Penghantaran   VI : Thông Tin Giao Hàng
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerContact] 页脚「联系我们」
+  EN : Contact Us   ZH : 联系我们   MS : Hubungi Kami   VI : Liên Hệ
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerContactTitle] 页脚「微信联系」标题
+  EN : Contact via WeChat   ZH : 微信联系   MS : Hubungi via WeChat   VI : Liên Hệ qua WeChat
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerQrAdd] 页脚二维码「加微信」
+  EN : Add WeChat   ZH : 加微信   MS : Tambah WeChat   VI : Thêm WeChat
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerQrCatalog] 页脚二维码「更多款式」
+  EN : More Styles   ZH : 款式更全   MS : Lebih Gaya   VI : Thêm Mẫu
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[footerWechatBtn] 页脚「立即聊天」按钮
+  EN : Chat Now   ZH : 立即聊天   MS : Sembang Sekarang   VI : Chat Ngay
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+================================================================
+区块 6 ｜微信弹窗（点微信图标弹出）
+================================================================
+[modalBrand] 弹窗品牌名
+  EN : DY Premium Fashion   ZH : DY 高端服饰   MS : DY Fesyen Premium   VI : DY Thời Trang Cao Cấp
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalTitle] 弹窗主标题
+  EN : High-End Fashion   ZH : 高端服饰（可发全球）   MS : Fesyen Premium   VI : Thời Trang Cao Cấp
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalSub] 弹窗副标题
+  EN : Add WeChat to browse full catalog & place orders
+  ZH : 添加微信，浏览全部款式并下单
+  MS : Tambah WeChat untuk lihat katalog penuh & buat pesanan
+  VI : Thêm WeChat để xem toàn bộ catalog & đặt hàng
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+[modalQr1Label] 弹窗二维码1标签
+  EN : Add WeChat   ZH : 添加微信   MS : Tambah WeChat   VI : Thêm WeChat
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalQr1Hint] 弹窗二维码1提示
+  EN : Scan to add me   ZH : 扫一扫加我   MS : Imbas untuk tambah saya   VI : Quét để thêm tôi
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalQr2Label] 弹窗二维码2标签
+  EN : More Styles   ZH : 款式更齐全   MS : Lebih Gaya   VI : Thêm Mẫu
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalQr2Hint] 弹窗二维码2提示
+  EN : Scan to view catalog   ZH : 扫一扫看相册   MS : Imbas untuk lihat katalog   VI : Quét để xem catalog
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalCopy] 弹窗「复制」按钮
+  EN : Copy   ZH : 复制   MS : Salin   VI : Sao chép
+  改成 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[modalFoot] 弹窗底部说明
+  EN : Worldwide Shipping · Ships from China 🌍
+  ZH : 全球发货 · 中国直邮 🌍
+  MS : Dihantar ke Seluruh Dunia · Dari China 🌍
+  VI : Giao Hàng Toàn Cầu · Từ Trung Quốc 🌍
+  改成 EN : 
+  改成 ZH : 
+  改成 MS : 
+  改成 VI : 
+
+================================================================
+区块 7 ｜分类名称 & 副标题（建议用管理器修改，也可在此填）
+================================================================
+说明：分类名称/副标题在 products.json，请用管理器「✏️ 编辑分类」改最方便。
+若你希望我直接改，按下面格式填：
+
+[分类: clothing 衣服]
+  名称 EN : Clothing   ZH : 衣服   MS : Pakaian   VI : Quần Áo
+  副标题 EN : 
+  副标题 ZH : 连衣裙、上衣、裤子
+  副标题 MS : Gaun, Atasan & Bawahan
+  副标题 VI : Đầm, Áo & Quần
+  改成名称 EN : _______   ZH : _______   MS : _______   VI : _______
+  改成副标题 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[分类: shoes 鞋子]
+  名称 EN : Shoes   ZH : 鞋子   MS : Kasut   VI : Giày
+  改成名称 EN : _______   ZH : _______   MS : _______   VI : _______
+  改成副标题 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[分类: bags 包包]
+  名称 EN : Bags   ZH : 包包   MS : Beg   VI : Túi Xách
+  改成名称 EN : _______   ZH : _______   MS : _______   VI : _______
+  改成副标题 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[分类: sb 手表]
+  名称 EN : Watch   ZH : 手表   MS : Jam   VI : Đồng Hồ
+  改成名称 EN : _______   ZH : _______   MS : _______   VI : _______
+  改成副标题 EN : _______   ZH : _______   MS : _______   VI : _______
+
+[分类: sp 饰品]
+  名称 EN : Accessories   ZH : 饰品   MS : Aksesori   VI : Phụ Kiện
+  改成名称 EN : _______   ZH : _______   MS : _______   VI : _______
+  改成副标题 EN : _______   ZH : _______   MS : _______   VI : _______
+
+================================================================
+（完）填好后发我即可，我会改完并部署上线。
+================================================================
