@@ -41,7 +41,7 @@
             modalSub: 'Add WeChat to browse full catalog & place orders',
             modalQr1Label: 'Add WeChat', modalQr1Hint: 'Scan to add me',
             modalQr2Label: 'More Styles', modalQr2Hint: 'Scan to view catalog',
-            modalCopy: 'Copy', modalFoot: 'Worldwide Shipping · Ships from China 🌍',
+            modalCopy: 'Copy', copied: 'Copied ✓', modalFoot: 'Worldwide Shipping · Ships from China 🌍',
             aboutTitle: 'About Us',
             aboutText: 'Our store specializes in clothing, shoes, and bags, supporting both retail and bulk ordering with carefully selected high-quality products.\nAll orders are photographed and inspected for defects before shipment to ensure quality. Returns and exchanges are supported — shop with confidence.\nBulk purchases enjoy exclusive discounts and worldwide shipping.\nWe accept WeChat and Alipay. Browse more styles in our WeChat album.'
         },
@@ -71,7 +71,7 @@
             modalSub: '添加微信，浏览全部款式并下单',
             modalQr1Label: '添加微信', modalQr1Hint: '扫一扫加我',
             modalQr2Label: '款式更齐全', modalQr2Hint: '扫一扫看相册',
-            modalCopy: '复制', modalFoot: '全球发货 · 中国直邮 🌍',
+            modalCopy: '复制', copied: '已复制 ✓', modalFoot: '全球发货 · 中国直邮 🌍',
             aboutTitle: '网站简介',
             aboutText: '本站点主营服饰、鞋包，支持零售与批量订货，严选高品质货品。\n所有订单发货前均会实拍查验，仔细排查瑕疵，保障出货品质，支持退换货，可放心选购。\n批量采购享专属优惠，支持全球发货。\n交易可使用微信、支付宝付款，更多款式欢迎查阅微信相册。'
         },
@@ -101,7 +101,7 @@
             modalSub: 'Tambah WeChat untuk lihat katalog penuh & buat pesanan',
             modalQr1Label: 'Tambah WeChat', modalQr1Hint: 'Imbas untuk tambah saya',
             modalQr2Label: 'Lebih Gaya', modalQr2Hint: 'Imbas untuk lihat katalog',
-            modalCopy: 'Salin', modalFoot: 'Dihantar ke Seluruh Dunia · Dari China 🌍',
+            modalCopy: 'Salin', copied: 'Disalin ✓', modalFoot: 'Dihantar ke Seluruh Dunia · Dari China 🌍',
             aboutTitle: 'Tentang Kami',
             aboutText: 'Kedai kami pakar dalam pakaian, kasut, dan beg, menyokong runcit dan pesanan pukal dengan barangan berkualiti tinggi yang dipilih teliti.\nSemua pesanan akan difoto dan diperiksa bagi mengesan cacat sebelum penghantaran untuk menjamin kualiti. Pulangan dan pertukaran disokong — beli dengan yakin.\nPembelian pukal menikmati diskaun eksklusif dan penghantaran ke seluruh dunia.\nPembayaran menerusi WeChat dan Alipay. Lihat lebih banyak gaya di album WeChat.'
         },
@@ -131,7 +131,7 @@
             modalSub: 'Thêm WeChat để xem toàn bộ catalog & đặt hàng',
             modalQr1Label: 'Thêm WeChat', modalQr1Hint: 'Quét để thêm tôi',
             modalQr2Label: 'Thêm Mẫu', modalQr2Hint: 'Quét để xem catalog',
-            modalCopy: 'Sao chép', modalFoot: 'Giao Hàng Toàn Cầu · Từ Trung Quốc 🌍',
+            modalCopy: 'Sao chép', copied: 'Đã sao chép ✓', modalFoot: 'Giao Hàng Toàn Cầu · Từ Trung Quốc 🌍',
             aboutTitle: 'Giới Thiệu',
             aboutText: 'Cửa hàng chuyên kinh doanh quần áo, giày dép và túi xách, hỗ trợ bán lẻ và đặt hàng số lượng lớn, tuyển chọn hàng hóa chất lượng cao.\nTất cả đơn hàng đều được chụp ảnh kiểm tra lỗi trước khi giao để đảm bảo chất lượng. Hỗ trợ đổi trả — mua sắm an tâm.\nMua sỉ được ưu đãi riêng và giao hàng toàn cầu.\nThanh toán qua WeChat và Alipay. Xem thêm mẫu mã tại album WeChat.'
         }
@@ -466,15 +466,16 @@
         },
         showCopySuccess: function (el) {
             if (!el) return;
+            var lang = this.currentLang();
+            var t = CONTENT[lang] || CONTENT.en;
             var feedback = el.querySelector('.copy-feedback');
             if (feedback) {
-                var orig = feedback.textContent;
-                feedback.textContent = 'Copied ✓';
-                feedback.style.color = 'var(--wechat)';
-                setTimeout(function () { feedback.textContent = orig; feedback.style.color = ''; }, 1500);
+                feedback.textContent = t.copied;
+                feedback.style.color = '#fff';
+                setTimeout(function () { feedback.textContent = (CONTENT[lang] || CONTENT.en).modalCopy; feedback.style.color = ''; }, 1500);
             } else {
                 var orig = el.textContent;
-                el.textContent = 'Copied ✓';
+                el.textContent = t.copied;
                 el.style.color = 'var(--wechat)';
                 setTimeout(function () { el.textContent = orig; el.style.color = ''; }, 1500);
             }

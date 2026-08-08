@@ -152,7 +152,7 @@ img { max-width: 100%; display: block; }
 .footer-qr-item img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 6px; border: 1px solid #eee; }
 .footer-qr-item .lbl { font-size: 0.78rem; color: var(--text); margin-top: 6px; font-weight: 600; }
 .footer-qr-id { display: inline-flex; align-items: center; gap: 8px; background: var(--wechat); color: #fff; padding: 4px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; margin-top: 4px; cursor: pointer; }
-.footer-qr-id::after { content: '复制'; font-size: 0.7rem; background: rgba(255,255,255,0.25); padding: 2px 6px; border-radius: 8px; letter-spacing: 0; }
+.footer-qr-id .copy-feedback { font-size: 0.7rem; background: rgba(255,255,255,0.25); padding: 2px 6px; border-radius: 8px; letter-spacing: 0; }
 .footer-wechat-btn { background: var(--wechat); color: #fff; padding: 10px 20px; border-radius: 22px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; margin-top: 4px; }
 .footer-wechat-btn:hover { opacity: 0.92; }
 .footer-wechat-btn svg { width: 18px; height: 18px; fill: #fff; }
