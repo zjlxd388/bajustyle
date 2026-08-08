@@ -40,8 +40,6 @@
             </div>
             <a href="shoes.html" data-cat="shoes">Shoes</a>
             <a href="bags.html" data-cat="bags">Bags</a>
-            <a href="sb.html" data-cat="sb">Watch</a>
-            <a href="sp.html" data-cat="sp">Accessories</a>
 <!-- @NAV_END -->
         </div>
         <div class="nav-right">
@@ -82,14 +80,13 @@
             <a href="clothing.html?sub=sub5" class="sub-link" data-subcat="clothing:sub5">— 外套</a>
             <a href="shoes.html" data-cat="shoes">Shoes</a>
             <a href="bags.html" data-cat="bags">Bags</a>
-            <a href="sb.html" data-cat="sb">Watch</a>
-            <a href="sp.html" data-cat="sp">Accessories</a>
 <!-- @MOBILE_NAV_END -->
 </div>
 
 <section class="hero-carousel" id="heroCarousel" aria-label="Featured">
     <div class="carousel-track" id="carouselTrack"></div>
     <div class="carousel-thumbs" id="carouselThumbs"></div>
+    <div class="carousel-dots" id="carouselDots"></div>
 </section>
 
 <section class="categories">
@@ -115,20 +112,6 @@
             <div class="cat-card-overlay">
                 <h3 data-cat="bags">Bags</h3>
                 <p>包包</p>
-            </div>
-        </div>
-        <div class="cat-card" onclick="location.href='sb.html'">
-            <div class="cat-card-img" data-cat="sb" style="background:linear-gradient(135deg,#e3f2fd,#bbdefb);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Watch</div>
-            <div class="cat-card-overlay">
-                <h3 data-cat="sb">Watch</h3>
-                <p>手表</p>
-            </div>
-        </div>
-        <div class="cat-card" onclick="location.href='sp.html'">
-            <div class="cat-card-img" data-cat="sp" style="background:linear-gradient(135deg,#e8f5e9,#c8e6c9);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:700;color:#888;">Accessories</div>
-            <div class="cat-card-overlay">
-                <h3 data-cat="sp">Accessories</h3>
-                <p>饰品</p>
             </div>
         </div>
 <!-- @CATGRID_END -->
@@ -164,8 +147,6 @@
             <a href="clothing.html">Clothing</a><br>
             <a href="shoes.html">Shoes</a><br>
             <a href="bags.html">Bags</a><br>
-            <a href="sb.html">Watch</a><br>
-            <a href="sp.html">Accessories</a><br>
 <!-- @FOOTER_SHOP_END -->
         </div>
         <div>
@@ -233,7 +214,7 @@
 
 <script>
 <!-- @SITECATS_START -->
-const siteCategories = {"clothing": {"name": {"en": "Clothing", "zh": "衣服", "ms": "Pakaian", "vi": "Quần Áo"}, "subcategories": [{"id": "short", "name": {"en": "Short Sleeve", "zh": "短袖", "ms": "Lengan Pendek", "vi": "Tay Ngắn"}}, {"id": "long", "name": {"en": "Long Sleeve", "zh": "长袖", "ms": "Lengan Panjang", "vi": "Tay Dài"}}, {"id": "pants-short", "name": {"en": "Short Pants", "zh": "短裤", "ms": "Seluar Pendek", "vi": "Quần Ngắn"}}, {"id": "a", "name": {"en": "Trousers", "zh": "长裤", "ms": "Seluar panjang", "vi": "Quần dài"}}, {"id": "sub5", "name": {"zh": "外套", "en": "外套", "ms": "外套", "vi": "外套"}}]}, "shoes": {"name": {"en": "Shoes", "zh": "鞋子", "ms": "Kasut", "vi": "Giày"}, "subcategories": []}, "bags": {"name": {"en": "Bags", "zh": "包包", "ms": "Beg", "vi": "Túi Xách"}, "subcategories": []}, "sb": {"name": {"en": "Watch", "zh": "手表", "ms": "Jam tangan", "vi": "Đồng hồ"}, "subcategories": []}, "sp": {"name": {"en": "Accessories", "zh": "饰品", "ms": "Aksesori", "vi": "Phụ kiện"}, "subcategories": []}};
+const siteCategories = {"clothing": {"name": {"en": "Clothing", "zh": "衣服", "ms": "Pakaian", "vi": "Quần Áo"}, "subcategories": [{"id": "short", "name": {"en": "Short Sleeve", "zh": "短袖", "ms": "Lengan Pendek", "vi": "Tay Ngắn"}}, {"id": "long", "name": {"en": "Long Sleeve", "zh": "长袖", "ms": "Lengan Panjang", "vi": "Tay Dài"}}, {"id": "pants-short", "name": {"en": "Short Pants", "zh": "短裤", "ms": "Seluar Pendek", "vi": "Quần Ngắn"}}, {"id": "a", "name": {"en": "Trousers", "zh": "长裤", "ms": "Seluar panjang", "vi": "Quần dài"}}, {"id": "sub5", "name": {"zh": "外套", "en": "外套", "ms": "外套", "vi": "外套"}}]}, "shoes": {"name": {"en": "Shoes", "zh": "鞋子", "ms": "Kasut", "vi": "Giày"}, "subcategories": []}, "bags": {"name": {"en": "Bags", "zh": "包包", "ms": "Beg", "vi": "Túi Xách"}, "subcategories": []}};
 <!-- @SITECATS_END -->
 <!-- @PRODUCTS_START -->
 const products = {
@@ -375,12 +356,6 @@ const products = {
         { id: 'b4', name: 'Backpack', nameZh: '双肩包', nameMs: 'Beg Galas', nameVi: 'Ba Lô', img: 'images/bag4.jpg', images: ["images/bag4.jpg"], cat: 'bags', subcat: '', emoji: '🎒', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b5', name: 'Shoulder Bag', nameZh: '单肩包', nameMs: 'Beg Bahu', nameVi: 'Túi Đeo Vai', img: 'images/bag5.jpg', images: ["images/bag5.jpg"], cat: 'bags', subcat: '', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' },
         { id: 'b6', name: 'Mini Bag', nameZh: '迷你包', nameMs: 'Beg Mini', nameVi: 'Túi Mini', img: 'images/bag6.jpg', images: ["images/bag6.jpg"], cat: 'bags', subcat: '', emoji: '👜', price: '', descZh: '', descEn: '', descMs: '', descVi: '' }
-    ],
-    sb: [
-        { id: 's1', name: 'New arrival', nameZh: '新品', nameMs: 'Baru tiba', nameVi: 'Hàng mới về', img: 'images/微信图片_20260804004618_16_1_13105.jpg', images: ["images/微信图片_20260804004618_16_1_13105.jpg"], cat: 'sb', subcat: '', emoji: '📦', price: 'CNY 100.00', descZh: '', descEn: '', descMs: '', descVi: '' }
-    ],
-    sp: [
-
     ]
 };
 <!-- @PRODUCTS_END -->

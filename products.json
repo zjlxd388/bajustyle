@@ -99,38 +99,6 @@
       },
       "emoji": "👜",
       "filename": "bags.html"
-    },
-    "sb": {
-      "id": "sb",
-      "name": {
-        "en": "Watch",
-        "zh": "手表",
-        "ms": "Jam tangan",
-        "vi": "Đồng hồ"
-      },
-      "description": {
-        "en": "",
-        "zh": "",
-        "ms": "",
-        "vi": ""
-      },
-      "filename": "sb.html"
-    },
-    "sp": {
-      "id": "sp",
-      "name": {
-        "en": "Accessories",
-        "zh": "饰品",
-        "ms": "Aksesori",
-        "vi": "Phụ kiện"
-      },
-      "description": {
-        "en": "",
-        "zh": "",
-        "ms": "",
-        "vi": ""
-      },
-      "filename": "sp.html"
     }
   },
   "products": {
@@ -3932,30 +3900,7 @@
           "images/bag6.jpg"
         ]
       }
-    ],
-    "sb": [
-      {
-        "id": "s1",
-        "img": "images/微信图片_20260804004618_16_1_13105.jpg",
-        "images": [
-          "images/微信图片_20260804004618_16_1_13105.jpg"
-        ],
-        "emoji": "📦",
-        "name": "New arrival",
-        "nameZh": "新品",
-        "nameMs": "Baru tiba",
-        "nameVi": "Hàng mới về",
-        "price": "CNY 100.00",
-        "desc": {
-          "zh": "",
-          "en": "",
-          "ms": "",
-          "vi": ""
-        },
-        "cat": "sb"
-      }
-    ],
-    "sp": []
+    ]
   },
   "homepage_products": {
     "new_arrivals": [

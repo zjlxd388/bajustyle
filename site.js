@@ -380,9 +380,16 @@
                     return '<button class="carousel-thumb' + (i === 0 ? ' active' : '') + '" data-i="' + i + '" onclick="carouselTo(' + i + ')" style="background-image:url(\'' + src + '\')" aria-label="banner ' + (i + 1) + '"></button>';
                 }).join('');
             }
+            var dots = document.getElementById('carouselDots');
+            if (dots) {
+                dots.innerHTML = banners.map(function (b, i) {
+                    return '<button class="carousel-dot' + (i === 0 ? ' active' : '') + '" data-i="' + i + '" onclick="carouselTo(' + i + ')" aria-label="slide ' + (i + 1) + '"></button>';
+                }).join('');
+            }
             window.__heroIdx = 0;
             if (window.__heroTimer) clearInterval(window.__heroTimer);
             window.__heroTimer = setInterval(function () { carouselGo(1); }, 4500);
+            bindHeroSwipe();
         },
 
         cardHtml: function (p, lang) {
@@ -494,11 +501,32 @@
         updateHeroThumbs();
     }
     function updateHeroThumbs() {
-        var thumbs = document.querySelectorAll('#carouselThumbs .carousel-thumb');
-        thumbs.forEach(function (d, i) { d.classList.toggle('active', i === (window.__heroIdx || 0)); });
+        var idx = window.__heroIdx || 0;
+        document.querySelectorAll('#carouselThumbs .carousel-thumb').forEach(function (d, i) { d.classList.toggle('active', i === idx); });
+        document.querySelectorAll('#carouselDots .carousel-dot').forEach(function (d, i) { d.classList.toggle('active', i === idx); });
     }
     window.carouselGo = carouselGo;
     window.carouselTo = carouselTo;
+
+    // 手指滑动切页（移动端竖屏轮播）
+    function bindHeroSwipe() {
+        var el = document.getElementById('heroCarousel');
+        if (!el || el.__swipeBound) return;
+        el.__swipeBound = true;
+        var startX = 0, startY = 0, t0 = 0;
+        el.addEventListener('touchstart', function (e) {
+            var t = e.changedTouches[0];
+            startX = t.clientX; startY = t.clientY; t0 = Date.now();
+        }, { passive: true });
+        el.addEventListener('touchend', function (e) {
+            var t = e.changedTouches[0];
+            var dx = t.clientX - startX, dy = t.clientY - startY;
+            if (Date.now() - t0 > 600) return;          // 只认快滑
+            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return; // 横向为主
+            e.preventDefault();                          // 阻止横滑误触发链接跳转
+            carouselGo(dx < 0 ? 1 : -1);
+        }, { passive: false });
+    }
 
     // 跨断点（手机/电脑）切换时重渲染轮播，应用对应套图
     (function bindHeroResize() {
