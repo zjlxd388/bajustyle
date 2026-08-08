@@ -45,6 +45,14 @@ img { max-width: 100%; display: block; }
 .wechat-icon svg { width: 18px; height: 18px; fill: #fff; }
 
 .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+.mobile-lang-toggle { display: none; position: relative; }
+.mobile-lang-current { display: flex; align-items: center; gap: 4px; background: none; border: 1px solid var(--border); padding: 5px 8px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; color: var(--text); cursor: pointer; transition: all 0.2s; }
+.mobile-lang-current:hover { border-color: var(--primary); color: var(--primary); }
+.mobile-lang-icon { font-size: 0.95rem; line-height: 1; }
+.mobile-lang-abbr { text-transform: uppercase; min-width: 20px; }
+.mobile-lang-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: #fff; border: 1px solid var(--border); border-radius: 10px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); padding: 6px; display: none; flex-direction: column; gap: 4px; min-width: 150px; z-index: 300; }
+.mobile-lang-dropdown.open { display: flex; }
+.mobile-lang-dropdown .lang-btn { justify-content: flex-start; width: 100%; border-radius: 6px; font-size: 0.8rem; padding: 6px 10px; text-align: left; }
 .hamburger span { width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: 0.3s; }
 .mobile-menu { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fff; z-index: 200; flex-direction: column; align-items: center; justify-content: center; gap: 32px; }
 .mobile-menu.open { display: flex; }
@@ -52,13 +60,17 @@ img { max-width: 100%; display: block; }
 .mobile-close { position: absolute; top: 20px; right: 20px; font-size: 1.8rem; cursor: pointer; background: none; border: none; }
 
 /* ========== HERO (首页) ========== */
-.hero { position: relative; width: 100%; height: 520px; overflow: hidden; background: linear-gradient(135deg, #fdf2f2 0%, #f9e4e4 50%, #f5d5d5 100%); display: flex; align-items: center; justify-content: center; }
-.hero-content { text-align: center; z-index: 2; padding: 0 20px; }
-.hero-title { font-size: 2.8rem; font-weight: 300; letter-spacing: 4px; color: var(--text); margin-bottom: 12px; }
-.hero-title strong { font-weight: 700; color: var(--primary-dark); }
-.hero-subtitle { font-size: 1.1rem; color: var(--text-light); margin-bottom: 28px; letter-spacing: 2px; }
-.hero-btn { display: inline-block; background: var(--text); color: #fff; padding: 12px 36px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; border-radius: 30px; transition: all 0.3s; }
-.hero-btn:hover { background: var(--primary-dark); }
+.hero-carousel { position: relative; width: 100%; height: 520px; overflow: hidden; background: #f5f5f5; }
+.carousel-track { display: flex; height: 100%; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+.carousel-slide { flex: 0 0 100%; height: 100%; background-size: cover; background-position: center; }
+.carousel-thumbs { position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 5; }
+.carousel-thumb { width: 56px; height: 56px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.65); background-size: cover; background-position: center; background-color: #ddd; cursor: pointer; padding: 0; transition: all 0.2s; opacity: 0.72; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+.carousel-thumb:hover { opacity: 1; transform: translateY(-3px); }
+.carousel-thumb.active { border-color: var(--primary); opacity: 1; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+
+.about { max-width: var(--max-width); margin: 50px auto; padding: 0 20px; }
+.about-inner { background: linear-gradient(135deg, #fff6f6 0%, #fdf0f4 100%); border: 1px solid var(--border); border-radius: 16px; padding: 40px 36px; box-shadow: 0 6px 24px rgba(0,0,0,0.04); }
+.about-text { font-size: 0.98rem; line-height: 2; color: var(--text-light); text-align: center; max-width: 820px; margin: 0 auto; white-space: pre-line; }
 
 /* ========== CATEGORY CARDS (首页) ========== */
 .categories { max-width: var(--max-width); margin: 50px auto; padding: 0 20px; }
@@ -165,26 +177,35 @@ img { max-width: 100%; display: block; }
 /* ========== 空状态 ========== */
 .empty-hint { grid-column: 1 / -1; text-align: center; color: var(--text-muted); padding: 48px 20px; font-size: 0.95rem; }
 
+/* ========== 分页 ========== */
+.pagination { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; max-width: var(--max-width); margin: 36px auto 8px; padding: 0 20px; }
+.page-btn { min-width: 38px; height: 38px; padding: 0 12px; border: 1px solid var(--border); background: #fff; color: var(--text-light); border-radius: 8px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+.page-btn:hover:not(.disabled):not(.active) { border-color: var(--primary); color: var(--primary-dark); }
+.page-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600; }
+.page-btn.disabled { opacity: 0.4; cursor: default; }
+
 /* ========== RESPONSIVE ========== */
 .mobile-lang-hint { display: none; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 10px; text-align: center; }
 @media (max-width: 768px) {
     .nav-links, .nav-right .lang-switch { display: none; }
     .hamburger { display: flex; }
-    .hero { height: 380px; }
+    .mobile-lang-toggle { display: block; }
+    .hero-carousel { height: 380px; }
+    .carousel-thumb { width: 44px; height: 44px; border-width: 2px; }
     .hero-title { font-size: 1.8rem; letter-spacing: 2px; }
     .hero-subtitle { font-size: 0.9rem; }
     .cat-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
     .wechat-modal-qr-row { grid-template-columns: 1fr 1fr; gap: 10px; }
-    .mobile-lang-hint { display: block; }
+    .mobile-lang-hint { display: none; }
     .wechat-modal-qr-img.zoomed { width: 96vw; max-width: 96vw; padding: 8px; }
     .nav-item { display: none; }
     .page-banner { min-height: 200px; }
     .page-banner h1 { font-size: 1.7rem; letter-spacing: 2px; }
 }
 @media (max-width: 480px) {
-    .hero { height: 300px; }
+    .hero-carousel { height: 300px; }
     .hero-title { font-size: 1.4rem; }
     .cat-grid { grid-template-columns: 1fr 1fr; }
     .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }

@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
 """
-BajuStyle 续翻脚本（Phase 2，可重复执行、可断点续翻）
-==================================================
+BajuStyle 续翻脚本 v3：单款调用 + 可断点续翻 + 翻译阶段不重建页面
+=================================================================
 把 products.json 里「名字仍是中文（name == nameZh）」的商品，
-用 DeepSeek 一次性翻成 EN / MS / VI（名字 + 描述合并为 1 次调用）。
-- 每次翻译后立刻写盘 + 重建页面，进程被杀也不丢已翻部分
-- 调用间 sleep 3 秒，降低限流概率
+逐款用 DeepSeek 翻成 EN / MS / VI（名字 + 描述 1 次调用）。
+- 每款独立调用，避免批量长描述超 token 被截断
+- 每进程最多 MAX_CALLS 次出站（< 环境限流阈值，避免被杀）
+- 翻译阶段只写盘 products.json，不重建页面（全部翻完后再统一重建）
 - 已翻译的（name != nameZh）自动跳过，可反复跑直到全部完成
 
-用法：python translate_pending.py
+用法：LIMIT=6 python translate_pending.py   （外层 for 循环驱动多次即可跑完全部）
 """
-import json, time, sys
+import json, time, sys, os
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_FILE = BASE_DIR / "products.json"
+SLEEP = 2.0          # 每次调用间隔（秒）
+MAX_CALLS = 6        # 每进程最多出站调用数（< 环境限制，避免被杀）
 
 sys.path.insert(0, str(BASE_DIR))
 import manage
 Translator = manage.Translator
-HTMLGenerator = manage.HTMLGenerator
-
-SLEEP = 3.0  # 每次 API 调用间隔（秒）
+requests = __import__("requests")
 
 
-def translate_combo(translator, zh_name, zh_desc):
-    """一次调用同时翻译名字 + 描述，返回 dict 或 None"""
+def translate_one(translator, zh_name, zh_desc):
+    """翻译单款，返回 dict 或 None"""
     if not zh_name and not zh_desc:
         return None
     prompt = (
@@ -37,7 +38,7 @@ def translate_combo(translator, zh_name, zh_desc):
         'Product description (Chinese): ' + (zh_desc or "")
     )
     try:
-        resp = __import__("requests").post(
+        resp = requests.post(
             translator.api_url,
             headers={"Authorization": "Bearer " + translator.api_key,
                      "Content-Type": "application/json"},
@@ -46,12 +47,11 @@ def translate_combo(translator, zh_name, zh_desc):
                   "temperature": 0.1,
                   "max_tokens": 4096,
                   "response_format": {"type": "json_object"}},
-            timeout=40,
+            timeout=60,
         )
         if resp.status_code != 200:
             return None
         content = resp.json()["choices"][0]["message"]["content"].strip()
-        # 去 markdown 包裹
         if "```" in content:
             parts = content.split("```")
             if len(parts) >= 3:
@@ -59,7 +59,8 @@ def translate_combo(translator, zh_name, zh_desc):
                 if content.startswith("json"):
                     content = content[4:]
         return json.loads(content.strip())
-    except Exception:
+    except Exception as e:
+        print("  ⚠️ 调用异常:", repr(e))
         return None
 
 
@@ -80,12 +81,19 @@ def main():
         print("✅ 没有待翻译的商品，全部已是四语。")
         return
 
-    print(f"🔍 待翻译商品：{len(todo)} 件（每款 1 次合并调用）")
+    limit = int(os.environ.get("LIMIT", "0") or 0)
+    if limit:
+        todo = todo[:limit]
+    print(f"🔍 本次待翻：{len(todo)} 件（每进程限 {MAX_CALLS} 次调用）")
+    calls = 0
     done = 0
     for cat_id, p in todo:
+        if calls >= MAX_CALLS:
+            print(f"⏸ 已达本进程出站上限，停止（重跑可续翻剩余 {len(todo) - done} 件）")
+            break
         zh_name = p.get("nameZh", "")
         zh_desc = (p.get("desc") or {}).get("zh", "")
-        r = translate_combo(translator, zh_name, zh_desc)
+        r = translate_one(translator, zh_name, zh_desc)
         if r:
             p["name"] = r.get("name_en", zh_name)
             p["nameMs"] = r.get("name_ms", zh_name)
@@ -96,14 +104,17 @@ def main():
             d["vi"] = r.get("desc_vi", zh_desc)
         else:
             print(f"  ⚠️ {zh_name} 翻译失败，保留中文（可重跑）")
-        # 立刻写盘 + 重建，保证进度不丢
         json.dump(data, open(DATA_FILE, "w", encoding="utf-8"), ensure_ascii=False, indent=2)
-        HTMLGenerator.regenerate_all(data)
+        calls += 1
         done += 1
         print(f"✅ [{done}/{len(todo)}] {zh_name} -> {p.get('name')}")
         time.sleep(SLEEP)
 
-    print(f"🎉 完成翻译 {done} 件。可再跑一次确认无遗漏。")
+    remaining = len(todo) - done
+    if remaining <= 0:
+        print("🎉 全部翻译完成！")
+    else:
+        print(f"🎉 本次完成 {done} 件，剩余 {remaining} 件（重跑本脚本续翻）。")
 
 
 if __name__ == "__main__":

@@ -48,10 +48,10 @@ BajuStyle 网站文案修改模板
 区块 2 ｜顶部条 & 导航 & 语言切换
 ================================================================
 [topBar] 网站最顶部免费配送提示条
-  EN : Free Delivery across Malaysia & Singapore — Shipped Worldwide from China 🌍
-  ZH : 马来西亚 & 新加坡全境包邮 — 中国直邮全球 🌍
-  MS : Penghantaran Percuma ke seluruh Malaysia & Singapura — Dihantar ke seluruh dunia dari China 🌍
-  VI : Giao Hàng Miễn Phí toàn Malaysia & Singapore — Giao hàng toàn cầu từ Trung Quốc 🌍
+  EN : Malaysia & Singapore — Shipped Worldwide from China 🌍
+  ZH : 马来西亚 & 新加坡 — 中国直邮全球 🌍
+  MS : Malaysia & Singapura — Dihantar ke seluruh dunia dari China 🌍
+  VI : Malaysia & Singapore — Giao hàng toàn cầu từ Trung Quốc 🌍
   改成 EN : 
   改成 ZH : 
   改成 MS : 
