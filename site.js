@@ -27,7 +27,7 @@
             contactPrice: 'Contact for Price', viewDetails: 'View Details',
             filterAll: 'All', emptyHint: 'No products yet. Contact us on WeChat to see more styles.', prev: 'Prev', next: 'Next',
             footerBrand: 'DY · Premium Fashion',
-            footerDesc: 'DY (高端服饰) — Premium women\'s fashion boutique. Trendy clothing, shoes, and bags shipped worldwide from China to Malaysia, Singapore, Vietnam & beyond.',
+            footerDesc: 'DY (Premium Fashion) — Premium women\'s boutique. Shipping from China to Malaysia, Singapore, Vietnam, Taiwan (China) and worldwide. Specializing in clothing, shoes, bags, jewelry, eyewear, hats, scarves, and more.',
             footerShop: 'Shop', footerHelp: 'Help', footerFAQ: 'FAQ', footerSize: 'Size Guide',
             footerShipping: 'Shipping Info', footerContact: 'Contact Us',
             footerContactTitle: 'Contact via WeChat',
@@ -57,7 +57,7 @@
             contactPrice: '微信询价', viewDetails: '查看详情',
             filterAll: '全部', emptyHint: '暂无商品，微信联系我们查看更多款式。', prev: '上一页', next: '下一页',
             footerBrand: 'DY · 高端服饰',
-            footerDesc: 'DY（高端服饰）— 优质女装精品店。从中国发货至马来西亚、新加坡、越南及全球，主营时尚服装、鞋子和包包。',
+            footerDesc: 'DY（高端服饰）— 优质女装精品店。从中国发货至马来西亚、新加坡、越南、中国台湾及全球。主营服装、鞋子、包包、首饰、眼镜、帽子、围巾等。',
             footerShop: '购物', footerHelp: '帮助', footerFAQ: '常见问题', footerSize: '尺码指南',
             footerShipping: '配送信息', footerContact: '联系我们',
             footerContactTitle: '微信联系',
@@ -87,7 +87,7 @@
             contactPrice: 'Hubungi untuk Harga', viewDetails: 'Lihat Butiran',
             filterAll: 'Semua', emptyHint: 'Tiada produk buat masa ini. Hubungi kami di WeChat untuk lebih banyak gaya.', prev: 'Seb.', next: 'Seterusnya',
             footerBrand: 'DY · Fesyen Premium',
-            footerDesc: 'DY (Fesyen Premium) — Butik fesyen wanita premium. Pakaian, kasut dan beg trendy dihantar dari China ke Malaysia, Singapura, Vietnam & seluruh dunia.',
+            footerDesc: 'DY (Fesyen Premium) — Butik wanita premium. Dihantar dari China ke Malaysia, Singapura, Vietnam, Taiwan (China) & seluruh dunia. Pakar dalam pakaian, kasut, beg, barang kemas, cermin mata, topi, selendang, dan banyak lagi.',
             footerShop: 'Beli', footerHelp: 'Bantuan', footerFAQ: 'Soalan Lazim', footerSize: 'Panduan Saiz',
             footerShipping: 'Maklumat Penghantaran', footerContact: 'Hubungi Kami',
             footerContactTitle: 'Hubungi via WeChat',
@@ -117,7 +117,7 @@
             contactPrice: 'Liên Hệ Để Biết Giá', viewDetails: 'Xem Chi Tiết',
             filterAll: 'Tất cả', emptyHint: 'Chưa có sản phẩm. Liên hệ WeChat để xem thêm mẫu.', prev: 'Trước', next: 'Tiếp',
             footerBrand: 'DY · Thời Trang Cao Cấp',
-            footerDesc: 'DY (Thời trang cao cấp) — Boutique thời trang nữ cao cấp. Quần áo, giày dép và túi xách thời trang giao từ Trung Quốc đến Malaysia, Singapore, Việt Nam & toàn cầu.',
+            footerDesc: 'DY (Thời trang cao cấp) — Boutique thời trang nữ cao cấp. Giao từ Trung Quốc đến Malaysia, Singapore, Việt Nam, Đài Loan (Trung Quốc) và toàn cầu. Chuyên quần áo, giày dép, túi xách, trang sức, kính mắt, mũ, khăn choàng, v.v.',
             footerShop: 'Mua Sắm', footerHelp: 'Trợ Giúp', footerFAQ: 'Câu Hỏi Thường Gặp', footerSize: 'Hướng Dẫn Size',
             footerShipping: 'Thông Tin Giao Hàng', footerContact: 'Liên Hệ',
             footerContactTitle: 'Liên Hệ qua WeChat',
@@ -144,6 +144,13 @@
     function nameOf(p, lang) {
         var o = { en: p.name, zh: p.nameZh, ms: p.nameMs, vi: p.nameVi };
         return pick(o, lang) || p.name || '';
+    }
+    function esc(s) {
+        return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 
     var BajuSite = {
@@ -394,20 +401,40 @@
 
         cardHtml: function (p, lang) {
             var name = nameOf(p, lang);
+            var safeName = esc(name);
             var t = CONTENT[lang] || CONTENT.en;
             var price = p.price
                 ? '<div class="product-card-price">' + p.price + '</div>'
                 : '<div class="product-card-price">' + t.contactPrice + '</div>';
             var media = p.img
-                ? '<span class="fallback-emoji">' + (p.emoji || '') + '</span><img src="' + p.img + '" alt="' + name + '" loading="lazy" onerror="this.remove()">'
+                ? '<span class="fallback-emoji">' + (p.emoji || '') + '</span><img src="' + p.img + '" alt="' + safeName + '" loading="lazy" onerror="this.remove()">'
                 : '<span class="fallback-emoji">' + (p.emoji || '') + '</span>';
+            var copyIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
             return '<div class="product-card" onclick="location.href=\'product-detail.html?id=' + p.id + '\'">' +
                 '<div class="product-card-img">' + media + '</div>' +
                 '<div class="product-card-info">' +
-                '<div class="product-card-name">' + name + '</div>' +
+                '<div class="product-card-name-row">' +
+                '<div class="product-card-name" title="' + safeName + '">' + safeName + '</div>' +
+                '<button type="button" class="copy-name-btn" onclick="event.stopPropagation();BajuSite.copyProductName(this)" aria-label="' + esc(t.modalCopy) + '">' + copyIcon + '</button>' +
+                '</div>' +
                 price +
                 '<span class="view-btn">' + t.viewDetails + '</span>' +
                 '</div></div>';
+        },
+
+        copyProductName: function (el) {
+            var card = el.closest('.product-card');
+            var nameEl = card && card.querySelector('.product-card-name');
+            var text = nameEl ? nameEl.textContent.trim() : '';
+            var self = this;
+            if (!text) return;
+            var done = function () {
+                el.classList.add('copied');
+                setTimeout(function () { el.classList.remove('copied'); }, 1500);
+            };
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(text).then(done).catch(function () { self.fallbackCopy(text); done(); });
+            } else { self.fallbackCopy(text); done(); }
         },
 
         /* ===== 微信弹窗 / 二维码 / 复制 / 移动菜单（共享）===== */

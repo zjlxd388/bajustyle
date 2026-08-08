@@ -96,17 +96,24 @@ img { max-width: 100%; display: block; }
 .product-card-img .fallback-emoji { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
 .product-card-img img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
 .product-card-info { padding: 10px 4px; text-align: center; }
-.product-card-name { font-size: 0.9rem; font-weight: 500; color: var(--text); margin-bottom: 4px; }
+.product-card-name-row { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 4px; }
+.product-card-name { flex: 1; min-width: 0; font-size: 0.9rem; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.copy-name-btn { flex-shrink: 0; border: none; background: transparent; color: var(--text-muted); cursor: pointer; padding: 2px 4px; border-radius: 6px; line-height: 0; transition: all 0.2s; }
+.copy-name-btn:hover { background: var(--bg-light); color: var(--primary-dark); }
+.copy-name-btn svg { width: 15px; height: 15px; display: block; }
+.copy-name-btn.copied { color: var(--wechat); }
+.copy-name-btn.copied svg { display: none; }
+.copy-name-btn.copied::after { content: '✓'; font-size: 0.85rem; font-weight: 700; line-height: 1; }
 .product-card-price { font-size: 0.85rem; color: var(--primary-dark); font-weight: 600; }
 .product-card .view-btn { display: inline-block; margin-top: 8px; padding: 6px 20px; border: 1px solid var(--primary); color: var(--primary-dark); font-size: 0.8rem; border-radius: 20px; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s; background: transparent; cursor: pointer; }
 .product-card .view-btn:hover { background: var(--primary); color: #fff; }
 
 /* ========== WECHAT FLOAT ========== */
 .wechat-float { position: fixed; bottom: 24px; right: 24px; z-index: 300; }
-.wechat-float-btn { width: 60px; height: 60px; border-radius: 50%; background: var(--wechat); display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 4px 20px rgba(7,193,96,0.45); transition: transform 0.2s; border: none; animation: pulse 2s infinite; }
+.wechat-float-btn { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 30px; background: var(--wechat); color: #fff; font-size: 0.85rem; font-weight: 600; cursor: pointer; box-shadow: 0 4px 20px rgba(7,193,96,0.45); transition: transform 0.2s; border: none; animation: pulse 2s infinite; white-space: nowrap; }
 @keyframes pulse { 0%,100% { box-shadow: 0 4px 20px rgba(7,193,96,0.45); } 50% { box-shadow: 0 4px 28px rgba(7,193,96,0.7); } }
-.wechat-float-btn:hover { transform: scale(1.1); }
-.wechat-float-btn svg { width: 30px; height: 30px; fill: #fff; }
+.wechat-float-btn:hover { transform: scale(1.05); }
+.wechat-float-btn svg { width: 24px; height: 24px; fill: #fff; flex-shrink: 0; }
 
 /* ========== WECHAT MODAL ========== */
 .wechat-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 500; display: none; align-items: center; justify-content: center; padding: 20px; backdrop-filter: blur(2px); }
@@ -140,11 +147,12 @@ img { max-width: 100%; display: block; }
 .footer p, .footer a { font-size: 0.85rem; color: #aaa; line-height: 2; }
 .footer a:hover { color: var(--accent); }
 .footer-qr-box { background: #fff; border-radius: 12px; padding: 16px; text-align: center; margin-top: 4px; }
-.footer-qr-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 10px; }
+.footer-qr-row { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 10px; }
 .footer-qr-item { text-align: center; }
 .footer-qr-item img { width: 100%; aspect-ratio: 1; object-fit: contain; border-radius: 6px; border: 1px solid #eee; }
 .footer-qr-item .lbl { font-size: 0.78rem; color: var(--text); margin-top: 6px; font-weight: 600; }
-.footer-qr-id { display: inline-block; background: var(--wechat); color: #fff; padding: 4px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; margin-top: 4px; cursor: pointer; }
+.footer-qr-id { display: inline-flex; align-items: center; gap: 8px; background: var(--wechat); color: #fff; padding: 4px 14px; border-radius: 14px; font-size: 0.82rem; font-weight: 700; letter-spacing: 1px; margin-top: 4px; cursor: pointer; }
+.footer-qr-id::after { content: '复制'; font-size: 0.7rem; background: rgba(255,255,255,0.25); padding: 2px 6px; border-radius: 8px; letter-spacing: 0; }
 .footer-wechat-btn { background: var(--wechat); color: #fff; padding: 10px 20px; border-radius: 22px; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 0.9rem; border: none; cursor: pointer; margin-top: 4px; }
 .footer-wechat-btn:hover { opacity: 0.92; }
 .footer-wechat-btn svg { width: 18px; height: 18px; fill: #fff; }
@@ -171,7 +179,8 @@ img { max-width: 100%; display: block; }
 .page-banner.has-hero, .page-banner.has-hero h1, .page-banner.has-hero p { color: #fff; }
 
 /* ========== 子分类筛选 ========== */
-.subcat-filter { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; max-width: var(--max-width); margin: 28px auto 8px; padding: 0 20px; }
+.subcat-filter { display: flex; gap: 10px; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; max-width: var(--max-width); margin: 28px auto 8px; padding: 0 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; }
+.subcat-filter::-webkit-scrollbar { display: none; }
 .subcat-btn { border: 1px solid var(--border); background: #fff; color: var(--text-light); padding: 8px 20px; border-radius: 22px; cursor: pointer; font-size: 0.85rem; letter-spacing: 0.5px; transition: all 0.2s; }
 .subcat-btn:hover { border-color: var(--primary); color: var(--primary-dark); }
 .subcat-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
