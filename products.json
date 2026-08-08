@@ -52,15 +52,6 @@
             "ms": "Seluar panjang",
             "vi": "Quần dài"
           }
-        },
-        {
-          "id": "sub5",
-          "name": {
-            "zh": "外套",
-            "en": "外套",
-            "ms": "外套",
-            "vi": "外套"
-          }
         }
       ],
       "hero": "images/微信图片_20260807015208_604_3_45480.jpg",
@@ -188,7 +179,7 @@
           "vi": "Áo khoác tay dài có mũ trơn với họa tiết nhung dập nổi\n●Chất liệu: Vải nylon\n●Kỹ thuật: Kỹ thuật dập nổi phù điêu\n●Màu sắc: Đen\n●Kiểu dáng: Ôm sát\n●Trọng lượng: Khoảng 720 gram\n●Kích thước: 46-48-50-52-54\n●Mô tả: Chiếc áo khoác ngoài trời có mũ màu xanh nhạt này được làm từ vải dệt chống rách mật độ cao với bề mặt xử lý chống gió và chống nước. Chất vải dày và cứng cáp, chống nhăn và bền bỉ. Khu vực túi sử dụng kỹ thuật dập nổi ép áp lực ba chiều, thể hiện logo cổ điển của thương hiệu dưới dạng phù điêu với các đường nét rõ ràng và đầy đặn, khó phai. Phần nẹp áo sử dụng thiết kế đóng kép với cúc và khóa kéo bên trong để chống gió hiệu quả. Mũ liền được trang bị dây rút có thể điều chỉnh để kiểm soát độ chặt của mũ. Ngực có nhãn vải ba chiều hình vuông, và các túi khóa kéo bên hông có đường may gọn gàng. Cổ tay áo được trang bị khóa Velcro để điều chỉnh độ rộng cổ tay. Áo được may từ nhiều mảnh vải bằng kỹ thuật may kín hoàn toàn, đường may bên trong mượt mà không có xơ vải. Kiểu dáng vai rộng thoải mái cho phép cử động tự do. Áo được định hình bằng nhiệt độ cao để tạo dáng gọn gàng. Vải được nhuộm bằng thuốc nhuộm hoạt tính, tạo màu sắc mềm mại và đồng đều. Lời khuyên chăm sóc: giặt nhẹ bằng nước lạnh, tránh ủi nhiệt độ cao để không làm hỏng họa tiết dập nổi. Phù hợp cho các hoạt động hàng ngày và ngoài trời nhẹ. Toàn bộ đường may thẳng và tinh tế, vải thoải mái và mềm mại, màu sắc nhất quán không bị lệch màu. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c2",
@@ -217,7 +208,7 @@
           "vi": "Áo khoác len có mũ họa tiết chó con\n●Chất liệu: Vải cotton nguyên chất\n●Kỹ thuật: Kỹ thuật dệt kim\n●Màu sắc: Xanh-trắng\n●Kiểu dáng: Ôm vừa vặn\n●Trọng lượng: Khoảng 810g\n●Kích cỡ: 1-2-3-4\n●Mô tả: Áo cardigan len có mũ, khóa kéo, sọc vàng-trắng này được dệt bằng máy dệt ngang với sợi cotton chải kỹ pha trộn. Vải mềm mại, thân thiện với da, có độ co giãn và thoáng khí tốt. Các sọc tương phản được nhuộm bằng công nghệ đối màu từng đoạn, đảm bảo ranh giới màu sắc gọn gàng, không lem màu, tạo lớp thị giác sạch sẽ và tươi mới. Phía trước có khóa kéo hai chiều bằng kim loại tùy chỉnh, trượt êm và bền. Mũ đi kèm dây rút cotton cùng màu để điều chỉnh độ rộng. Gấu áo và cổ tay sử dụng đường gân mật độ cao để giữ ấm và chống biến dạng. Túi kangaroo phía trước được gia cố bằng đường may vắt sổ liền mạch. Tay áo bên trái có dải vải bốn sọc cổ điển được may liền một mảnh. Toàn bộ trang phục được lắp ráp bằng đường may bốn mũi phẳng, đường may đều và đẹp. Sản phẩm đã qua xử lý chống co rút và định hình bằng hơi nước để giảm co rút sau khi giặt. Kiểu vai rộng thoải mái phù hợp cho trang phục thường ngày. Tổng thể tinh xảo, kết hợp sự thoải mái, tính thực dụng và phong cách thị giác tươi mới, tối giản. Đường may thẳng và tinh tế, vải mềm mại và thoải mái, màu sắc đồng nhất không sai lệch. Có thể kết hợp với các món đồ cùng loại để tạo phong cách thời trang, phù hợp với nhiều dịp. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c3",
@@ -246,7 +237,7 @@
           "vi": "Áo khoác dệt kim có mũ họa tiết chó con\n●Chất liệu: Vải cotton nguyên chất\n●Kỹ thuật: Kỹ thuật dệt kim\n●Màu sắc: Xanh dương và trắng\n●Kiểu dáng: Kiểu ôm sát\n●Trọng lượng: Khoảng 810g\n●Kích cỡ: 1-2-3-4\n●Mô tả: Áo cardigan dệt kim có mũ, khóa kéo, sọc vàng trắng này được dệt bằng sợi pha cotton chải kỹ mịn trên máy dệt kim phẳng. Vải mềm mại, thân thiện với da, có độ co giãn và thoáng khí tốt. Các sọc tương phản sử dụng công nghệ nhuộm và hoàn thiện phân đoạn, với ranh giới màu sắc rõ ràng và không bị lem màu, tạo nên lớp thị giác sạch sẽ và tươi mới. Phía trước trung tâm được trang bị khóa kéo hai chiều kim loại tùy chỉnh, kéo trơn tru và bền bỉ. Mũ đi kèm dây rút cotton cùng màu để điều chỉnh độ chặt. Gấu áo và cổ tay sử dụng đường gân dày đặc để giữ ấm và chống biến dạng. Túi kangaroo tích hợp phía trước được gia cố bằng đường may overlock liền mạch. Tay áo bên trái có dải vải dệt bốn sọc cổ điển được may liền một mảnh. Toàn bộ trang phục được lắp ráp bằng đường may bốn mũi, với các đường may đều và gọn gàng. Sản phẩm đã trải qua quá trình giặt co rút trước và định hình bằng hơi nước để giảm co rút sau khi mặc. Kiểu vai rơi rộng rãi phù hợp với trang phục thường ngày. Nhìn chung, tay nghề tinh xảo, kết hợp sự thoải mái, tính thực dụng và phong cách thị giác tươi mới, tối giản. Đường may thẳng và tinh tế, vải mềm mại và thoải mái, màu sắc nhất quán không sai lệch. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp khác nhau. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c4",
@@ -275,7 +266,7 @@
           "vi": "Áo khoác nỉ có mũ họa tiết chó con\n●Chất liệu: Vải cotton nguyên chất\n●Kỹ thuật: Kỹ thuật dệt kim\n●Màu sắc: Xanh dương và trắng\n●Kiểu dáng: Ôm sát\n●Trọng lượng: Khoảng 810g\n●Kích cỡ: 1-2-3-4\n●Mô tả: Áo cardigan dệt kim có mũ, khóa kéo, sọc vàng trắng này được dệt trên máy dệt kim phẳng bằng sợi cotton chải kỹ pha trộn. Vải mềm mại, thân thiện với da, có độ co giãn và thoáng khí tốt. Các sọc tương phản sử dụng công nghệ nhuộm và hoàn thiện phân đoạn, ranh giới màu sắc rõ ràng, không lem màu, tạo lớp thị giác sạch sẽ và tươi mới. Phía trước trung tâm được trang bị khóa kéo hai chiều kim loại tùy chỉnh, kéo trơn tru và bền bỉ. Mũ đi kèm dây rút cotton cùng màu để điều chỉnh độ chặt. Gấu áo và cổ tay sử dụng đường gân mật độ cao để giữ ấm và chống biến dạng. Túi kangaroo tích hợp phía trước được gia cố bằng đường may viền liền mạch. Tay áo bên trái có dải vải dệt bốn sọc cổ điển được may liền một mảnh. Toàn bộ áo được lắp ráp bằng đường may bốn mũi, đường may đều và phẳng. Sản phẩm đã qua xử lý giặt co rút trước và định hình hơi nước để giảm co rút sau khi giặt. Kiểu dáng vai rộng thoải mái phù hợp với trang phục thường ngày. Nhìn chung, tay nghề tinh xảo, kết hợp sự thoải mái, tiện dụng và phong cách thị giác tươi mới, tối giản. Đường may thẳng và mịn, vải mềm mại, màu sắc đồng nhất không chênh lệch. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp khác nhau. Phụ kiện tùy chỉnh, đầy đủ ba nhãn hiệu!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c5",
@@ -304,7 +295,7 @@
           "vi": "Áo khoác nỉ có mũ họa tiết chó con\n●Chất liệu: Vải cotton nguyên chất\n●Kỹ thuật: Kỹ thuật dệt kim\n●Màu sắc: Xanh dương và trắng\n●Kiểu dáng: Ôm sát cơ thể\n●Trọng lượng: Khoảng 810g\n●Kích thước: 1-2-3-4\n●Mô tả: Áo cardigan có mũ, khóa kéo, sọc vàng trắng này được dệt trên máy dệt kim phẳng bằng sợi cotton chải kỹ pha trộn. Vải mềm mại, thân thiện với da, có độ co giãn và thoáng khí tốt. Các sọc tương phản sử dụng công nghệ nhuộm và hoàn thiện phân đoạn, với ranh giới màu sắc gọn gàng, không lem màu, tạo lớp thị giác sạch sẽ và tươi mới. Phía trước trung tâm được trang bị khóa kéo hai chiều kim loại tùy chỉnh, kéo trơn tru và bền bỉ. Mũ đi kèm dây rút cotton cùng màu để điều chỉnh độ chặt. Gấu áo và cổ tay sử dụng đường gân mật độ cao để giữ ấm và chống biến dạng. Túi kangaroo tích hợp phía trước được gia cố bằng kỹ thuật viền liền mạch. Tay áo bên trái có dải vải dệt bốn sọc cổ điển được may liền một mảnh. Toàn bộ trang phục được lắp ráp bằng đường may bốn mũi, với các đường may đều và phẳng. Sản phẩm đã trải qua quá trình giặt co rút trước và xử lý định hình bằng hơi nước để giảm nguy cơ co rút sau khi mặc. Kiểu dáng vai rơi rộng rãi phù hợp với trang phục thường ngày. Tổng thể tay nghề tinh xảo, kết hợp sự thoải mái, tính thực dụng và phong cách thị giác tươi mới, tối giản. Đường may thẳng và tinh tế, vải mềm mại và thoải mái, màu sắc nhất quán không sai lệch. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp khác nhau. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c6",
@@ -333,7 +324,7 @@
           "vi": "Áo cardigan dệt kim có mũ có khóa kéo\n●Chất liệu: Vải cotton nguyên chất\n●Kỹ thuật: Kỹ thuật dệt kim\n●Màu sắc: Xanh và trắng\n●Kiểu dáng: Ôm sát\n●Trọng lượng: Khoảng 810g\n●Kích thước: 1-2-3-4\n●Mô tả: Áo cardigan dệt kim có mũ, khóa kéo, sọc vàng trắng này được dệt trên máy dệt kim phẳng bằng sợi cotton chải kỹ pha trộn. Vải mềm mại, thân thiện với da, có độ co giãn và thoáng khí tốt. Các sọc tương phản được nhuộm bằng quy trình phối màu theo từng đoạn, ranh giới màu sạch sẽ, không lem màu, tạo lớp thị giác gọn gàng và tươi mới. Phía trước được trang bị khóa kéo hai chiều bằng kim loại tùy chỉnh, trượt êm và bền. Mũ đi kèm dây rút cotton cùng màu để điều chỉnh độ chặt. Gấu áo và cổ tay sử dụng đường gân dệt mật độ cao để giữ ấm và chống biến dạng. Túi kangaroo phía trước được gia cố bằng đường may vắt sổ liền mạch. Tay trái có dải vải dệt bốn sọc cổ điển được may liền. Toàn bộ áo được lắp ráp bằng đường may bốn mũi, đường may đều và đẹp. Sản phẩm đã qua xử lý chống co rút và định hình bằng hơi nước để giảm co rút sau khi giặt. Kiểu dáng vai rộng thoải mái phù hợp cho trang phục thường ngày. Nhìn chung, tay nghề tinh xảo, kết hợp sự thoải mái, tiện dụng và phong cách thị giác tươi mới, tối giản. Đường may thẳng và mịn, vải mềm mại, màu sắc đồng nhất không chênh lệch. Có thể kết hợp với cùng phong cách để tạo nên vẻ ngoài thời trang, phù hợp với nhiều dịp. Phụ kiện tùy chỉnh, đầy đủ ba nhãn!"
         },
         "cat": "clothing",
-        "subcat": "sub5"
+        "subcat": "long"
       },
       {
         "id": "c7",
