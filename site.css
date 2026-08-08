@@ -90,14 +90,14 @@ img { max-width: 100%; display: block; }
 .products-section { max-width: var(--max-width); margin: 50px auto; padding: 0 20px; }
 .products-section .section-title { border-top: 1px solid var(--border); padding-top: 50px; }
 .product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-.product-card { cursor: pointer; transition: transform 0.2s; }
+.product-card { cursor: pointer; transition: transform 0.2s; min-width: 0; }
 .product-card:hover { transform: translateY(-3px); }
 .product-card-img { width: 100%; aspect-ratio: 3/4; border-radius: 8px; background: #f5f0f0; position: relative; overflow: hidden; }
 .product-card-img .fallback-emoji { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 3rem; }
 .product-card-img img { position: relative; width: 100%; height: 100%; object-fit: cover; display: block; }
 .product-card-info { padding: 10px 4px; text-align: center; }
-.product-card-name-row { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 4px; }
-.product-card-name { flex: 1; min-width: 0; font-size: 0.9rem; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.product-card-name-row { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 4px; margin-bottom: 4px; width: 100%; }
+.product-card-name { min-width: 0; font-size: 0.9rem; font-weight: 500; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .copy-name-btn { flex-shrink: 0; border: none; background: transparent; color: var(--text-muted); cursor: pointer; padding: 2px 4px; border-radius: 6px; line-height: 0; transition: all 0.2s; }
 .copy-name-btn:hover { background: var(--bg-light); color: var(--primary-dark); }
 .copy-name-btn svg { width: 15px; height: 15px; display: block; }
