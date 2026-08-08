@@ -466,10 +466,18 @@
         },
         showCopySuccess: function (el) {
             if (!el) return;
-            var orig = el.textContent;
-            el.textContent = 'Copied ✓';
-            el.style.color = 'var(--wechat)';
-            setTimeout(function () { el.textContent = orig; el.style.color = ''; }, 1500);
+            var feedback = el.querySelector('.copy-feedback');
+            if (feedback) {
+                var orig = feedback.textContent;
+                feedback.textContent = 'Copied ✓';
+                feedback.style.color = 'var(--wechat)';
+                setTimeout(function () { feedback.textContent = orig; feedback.style.color = ''; }, 1500);
+            } else {
+                var orig = el.textContent;
+                el.textContent = 'Copied ✓';
+                el.style.color = 'var(--wechat)';
+                setTimeout(function () { el.textContent = orig; el.style.color = ''; }, 1500);
+            }
         },
         toggleQrZoom: function (img) {
             if (!img) return;
